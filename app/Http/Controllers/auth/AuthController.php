@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Services\OtpService;
 use App\Traits\AuthResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,6 +29,11 @@ class AuthController extends Controller
         $this->otpService = $otpService;
     }
 
+    /**
+     * Register the user
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -91,10 +97,10 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return $this->errorResponse('Validate Failed',400,$validator->errors());
+            return $this->errorResponse('Validate Failed',$validator->errors(),400);
         }
 
-        if(!$this->otpService->verifyOtp($request->otp_token,$request->otp)){
+        if(!$this->otpService->verifyOtp($request->otpToken,$request->otp)){
             return $this->errorResponse(
                 'Invalid OTP Code',
                 'Invalid OTP Code or Expired',
@@ -102,11 +108,60 @@ class AuthController extends Controller
             );
         }
 
-        $payload = Crypt::decrypt($request->otp_token);
-        $user = User::find($payload['user_id']);
+        $payload = Crypt::decrypt($request->otpToken);
+        $user = User::find($payload['user']);
         $accessToken = JWTAuth::fromUser($user);
-        $refreshToken = JWTAuth::factory()->setTTL(config('jwt.refresh_ttl'))->token();
 
-        return $this->successResponseWithAccessTokenAndRefreshToken($accessToken,$refreshToken,'Register Successfully');
+        return $this->successResponseWithAccessToken($accessToken, "User Registration Successfully", $user);
+    }
+
+    /**
+     * Login implementation
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
+    public function login(Request $request){
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|email|string',
+            'password' => 'required|string'
+        ]);
+
+        if($validator->fails()){
+            return $this->errorResponse(
+                'Validation Failed',
+                $validator->errors(),
+                400
+            );
+        }
+
+        $credentials = $request->only('email','password');
+
+        if(!$token = JWTAuth::attempt($credentials)){
+            return $this->errorResponse(
+                'Unauthorized',
+                'Wrong Credential',
+                401
+            );
+        }
+
+        return $this->successResponseWithAccessTokenAndRefreshToken($token,'Login Success');
+    }
+
+    /**
+     * Logout implementation
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
+    public function logout(){
+        Auth::logout();
+        return $this->successResponse("Logout Successfully");
+    }
+
+    /**
+    *
+    * Get current user
+    * @return mixed|\Illuminate\Http\JsonResponse
+    */
+    public function me(){
+        return $this->successResponse(Auth::user());
     }
 }

@@ -9,11 +9,10 @@ trait AuthResponse {
         ],200);
     }
 
-    public function successResponseWithAccessTokenAndRefreshToken($accessToken, $refreshToken,$message){
+    public function successResponseWithAccessTokenAndRefreshToken($accessToken,$message){
         return response()->json([
             'message' => $message,
             'acessToken' => $accessToken,
-            'refreshToken' => $refreshToken,
             'type' => 'bearer'
         ],200);
     }

@@ -7,10 +7,154 @@ servers:
   -
     url: 'http://localhost'
 paths:
-  /api/user:
+  /api/register:
+    post:
+      summary: 'Register the user'
+      operationId: registerTheUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: sevoo
+                  nullable: false
+                lastName:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: qlbxwen
+                  nullable: false
+                gender:
+                  type: string
+                  description: ''
+                  example: female
+                  nullable: false
+                  enum:
+                    - male
+                    - female
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 50 characters.'
+                  example: roberts.velma@example.net
+                  nullable: false
+                phoneNumber:
+                  type: number
+                  description: ''
+                  example: 9.43317299
+                  nullable: false
+                country:
+                  type: string
+                  description: 'Must not be greater than 100 characters.'
+                  example: ratojqyvmeaal
+                  nullable: false
+                city:
+                  type: string
+                  description: 'Must not be greater than 100 characters.'
+                  example: smxdiswfkzliiuheittt
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Must match the regex /^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/. Must be at least 6 characters.'
+                  example: 'v\0Q}N3T^t$Y!j5'
+                  nullable: false
+                profile:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: true
+              required:
+                - firstName
+                - lastName
+                - gender
+                - email
+                - phoneNumber
+                - country
+                - city
+                - password
+      security: []
+  /api/verify-otp:
+    post:
+      summary: 'Verify OTP and log the user'
+      operationId: verifyOTPAndLogTheUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                otp:
+                  type: string
+                  description: ''
+                  example: necessitatibus
+                  nullable: false
+                otpToken:
+                  type: string
+                  description: ''
+                  example: qui
+                  nullable: false
+              required:
+                - otp
+                - otpToken
+      security: []
+  /api/login:
+    post:
+      summary: 'Login implementation'
+      operationId: loginImplementation
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: lysanne.beahan@example.org
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: '>?(Qvh1%$4^0g'
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'Logout implementation'
+      operationId: logoutImplementation
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/me:
     get:
-      summary: ''
-      operationId: getApiUser
+      summary: 'Get current user'
+      operationId: getCurrentUser
       description: ''
       parameters: []
       responses:

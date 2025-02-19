@@ -19,7 +19,7 @@ class OtpService{
         $encryptdOtp = Crypt::encrypt([
             'otp' => $otp,
             'user' => $user->id,
-            'expired_at' => now()->addMinutes(1)
+            'expired_at' => now()->addMinutes(5)
         ]);
 
         $this->sendOtpMail($user,$otp);
@@ -34,7 +34,7 @@ class OtpService{
      * @return void
      */
     protected function sendOtpMail(User $user,$otp){
-        Mail::raw("Your OTP code is", function ($message) use ($user){
+        Mail::raw("Your OTP code is : " .$otp, function ($message) use ($user){
             $message->to($user->email)->subject('Your OTP code');
         });
     }

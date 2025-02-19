@@ -15,5 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* ------- Public Route */
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
+Route::post('/login', [AuthController::class , 'login'])->name('login');
+/* ------- Public Route */
+
+
+/* ------- Private Route */
+Route::post('/logout', [AuthController::class , 'logout'])
+->middleware([
+    'auth:api',
+    'jwt.refresh'
+]);
+
+Route::get('/me', [AuthController::class , 'me'])
+->middleware([
+    'auth:api',
+    'jwt.refresh'
+]);
+/* ------- Private Route */
