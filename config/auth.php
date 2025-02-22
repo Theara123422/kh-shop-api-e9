@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'api', // ✅ Use 'api' for JWT authentication
         'passwords' => 'users',
     ],
 
@@ -36,11 +36,7 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-        'api' =>[
+        'api' => [
             'driver' => 'jwt',
             'provider' => 'users'
         ]

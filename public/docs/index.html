@@ -86,6 +86,21 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-me">
                                 <a href="#endpoints-GETapi-me">Get current user</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-advertisement">
+                                <a href="#endpoints-GETapi-advertisement">Display the listing of advertisement by take limit = 4</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-advertisement">
+                                <a href="#endpoints-POSTapi-advertisement">Create a new advertisement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-advertisement--id-">
+                                <a href="#endpoints-GETapi-advertisement--id-">Get an advertisement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-advertisement--id-">
+                                <a href="#endpoints-PUTapi-advertisement--id-">Edit an advertisement</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-advertisement--id-">
+                                <a href="#endpoints-DELETEapi-advertisement--id-">DELETE api/advertisement/{id}</a>
+                            </li>
                                                                         </ul>
                             </ul>
             </div>
@@ -97,7 +112,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: February 19, 2025</li>
+        <li>Last updated: February 21, 2025</li>
     </ul>
 </div>
 
@@ -137,14 +152,14 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"firstName\": \"sevoo\",
-    \"lastName\": \"qlbxwen\",
+    \"firstName\": \"rcborbbaospo\",
+    \"lastName\": \"vfpgh\",
     \"gender\": \"female\",
-    \"email\": \"roberts.velma@example.net\",
-    \"phoneNumber\": 9.43317299,
-    \"country\": \"ratojqyvmeaal\",
-    \"city\": \"smxdiswfkzliiuheittt\",
-    \"password\": \"v\\\\0Q}N3T^t$Y!j5\"
+    \"email\": \"xwaelchi@example.net\",
+    \"phoneNumber\": 35491705.8256862,
+    \"country\": \"bahvcfnytjwgjntkyiovkgdhh\",
+    \"city\": \"mmbpm\",
+    \"password\": \"pA~P\\/%\"
 }"
 </code></pre></div>
 
@@ -160,14 +175,14 @@ const headers = {
 };
 
 let body = {
-    "firstName": "sevoo",
-    "lastName": "qlbxwen",
+    "firstName": "rcborbbaospo",
+    "lastName": "vfpgh",
     "gender": "female",
-    "email": "roberts.velma@example.net",
-    "phoneNumber": 9.43317299,
-    "country": "ratojqyvmeaal",
-    "city": "smxdiswfkzliiuheittt",
-    "password": "v\\0Q}N3T^t$Y!j5"
+    "email": "xwaelchi@example.net",
+    "phoneNumber": 35491705.8256862,
+    "country": "bahvcfnytjwgjntkyiovkgdhh",
+    "city": "mmbpm",
+    "password": "pA~P\/%"
 };
 
 fetch(url, {
@@ -256,10 +271,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="firstName"                data-endpoint="POSTapi-register"
-               value="sevoo"
+               value="rcborbbaospo"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>sevoo</code></p>
+<p>Must not be greater than 255 characters. Example: <code>rcborbbaospo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>lastName</code></b>&nbsp;&nbsp;
@@ -267,10 +282,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="lastName"                data-endpoint="POSTapi-register"
-               value="qlbxwen"
+               value="vfpgh"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>qlbxwen</code></p>
+<p>Must not be greater than 255 characters. Example: <code>vfpgh</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -291,10 +306,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-register"
-               value="roberts.velma@example.net"
+               value="xwaelchi@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Must not be greater than 50 characters. Example: <code>roberts.velma@example.net</code></p>
+<p>Must be a valid email address. Must not be greater than 50 characters. Example: <code>xwaelchi@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phoneNumber</code></b>&nbsp;&nbsp;
@@ -302,10 +317,10 @@ Must be one of:
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="phoneNumber"                data-endpoint="POSTapi-register"
-               value="9.43317299"
+               value="35491705.825686"
                data-component="body">
     <br>
-<p>Example: <code>9.43317299</code></p>
+<p>Example: <code>35491705.825686</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
@@ -313,10 +328,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="country"                data-endpoint="POSTapi-register"
-               value="ratojqyvmeaal"
+               value="bahvcfnytjwgjntkyiovkgdhh"
                data-component="body">
     <br>
-<p>Must not be greater than 100 characters. Example: <code>ratojqyvmeaal</code></p>
+<p>Must not be greater than 100 characters. Example: <code>bahvcfnytjwgjntkyiovkgdhh</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
@@ -324,10 +339,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="city"                data-endpoint="POSTapi-register"
-               value="smxdiswfkzliiuheittt"
+               value="mmbpm"
                data-component="body">
     <br>
-<p>Must not be greater than 100 characters. Example: <code>smxdiswfkzliiuheittt</code></p>
+<p>Must not be greater than 100 characters. Example: <code>mmbpm</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -335,10 +350,10 @@ Must be one of:
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-register"
-               value="v\0Q}N3T^t$Y!j5"
+               value="pA~P/%"
                data-component="body">
     <br>
-<p>Must match the regex /^.<em>(?=.{3,})(?=.</em>[a-zA-Z])(?=.<em>[0-9])(?=.</em>[\d\x])(?=.<em>[!$#%]).</em>$/. Must be at least 6 characters. Example: <code>v\0Q}N3T^t$Y!j5</code></p>
+<p>Must match the regex /^.<em>(?=.{3,})(?=.</em>[a-zA-Z])(?=.<em>[0-9])(?=.</em>[\d\x])(?=.<em>[!$#%]).</em>$/. Must be at least 6 characters. Example: <code>pA~P/%</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>profile</code></b>&nbsp;&nbsp;
@@ -370,8 +385,8 @@ Must be one of:
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"otp\": \"necessitatibus\",
-    \"otpToken\": \"qui\"
+    \"otp\": \"voluptatem\",
+    \"otpToken\": \"voluptates\"
 }"
 </code></pre></div>
 
@@ -387,8 +402,8 @@ const headers = {
 };
 
 let body = {
-    "otp": "necessitatibus",
-    "otpToken": "qui"
+    "otp": "voluptatem",
+    "otpToken": "voluptates"
 };
 
 fetch(url, {
@@ -477,10 +492,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="otp"                data-endpoint="POSTapi-verify-otp"
-               value="necessitatibus"
+               value="voluptatem"
                data-component="body">
     <br>
-<p>Example: <code>necessitatibus</code></p>
+<p>Example: <code>voluptatem</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>otpToken</code></b>&nbsp;&nbsp;
@@ -488,10 +503,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="otpToken"                data-endpoint="POSTapi-verify-otp"
-               value="qui"
+               value="voluptates"
                data-component="body">
     <br>
-<p>Example: <code>qui</code></p>
+<p>Example: <code>voluptates</code></p>
         </div>
         </form>
 
@@ -512,8 +527,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"lysanne.beahan@example.org\",
-    \"password\": \"&gt;?(Qvh1%$4^0g\"
+    \"email\": \"hwisozk@example.net\",
+    \"password\": \"J-d$1{iaaX\"
 }"
 </code></pre></div>
 
@@ -529,8 +544,8 @@ const headers = {
 };
 
 let body = {
-    "email": "lysanne.beahan@example.org",
-    "password": "&gt;?(Qvh1%$4^0g"
+    "email": "hwisozk@example.net",
+    "password": "J-d$1{iaaX"
 };
 
 fetch(url, {
@@ -619,10 +634,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-login"
-               value="lysanne.beahan@example.org"
+               value="hwisozk@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>lysanne.beahan@example.org</code></p>
+<p>Must be a valid email address. Example: <code>hwisozk@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -630,10 +645,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-login"
-               value=">?(Qvh1%$4^0g"
+               value="J-d$1{iaaX"
                data-component="body">
     <br>
-<p>Example: <code>&gt;?(Qvh1%$4^0g</code></p>
+<p>Example: <code>J-d$1{iaaX</code></p>
         </div>
         </form>
 
@@ -868,6 +883,742 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Example: <code>application/json</code></p>
             </div>
                         </form>
+
+                    <h2 id="endpoints-GETapi-advertisement">Display the listing of advertisement by take limit = 4</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-advertisement">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/advertisement" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/advertisement"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-advertisement">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Advertisement not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-advertisement" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-advertisement"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-advertisement"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-advertisement" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-advertisement">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-advertisement" data-method="GET"
+      data-path="api/advertisement"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-advertisement', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-advertisement"
+                    onclick="tryItOut('GETapi-advertisement');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-advertisement"
+                    onclick="cancelTryOut('GETapi-advertisement');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-advertisement"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/advertisement</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-advertisement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-advertisement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-POSTapi-advertisement">Create a new advertisement</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-advertisement">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/advertisement" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"title\": \"zkbja\",
+    \"description\": \"Et at saepe vel laborum.\",
+    \"order\": \"sit\",
+    \"image\": \"corrupti\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/advertisement"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "title": "zkbja",
+    "description": "Et at saepe vel laborum.",
+    "order": "sit",
+    "image": "corrupti"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-advertisement">
+</span>
+<span id="execution-results-POSTapi-advertisement" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-advertisement"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-advertisement"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-advertisement" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-advertisement">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-advertisement" data-method="POST"
+      data-path="api/advertisement"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-advertisement', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-advertisement"
+                    onclick="tryItOut('POSTapi-advertisement');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-advertisement"
+                    onclick="cancelTryOut('POSTapi-advertisement');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-advertisement"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/advertisement</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-advertisement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-advertisement"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="POSTapi-advertisement"
+               value="zkbja"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>zkbja</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-advertisement"
+               value="Et at saepe vel laborum."
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>Et at saepe vel laborum.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="order"                data-endpoint="POSTapi-advertisement"
+               value="sit"
+               data-component="body">
+    <br>
+<p>Example: <code>sit</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="image"                data-endpoint="POSTapi-advertisement"
+               value="corrupti"
+               data-component="body">
+    <br>
+<p>Example: <code>corrupti</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-advertisement--id-">Get an advertisement</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-advertisement--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/advertisement/13" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/advertisement/13"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-advertisement--id-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Advertisement] 13&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-advertisement--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-advertisement--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-advertisement--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-advertisement--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-advertisement--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-advertisement--id-" data-method="GET"
+      data-path="api/advertisement/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-advertisement--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-advertisement--id-"
+                    onclick="tryItOut('GETapi-advertisement--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-advertisement--id-"
+                    onclick="cancelTryOut('GETapi-advertisement--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-advertisement--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/advertisement/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-advertisement--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-advertisement--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-advertisement--id-"
+               value="13"
+               data-component="url">
+    <br>
+<p>The ID of the advertisement. Example: <code>13</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PUTapi-advertisement--id-">Edit an advertisement</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-advertisement--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/advertisement/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"title\": \"n\",
+    \"description\": \"Aut nemo voluptatem nostrum dolores totam accusamus eos.\",
+    \"order\": \"vel\",
+    \"image\": \"ratione\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/advertisement/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "title": "n",
+    "description": "Aut nemo voluptatem nostrum dolores totam accusamus eos.",
+    "order": "vel",
+    "image": "ratione"
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-advertisement--id-">
+</span>
+<span id="execution-results-PUTapi-advertisement--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-advertisement--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-advertisement--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-advertisement--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-advertisement--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-advertisement--id-" data-method="PUT"
+      data-path="api/advertisement/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-advertisement--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-advertisement--id-"
+                    onclick="tryItOut('PUTapi-advertisement--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-advertisement--id-"
+                    onclick="cancelTryOut('PUTapi-advertisement--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-advertisement--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/advertisement/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/advertisement/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-advertisement--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-advertisement--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-advertisement--id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the advertisement. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="title"                data-endpoint="PUTapi-advertisement--id-"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="PUTapi-advertisement--id-"
+               value="Aut nemo voluptatem nostrum dolores totam accusamus eos."
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>Aut nemo voluptatem nostrum dolores totam accusamus eos.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>order</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="order"                data-endpoint="PUTapi-advertisement--id-"
+               value="vel"
+               data-component="body">
+    <br>
+<p>Example: <code>vel</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="image"                data-endpoint="PUTapi-advertisement--id-"
+               value="ratione"
+               data-component="body">
+    <br>
+<p>Example: <code>ratione</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-advertisement--id-">DELETE api/advertisement/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-advertisement--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/advertisement/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/advertisement/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-advertisement--id-">
+</span>
+<span id="execution-results-DELETEapi-advertisement--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-advertisement--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-advertisement--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-advertisement--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-advertisement--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-advertisement--id-" data-method="DELETE"
+      data-path="api/advertisement/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-advertisement--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-advertisement--id-"
+                    onclick="tryItOut('DELETEapi-advertisement--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-advertisement--id-"
+                    onclick="cancelTryOut('DELETEapi-advertisement--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-advertisement--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/advertisement/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-advertisement--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-advertisement--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-advertisement--id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the advertisement. Example: <code>16</code></p>
+            </div>
+                    </form>
 
             
 

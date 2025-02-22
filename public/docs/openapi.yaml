@@ -26,12 +26,12 @@ paths:
                 firstName:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: sevoo
+                  example: rcborbbaospo
                   nullable: false
                 lastName:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: qlbxwen
+                  example: vfpgh
                   nullable: false
                 gender:
                   type: string
@@ -44,27 +44,27 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address. Must not be greater than 50 characters.'
-                  example: roberts.velma@example.net
+                  example: xwaelchi@example.net
                   nullable: false
                 phoneNumber:
                   type: number
                   description: ''
-                  example: 9.43317299
+                  example: 35491705.825686
                   nullable: false
                 country:
                   type: string
                   description: 'Must not be greater than 100 characters.'
-                  example: ratojqyvmeaal
+                  example: bahvcfnytjwgjntkyiovkgdhh
                   nullable: false
                 city:
                   type: string
                   description: 'Must not be greater than 100 characters.'
-                  example: smxdiswfkzliiuheittt
+                  example: mmbpm
                   nullable: false
                 password:
                   type: string
                   description: 'Must match the regex /^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/. Must be at least 6 characters.'
-                  example: 'v\0Q}N3T^t$Y!j5'
+                  example: pA~P/%
                   nullable: false
                 profile:
                   type: string
@@ -100,12 +100,12 @@ paths:
                 otp:
                   type: string
                   description: ''
-                  example: necessitatibus
+                  example: voluptatem
                   nullable: false
                 otpToken:
                   type: string
                   description: ''
-                  example: qui
+                  example: voluptates
                   nullable: false
               required:
                 - otp
@@ -130,12 +130,12 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: lysanne.beahan@example.org
+                  example: hwisozk@example.net
                   nullable: false
                 password:
                   type: string
                   description: ''
-                  example: '>?(Qvh1%$4^0g'
+                  example: 'J-d$1{iaaX'
                   nullable: false
               required:
                 - email
@@ -173,6 +173,150 @@ paths:
       tags:
         - Endpoints
       security: []
+  /api/advertisement:
+    get:
+      summary: 'Display the listing of advertisement by take limit = 4'
+      operationId: displayTheListingOfAdvertisementByTakeLimit4
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Advertisement not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Advertisement not found'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Create a new advertisement'
+      operationId: createANewAdvertisement
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: zkbja
+                  nullable: false
+                description:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'Et at saepe vel laborum.'
+                  nullable: false
+                order:
+                  type: string
+                  description: ''
+                  example: sit
+                  nullable: false
+                image:
+                  type: string
+                  description: ''
+                  example: corrupti
+                  nullable: false
+              required:
+                - title
+                - description
+                - order
+                - image
+      security: []
+  '/api/advertisement/{id}':
+    get:
+      summary: 'Get an advertisement'
+      operationId: getAnAdvertisement
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for model [App\Models\Advertisement] 13'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for model [App\Models\Advertisement] 13'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Edit an advertisement'
+      operationId: editAnAdvertisement
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'n'
+                  nullable: false
+                description:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'Aut nemo voluptatem nostrum dolores totam accusamus eos.'
+                  nullable: false
+                order:
+                  type: string
+                  description: ''
+                  example: vel
+                  nullable: false
+                image:
+                  type: string
+                  description: ''
+                  example: ratione
+                  nullable: false
+              required:
+                - title
+                - description
+                - order
+                - image
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiAdvertisementId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the advertisement.'
+        example: 13
+        required: true
+        schema:
+          type: integer
 tags:
   -
     name: Endpoints

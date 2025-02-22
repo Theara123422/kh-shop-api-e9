@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\advertisement\AdvertisementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +34,9 @@ Route::get('/me', [AuthController::class , 'me'])
     'auth:api',
     'jwt.refresh'
 ]);
+
+//advertisement
+Route::apiResource('advertisements',AdvertisementController::class);
+//advertisement
+
 /* ------- Private Route */

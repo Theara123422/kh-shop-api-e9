@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "KH Shop API",
-        "_postman_id": "29279778-b2fd-4763-a5c5-011ae4c01bff",
+        "_postman_id": "2b988b20-62a6-4be2-b5d7-25670a207d4c",
         "description": "API for Web Application Assignment Year 4",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"firstName\":\"sevoo\",\"lastName\":\"qlbxwen\",\"gender\":\"female\",\"email\":\"roberts.velma@example.net\",\"phoneNumber\":9.43317299,\"country\":\"ratojqyvmeaal\",\"city\":\"smxdiswfkzliiuheittt\",\"password\":\"v\\\\0Q}N3T^t$Y!j5\"}"
+                            "raw": "{\"firstName\":\"rcborbbaospo\",\"lastName\":\"vfpgh\",\"gender\":\"female\",\"email\":\"xwaelchi@example.net\",\"phoneNumber\":35491705.8256862,\"country\":\"bahvcfnytjwgjntkyiovkgdhh\",\"city\":\"mmbpm\",\"password\":\"pA~P\\\/%\"}"
                         },
                         "description": "",
                         "auth": {
@@ -72,7 +72,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"otp\":\"necessitatibus\",\"otpToken\":\"qui\"}"
+                            "raw": "{\"otp\":\"voluptatem\",\"otpToken\":\"voluptates\"}"
                         },
                         "description": "",
                         "auth": {
@@ -103,7 +103,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"lysanne.beahan@example.org\",\"password\":\">?(Qvh1%$4^0g\"}"
+                            "raw": "{\"email\":\"hwisozk@example.net\",\"password\":\"J-d$1{iaaX\"}"
                         },
                         "description": "",
                         "auth": {
@@ -187,6 +187,232 @@
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "Display the listing of advertisement by take limit = 4",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/advertisement",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/advertisement"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"message\":\"Advertisement not found\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create a new advertisement",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/advertisement",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/advertisement"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"zkbja\",\"description\":\"Et at saepe vel laborum.\",\"order\":\"sit\",\"image\":\"corrupti\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get an advertisement",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/advertisement\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/advertisement\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "13",
+                                    "description": "The ID of the advertisement."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Advertisement] 13\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Edit an advertisement",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/advertisement\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/advertisement\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "16",
+                                    "description": "The ID of the advertisement."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"n\",\"description\":\"Aut nemo voluptatem nostrum dolores totam accusamus eos.\",\"order\":\"vel\",\"image\":\"ratione\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/advertisement\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/advertisement\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/advertisement\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "16",
+                                    "description": "The ID of the advertisement."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
                 }
             ]
         }
