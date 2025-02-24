@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Middleware;
 
@@ -23,17 +23,20 @@ class AutoRefreshToken
             JWTAuth::parseToken()->authenticate();
         } catch (TokenExpiredException $e) {
             try {
-                // Token is expired, attempt to refresh the token
+                // Ensure the token can be refreshed before attempting to refresh
+                if (!JWTAuth::getToken()) {
+                    return response()->json(['error' => 'Token is required'], 401);
+                }
+
+                // Refresh the token
                 $newToken = JWTAuth::refresh();
-                
-                // Add the new token to the response header
+
+                // Attach the new token and continue
                 return $this->setNewToken($newToken, $next($request));
             } catch (JWTException $e) {
-                // Unable to refresh the token, send an error response
                 return response()->json(['error' => 'Token has expired and cannot be refreshed'], 401);
             }
         } catch (JWTException $e) {
-            // Token is invalid
             return response()->json(['error' => 'Invalid token'], 401);
         }
 
@@ -46,7 +49,11 @@ class AutoRefreshToken
      */
     protected function setNewToken($newToken, $response): Response
     {
-        // Adding the refreshed token to the header of the response
-        return $response->header('Authorization', 'Bearer ' . $newToken);
+        // Check if response is JSON, then add the token
+        if (method_exists($response, 'header')) {
+            return $response->header('Authorization', 'Bearer ' . $newToken);
+        }
+
+        return response()->json($response->original)->header('Authorization', 'Bearer ' . $newToken);
     }
 }

@@ -25,18 +25,22 @@ Route::post('/login', [AuthController::class , 'login'])->name('login');
 /* ------- Private Route */
 Route::post('/logout', [AuthController::class , 'logout'])
 ->middleware([
-    'auth:api',
+    'auth.jwt',
     'jwt.refresh'
 ]);
 
 Route::get('/me', [AuthController::class , 'me'])
 ->middleware([
-    'auth:api',
+    'auth.jwt',
     'jwt.refresh'
 ]);
 
 //advertisement
-Route::apiResource('advertisements',AdvertisementController::class);
+Route::apiResource('advertisements',AdvertisementController::class)
+->middleware([
+    'auth.jwt',
+    'jwt.refresh'
+]);
 //advertisement
 
 /* ------- Private Route */

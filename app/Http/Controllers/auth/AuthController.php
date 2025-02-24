@@ -41,7 +41,7 @@ class AuthController extends Controller
             'lastName' => 'required|string|max:255',
             'gender' => 'required|in:male,female',
             'email' => 'required|string|email|max:50|unique:users,email',
-            'phoneNumber' => 'required|numeric|phone_number',
+            'phoneNumber' => 'required|string',
             'country' => 'required|string|max:100',
             'city' => 'required|string|max:100',
             'password' => [
@@ -50,24 +50,25 @@ class AuthController extends Controller
                 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
                 'confirmed'
             ],
-            'profile' => [
-                'nullable'
-            ]
+            'profile' => 'nullable|image'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return $this->errorResponse(
                 "Validation Failed",
                 $validator->errors(),
                 422
             );
         }
-        $profile = null;
-        if($request->hasFile('profile')){
-            $profile = $request->file('profile')->store('./image','public');
+
+        // Handle profile upload and store in public/profile
+        $imageName = null;
+        if ($request->hasFile('profile')) {
+            $imageName = date('YmdHis') . '-' . $request->file('profile')->getClientOriginalName();
+            $request->file('profile')->move('profile', $imageName);
         }
 
-          // Create user record in the database
+        // Create user record in the database
         $user = User::create([
             'first_name' => $request->firstName,
             'last_name' => $request->lastName,
@@ -76,8 +77,8 @@ class AuthController extends Controller
             'phone_number' => $request->phoneNumber,
             'country' => $request->country,
             'city' => $request->city,
-            'password' => Hash::make($request->password), // Ensure the password is hashed
-            'profile' => $profile,
+            'password' => Hash::make($request->password),
+            'profile' => $imageName, 
         ]);
 
         $otpToken = $this->otpService->generateOtp($user);
