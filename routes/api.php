@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\advertisement\AdvertisementController;
+use App\Http\Controllers\category\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,5 +43,13 @@ Route::apiResource('advertisements',AdvertisementController::class)
     'jwt.refresh'
 ]);
 //advertisement
+
+//category
+Route::apiResource('category',CategoryController::class)
+->middleware([
+    'auth.jwt',
+    'jwt.refresh'
+]);
+//category
 
 /* ------- Private Route */

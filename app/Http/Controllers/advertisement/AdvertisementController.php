@@ -25,10 +25,6 @@ class AdvertisementController extends Controller
             ->limit(4)
             ->get();
 
-        if ($advertisements->isEmpty()) {
-            return $this->errorResponse('Advertisement not found', 404);
-        }
-
         return $this->successReponseWithData(
             'Get all advertisement successfully',
             $advertisements
