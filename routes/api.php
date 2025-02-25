@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 Route::post('/login', [AuthController::class , 'login'])->name('login');
+
 /* ------- Public Route */
 
 
@@ -52,4 +53,10 @@ Route::apiResource('category',CategoryController::class)
 ]);
 //category
 
+//image profile upload
+Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage'])
+->middleware([
+    'auth.jwt'
+]);
+//image profile upload
 /* ------- Private Route */
