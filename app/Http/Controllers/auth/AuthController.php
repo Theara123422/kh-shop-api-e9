@@ -49,8 +49,7 @@ class AuthController extends Controller
                 'min:6',
                 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
                 'confirmed'
-            ],
-            'profile' => 'nullable|image'
+            ]
         ]);
 
         if ($validator->fails()) {
@@ -61,12 +60,9 @@ class AuthController extends Controller
             );
         }
 
-        // Handle profile upload and store in public/profile
+        // Image set to null by default
+        // we have another endpoint to upload the image to the specific user
         $imageName = null;
-        if ($request->hasFile('profile')) {
-            $imageName = date('YmdHis') . '-' . $request->file('profile')->getClientOriginalName();
-            $request->file('profile')->move('profile', $imageName);
-        }
 
         // Create user record in the database
         $user = User::create([
@@ -78,12 +74,12 @@ class AuthController extends Controller
             'country' => $request->country,
             'city' => $request->city,
             'password' => Hash::make($request->password),
-            'profile' => $imageName, 
+            'profile' => $imageName,
         ]);
 
         $otpToken = $this->otpService->generateOtp($user);
 
-        return $this->otpSuccessResponse($otpToken,"Otp sent to your email successfully, please verify.");
+        return $this->otpSuccessResponse($otpToken, "Otp sent to your email successfully, please verify.");
     }
 
     /**
@@ -91,17 +87,18 @@ class AuthController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return mixed|\Illuminate\Http\JsonResponse
      */
-    public function verifyOtp(Request $request){
-        $validator = Validator::make($request->all(),[
+    public function verifyOtp(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'otp' => 'required|string',
             'otpToken' => 'required|string'
         ]);
 
-        if($validator->fails()){
-            return $this->errorResponse('Validate Failed',$validator->errors(),400);
+        if ($validator->fails()) {
+            return $this->errorResponse('Validate Failed', $validator->errors(), 400);
         }
 
-        if(!$this->otpService->verifyOtp($request->otpToken,$request->otp)){
+        if (!$this->otpService->verifyOtp($request->otpToken, $request->otp)) {
             return $this->errorResponse(
                 'Invalid OTP Code',
                 'Invalid OTP Code or Expired',
@@ -121,13 +118,14 @@ class AuthController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return mixed|\Illuminate\Http\JsonResponse
      */
-    public function login(Request $request){
-        $validator = Validator::make($request->all(),[
+    public function login(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email|string',
             'password' => 'required|string'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return $this->errorResponse(
                 'Validation Failed',
                 $validator->errors(),
@@ -135,34 +133,63 @@ class AuthController extends Controller
             );
         }
 
-        $credentials = $request->only('email','password');
+        $credentials = $request->only('email', 'password');
 
-        if(!$token = JWTAuth::attempt($credentials)){
+        if (!$token = JWTAuth::attempt($credentials)) {
             return $this->errorResponse(
                 'Unauthorized',
                 'Wrong Credential',
                 401
             );
         }
+//        dump(get_class(auth()->user()));
 
-        return $this->successResponseWithAccessTokenAndRefreshToken($token,'Login Success');
+        return $this->successResponseWithAccessTokenAndRefreshToken($token, 'Login Success');
     }
 
     /**
      * Logout implementation
      * @return mixed|\Illuminate\Http\JsonResponse
      */
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return $this->successResponse("Logout Successfully");
     }
 
     /**
-    *
-    * Get current user
-    * @return mixed|\Illuminate\Http\JsonResponse
-    */
-    public function me(){
+     *
+     * Get current user
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
+    public function me()
+    {
         return $this->successResponse(Auth::user());
+    }
+
+    public function uploadProfileImage(Request $request)
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return $this->errorResponse('Unauthorized', 'User not found', 403);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'profile' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:2048']
+        ]);
+
+        if ($validator->fails()) {
+            return $this->errorResponse('Validation Failed', $validator->errors(), 422);
+        }
+
+        if ($request->hasFile('profile')) {
+            $imageName = date('YmdHis') . '-' . $request->file('profile')->getClientOriginalName();
+            $path = $request->file('profile')->storeAs('profile', $imageName, 'public');
+
+            $user->update(['profile' => $path]); // Single update call
+        }
+
+        return response()->json(['message' => 'Profile updated successfully'], 200);
     }
 }

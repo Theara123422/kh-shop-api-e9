@@ -1,45 +1,44 @@
 <?php
 
-namespace App\Http\Controllers\category;
+namespace App\Http\Controllers\Size;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\SizeRequest;
 use App\Traits\GeneralResponse;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Database\QueryException;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class sizeController extends Controller
 {
     use GeneralResponse;
-
-    /**
+     /**
      * List all category
      * @return mixed|\Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        $categories = \App\Models\Category::all();
+        $color = \App\Models\Size::all();
 
         return $this->successReponseWithData(
-            'Get Categories Success',
-            $categories
+            'Get sice Success',
+            $color
         );
     }
-
     /**
      * Create new category
      * @param \App\Http\Requests\CategoryRequest $request
      * @return mixed|\Illuminate\Http\JsonResponse
      */
-    public function store(CategoryRequest $request)
+    public function store(SizeRequest $request)
     {
         try {
             $data = $request->validated();
 
-            \App\Models\Category::create($data);
+            \App\Models\Size::create($data);
 
             return $this->successResponse(
-                'Success create category'
+                'Success create size'
             );
         } catch (QueryException $exception) {
             return $this->errorResponse(
@@ -53,34 +52,31 @@ class CategoryController extends Controller
             );
         }
     }
-
-
-    /**
+     /**
      * Get Specific category
      * @param mixed $id
      * @return mixed|\Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
-        $category = \App\Models\Category::findOrFail($id);
+        $color = \App\Models\Size::findOrFail($id);
 
         return $this->successReponseWithData(
-            'Get Category success',
-            $category
+            'Get size success',
+            $color
         );
     }
-
-    public function update(CategoryRequest $request, $id)
+    public function update(SizeRequest $request, $id)
     {
         try {
-            $category = \App\Models\Category::findOrFail($id);
+            $color = \App\Models\Size::findOrFail($id);
 
             $data = $request->validated();
 
-            $category->update($data);
+            $color->update($data);
 
             return $this->successResponse(
-                'Updated Category success'
+                'Updated size success'
             );
         } catch (ValidationException $exeption) {
             return $this->errorResponse(
@@ -91,12 +87,15 @@ class CategoryController extends Controller
     }
 
     public function destroy($id){
-        $category = \App\Models\Category::findOrFail($id);
+        $color = \App\Models\Size::findOrFail($id);
 
-        $category->delete();
+        $color->delete();
 
         return $this->successResponse(
-            'Deleted Category Success'
+            'Deleted size Success'
         );
     }
+
+
+
 }
