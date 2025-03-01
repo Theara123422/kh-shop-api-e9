@@ -3,9 +3,7 @@
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\advertisement\AdvertisementController;
 use App\Http\Controllers\category\CategoryController;
-use App\Http\Controllers\color\ColorController;
-use App\Http\Controllers\product\ProductController;
-use App\Http\Controllers\Size\sizeController;
+use App\Http\Controllers\feedback\FeedbackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,15 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* ------- Public Route */
-Route::get('/', function(){
-    return response()->json([
-        'msg' => "123"
-    ]);
-});
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 Route::post('/login', [AuthController::class , 'login'])->name('login');
-
 /* ------- Public Route */
 
 
@@ -44,14 +36,6 @@ Route::get('/me', [AuthController::class , 'me'])
     'auth.jwt',
     'jwt.refresh'
 ]);
-
-//image profile upload
-Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage'])
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
-//image profile upload
 
 //advertisement
 Route::apiResource('advertisements',AdvertisementController::class)
@@ -69,27 +53,12 @@ Route::apiResource('category',CategoryController::class)
 ]);
 //category
 
-//color
-Route::apiResource('color',ColorController::class)
+//feedback
+Route::apiResource('feedback',FeedbackController::class)
 ->middleware([
     'auth.jwt',
     'jwt.refresh'
 ]);
-//color
-//size
-Route::apiResource('size', sizeController::class)
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
-//size
+//feedback
 
-//product
-Route::apiResource('product', ProductController::class)
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
-//product
 /* ------- Private Route */
-
