@@ -60,21 +60,27 @@ Route::apiResource('category',CategoryController::class)
 ]);
 //category
 
-<<<<<<< HEAD
 //color
-Route::apiResource('color',ColorController::class);
+Route::apiResource('color',ColorController::class)
+->middleware([
+    'auth.jwt',
+    'jwt.refresh'
+]);
 //color
 //size
-Route::apiResource('size',sizeController::class);
+Route::apiResource('size', sizeController::class)
+->middleware([
+    'auth.jwt',
+    'jwt.refresh'
+]);;
 //size
-git ad
 /* ------- Private Route */
-=======
 //image profile upload
 Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage'])
 ->middleware([
-    'auth.jwt'
+    'auth.jwt',
+    'jwt.refresh'
 ]);
 //image profile upload
 /* ------- Private Route */
->>>>>>> 1a5374aa2e31ec5d284baf6c5e371ba2a2070cfe
+
