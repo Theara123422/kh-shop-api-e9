@@ -27,6 +27,7 @@ Route::get('/', function(){
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 Route::post('/login', [AuthController::class , 'login'])->name('login');
+
 /* ------- Public Route */
 
 
@@ -59,11 +60,21 @@ Route::apiResource('category',CategoryController::class)
 ]);
 //category
 
+<<<<<<< HEAD
 //color
 Route::apiResource('color',ColorController::class);
 //color
 //size
 Route::apiResource('size',sizeController::class);
 //size
-
+git ad
 /* ------- Private Route */
+=======
+//image profile upload
+Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage'])
+->middleware([
+    'auth.jwt'
+]);
+//image profile upload
+/* ------- Private Route */
+>>>>>>> 1a5374aa2e31ec5d284baf6c5e371ba2a2070cfe
