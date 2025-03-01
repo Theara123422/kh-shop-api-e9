@@ -3,6 +3,7 @@
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\advertisement\AdvertisementController;
 use App\Http\Controllers\category\CategoryController;
+use App\Http\Controllers\feedback\FeedbackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,5 +52,13 @@ Route::apiResource('category',CategoryController::class)
     'jwt.refresh'
 ]);
 //category
+
+//feedback
+Route::apiResource('feedback',FeedbackController::class)
+->middleware([
+    'auth.jwt',
+    'jwt.refresh'
+]);
+//feedback
 
 /* ------- Private Route */
