@@ -3,6 +3,8 @@
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\advertisement\AdvertisementController;
 use App\Http\Controllers\category\CategoryController;
+use App\Http\Controllers\color\ColorController;
+use App\Http\Controllers\Size\sizeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* ------- Public Route */
+Route::get('/', function(){
+    return response()->json([
+        'msg' => "123"
+    ]);
+});
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 Route::post('/login', [AuthController::class , 'login'])->name('login');
@@ -51,5 +58,12 @@ Route::apiResource('category',CategoryController::class)
     'jwt.refresh'
 ]);
 //category
+
+//color
+Route::apiResource('color',ColorController::class);
+//color
+//size
+Route::apiResource('size',sizeController::class);
+//size
 
 /* ------- Private Route */
