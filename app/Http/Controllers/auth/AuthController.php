@@ -142,7 +142,7 @@ class AuthController extends Controller
                 401
             );
         }
-        dump(get_class(auth()->user()));
+//        dump(get_class(auth()->user()));
 
         return $this->successResponseWithAccessTokenAndRefreshToken($token, 'Login Success');
     }

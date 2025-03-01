@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Traits\GeneralResponse;
 use Illuminate\Database\QueryException;
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller

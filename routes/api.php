@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\advertisement\AdvertisementController;
 use App\Http\Controllers\category\CategoryController;
 use App\Http\Controllers\color\ColorController;
+use App\Http\Controllers\product\ProductController;
 use App\Http\Controllers\Size\sizeController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,14 @@ Route::get('/me', [AuthController::class , 'me'])
     'jwt.refresh'
 ]);
 
+//image profile upload
+Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage'])
+->middleware([
+    'auth.jwt',
+    'jwt.refresh'
+]);
+//image profile upload
+
 //advertisement
 Route::apiResource('advertisements',AdvertisementController::class)
 ->middleware([
@@ -72,15 +81,15 @@ Route::apiResource('size', sizeController::class)
 ->middleware([
     'auth.jwt',
     'jwt.refresh'
-]);;
+]);
 //size
-/* ------- Private Route */
-//image profile upload
-Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage'])
+
+//product
+Route::apiResource('product', ProductController::class)
 ->middleware([
     'auth.jwt',
     'jwt.refresh'
 ]);
-//image profile upload
+//product
 /* ------- Private Route */
 
