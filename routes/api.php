@@ -20,15 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* ------- Public Route */
-Route::get('/', function(){
-    return response()->json([
-        'msg' => "123"
-    ]);
-});
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 Route::post('/login', [AuthController::class , 'login'])->name('login');
-
 /* ------- Public Route */
 
 
@@ -85,7 +79,7 @@ Route::apiResource('size', sizeController::class)
 //size
 
 //product
-Route::apiResource('product', ProductController::class)
+Route::apiResource('products', ProductController::class)
 ->middleware([
     'auth.jwt',
     'jwt.refresh'
