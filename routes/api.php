@@ -85,5 +85,13 @@ Route::apiResource('products', ProductController::class)
     'jwt.refresh'
 ]);
 //product
+
+//get product by category
+Route::get('/product/category', [ProductController::class, 'getByCategory'])
+->middleware([
+    'auth.jwt',
+    'jwt.refresh'
+]);
+//get product by category
 /* ------- Private Route */
 
