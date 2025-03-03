@@ -23,9 +23,9 @@ class ProductController extends Controller
     {
         // Retrieve filter, order, limit, page, and search parameters from request
         $filter = strtolower($request->get('filter', 'default')); // Default filter
-        $order  = $request->get('order', 'desc'); // Default order
-        $limit  = (int) $request->get('limit', 4); // Default pagination limit
-        $page   = (int) $request->get('page', 1); // Default page number (1)
+        $order = $request->get('order', 'desc'); // Default order
+        $limit = (int)$request->get('limit', 4); // Default pagination limit
+        $page = (int)$request->get('page', 1); // Default page number (1)
         $search = $request->get('search', '');
 
         // Ensure orderBy is only 'asc' or 'desc'
