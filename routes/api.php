@@ -27,71 +27,43 @@ Route::post('/login', [AuthController::class , 'login'])->name('login');
 
 
 /* ------- Private Route */
-Route::post('/logout', [AuthController::class , 'logout'])
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+Route::post('/logout', [AuthController::class , 'logout']);
 
-Route::get('/me', [AuthController::class , 'me'])
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+
+Route::get('/me', [AuthController::class , 'me']);
+
 
 //image profile upload
-Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage'])
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage']);
+
 //image profile upload
 
 //advertisement
-Route::apiResource('advertisements',AdvertisementController::class)
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+Route::apiResource('advertisements',AdvertisementController::class);
+
 //advertisement
 
 //category
-Route::apiResource('category',CategoryController::class)
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+Route::apiResource('category',CategoryController::class);
+
 //category
 
 //color
-Route::apiResource('color',ColorController::class)
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+Route::apiResource('color',ColorController::class);
+
 //color
 //size
-Route::apiResource('size', sizeController::class)
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+Route::apiResource('size', sizeController::class);
+
 //size
 
 //product
-Route::apiResource('products', ProductController::class)
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+Route::apiResource('products', ProductController::class);
+
 //product
 
 //get product by category
-Route::get('/product/category', [ProductController::class, 'getByCategory'])
-->middleware([
-    'auth.jwt',
-    'jwt.refresh'
-]);
+Route::get('/product/category', [ProductController::class, 'getByCategory']);
 //get product by category
 /* ------- Private Route */
 
