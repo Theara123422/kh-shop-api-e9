@@ -1,4 +1,4 @@
-name: Endpoints
+name: Authentication
 description: ''
 endpoints:
   -
@@ -6,7 +6,7 @@ endpoints:
       - POST
     uri: api/register
     metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -26,7 +26,7 @@ endpoints:
         name: firstName
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: rcborbbaospo
+        example: rosozzfqlinqn
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -36,7 +36,7 @@ endpoints:
         name: lastName
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: vfpgh
+        example: zcoeopqdmcwyxvnptecysv
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -46,7 +46,7 @@ endpoints:
         name: gender
         description: ''
         required: true
-        example: female
+        example: male
         type: string
         enumValues:
           - male
@@ -58,7 +58,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address. Must not be greater than 50 characters.'
         required: true
-        example: xwaelchi@example.net
+        example: izaiah.halvorson@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -68,8 +68,8 @@ endpoints:
         name: phoneNumber
         description: ''
         required: true
-        example: 35491705.825686
-        type: number
+        example: praesentium
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
@@ -78,7 +78,7 @@ endpoints:
         name: country
         description: 'Must not be greater than 100 characters.'
         required: true
-        example: bahvcfnytjwgjntkyiovkgdhh
+        example: feowhydtcijvrtbllztctrm
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -88,7 +88,7 @@ endpoints:
         name: city
         description: 'Must not be greater than 100 characters.'
         required: true
-        example: mmbpm
+        example: ueqmsm
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -98,31 +98,21 @@ endpoints:
         name: password
         description: 'Must match the regex /^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/. Must be at least 6 characters.'
         required: true
-        example: pA~P/%
+        example: 'H7;KHCU-N<yed3}'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-      profile:
-        name: profile
-        description: ''
-        required: false
-        example: null
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
     cleanBodyParameters:
-      firstName: rcborbbaospo
-      lastName: vfpgh
-      gender: female
-      email: xwaelchi@example.net
-      phoneNumber: 35491705.825686
-      country: bahvcfnytjwgjntkyiovkgdhh
-      city: mmbpm
-      password: pA~P/%
+      firstName: rosozzfqlinqn
+      lastName: zcoeopqdmcwyxvnptecysv
+      gender: male
+      email: izaiah.halvorson@example.com
+      phoneNumber: praesentium
+      country: feowhydtcijvrtbllztctrm
+      city: ueqmsm
+      password: 'H7;KHCU-N<yed3}'
     fileParameters: []
     responses: []
     responseFields: []
@@ -136,7 +126,7 @@ endpoints:
       - POST
     uri: api/verify-otp
     metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -156,7 +146,7 @@ endpoints:
         name: otp
         description: ''
         required: true
-        example: voluptatem
+        example: magnam
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -166,15 +156,15 @@ endpoints:
         name: otpToken
         description: ''
         required: true
-        example: voluptates
+        example: voluptatibus
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      otp: voluptatem
-      otpToken: voluptates
+      otp: magnam
+      otpToken: voluptatibus
     fileParameters: []
     responses: []
     responseFields: []
@@ -188,7 +178,7 @@ endpoints:
       - POST
     uri: api/login
     metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -208,7 +198,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: hwisozk@example.net
+        example: kunze.keeley@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -218,15 +208,15 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: 'J-d$1{iaaX'
+        example: 'LgtD-KZ9]6C}[jO'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: hwisozk@example.net
-      password: 'J-d$1{iaaX'
+      email: kunze.keeley@example.org
+      password: 'LgtD-KZ9]6C}[jO'
     fileParameters: []
     responses: []
     responseFields: []
@@ -240,7 +230,7 @@ endpoints:
       - POST
     uri: api/logout
     metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -270,7 +260,7 @@ endpoints:
       - GET
     uri: api/me
     metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -290,52 +280,13 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
+        status: 200
+        content: '{"message":null}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/advertisement
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Display the listing of advertisement by take limit = 4'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 404
-        content: '{"message":"Advertisement not found"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '119'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -348,224 +299,9 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/advertisement
+    uri: api/upload-profile
     metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Create a new advertisement'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      title:
-        name: title
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: zkbja
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      description:
-        name: description
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: 'Et at saepe vel laborum.'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      order:
-        name: order
-        description: ''
-        required: true
-        example: sit
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      image:
-        name: image
-        description: ''
-        required: true
-        example: corrupti
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      title: zkbja
-      description: 'Et at saepe vel laborum.'
-      order: sit
-      image: corrupti
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/advertisement/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get an advertisement'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the advertisement.'
-        required: true
-        example: 13
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 13
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Advertisement] 13"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '58'
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/advertisement/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Edit an advertisement'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the advertisement.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 16
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      title:
-        name: title
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: 'n'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      description:
-        name: description
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: 'Aut nemo voluptatem nostrum dolores totam accusamus eos.'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      order:
-        name: order
-        description: ''
-        required: true
-        example: vel
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      image:
-        name: image
-        description: ''
-        required: true
-        example: ratione
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      title: 'n'
-      description: 'Aut nemo voluptatem nostrum dolores totam accusamus eos.'
-      order: vel
-      image: ratione
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/advertisement/{id}'
-    metadata:
-      groupName: Endpoints
+      groupName: Authentication
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -574,26 +310,26 @@ endpoints:
       authenticated: false
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the advertisement.'
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      profile:
+        name: profile
+        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
         required: true
-        example: 16
-        type: integer
+        example: null
+        type: file
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
-    cleanUrlParameters:
-      id: 16
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
     cleanBodyParameters: []
-    fileParameters: []
+    fileParameters:
+      profile: null
     responses: []
     responseFields: []
     auth: []

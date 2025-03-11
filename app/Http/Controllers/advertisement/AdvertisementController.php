@@ -10,6 +10,9 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * @group Advertisement
+ */
 class AdvertisementController extends Controller
 {
 
@@ -106,10 +109,10 @@ class AdvertisementController extends Controller
                 Storage::delete("public/{$advertisement->image}");
             }
 
-            $advertiseFolder = public_path('advertise');  
+            $advertiseFolder = public_path('advertise');
 
             if (!file_exists($advertiseFolder)) {
-                mkdir($advertiseFolder, 0777, true); 
+                mkdir($advertiseFolder, 0777, true);
             }
 
             $imagePath = $request->file('image')->move($advertiseFolder, $request->file('image')->getClientOriginalName());
