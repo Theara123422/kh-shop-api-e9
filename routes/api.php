@@ -65,5 +65,9 @@ Route::apiResource('products', ProductController::class);
 //get product by category
 Route::get('/product/category', [ProductController::class, 'getByCategory']);
 //get product by category
+
+//product variant
+Route::apiResource('variants', \App\Http\Controllers\ProductVariantController::class);
+//product variant
 /* ------- Private Route */
 

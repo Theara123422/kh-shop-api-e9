@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -20,11 +22,19 @@ class Product extends Model
 
     /**
      * this function is used to get the products belong the category
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Category::class);
     }
 
+    /**
+     * get the variant belong to this product
+     * @return HasMany
+     */
+    public function productVariants(): HasMany
+    {
+        return $this->hasMany(\App\Models\ProductVariant::class);
+    }
 }
