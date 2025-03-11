@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductVariantRequest;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Traits\GeneralResponse;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 
 class ProductVariantController extends Controller
 {
@@ -30,4 +34,50 @@ class ProductVariantController extends Controller
         );
     }
 
+    /**
+     * Create new Variants
+     * @param ProductVariantRequest $request
+     * @return JsonResponse
+     */
+    public function store(ProductVariantRequest $request)
+    {
+        try{
+            $data = $request->validated();
+            ProductVariant::create($data);
+            return $this->successResponse(
+                "Add Product Variant Successfully",
+            );
+        }catch (QueryException|ValidationException $exception){
+            return $this->errorResponse(
+                $exception->getMessage(),
+                $exception->getCode()
+            );
+        }
+    }
+
+    public function update(ProductVariantRequest $request, $id){
+        try{
+            $product_variant = ProductVariant::findOrFail($id);
+            $data = $request->validated();
+            $product_variant->update($data);
+            return $this->successResponse(
+                "Update Product Variant Successfully",
+            );
+        }catch (QueryException|ValidationException $exception){
+            return $this->errorResponse(
+                $exception->getMessage(),
+                $exception->getCode()
+            );
+        }
+    }
+
+    public function destroy($id){
+        $product_variant = ProductVariant::findOrFail($id);
+
+        $product_variant->delete();
+
+        return $this->successResponse(
+            "Delete Product Variant Successfully",
+        );
+    }
 }
