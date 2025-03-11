@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
+/**
+ * @group Authentication
+ */
 class AuthController extends Controller
 {
     use AuthResponse;

@@ -11,6 +11,9 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * @group Product
+ */
 class ProductController extends Controller
 {
     use GeneralResponse;
