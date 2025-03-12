@@ -25,7 +25,7 @@ class ProductVariantController extends Controller
     public function show($id)
     {
         // Find the product with its variants, including color and size
-        $product = Product::with(['productVariants.color', 'productVariants.size'])->findOrFail($id);
+        $product = Product::with(['productVariants.color', 'productVariants.size','productVariants.productStock'])->findOrFail($id);
 
         return $this->successReponseWithData(
             "Get Product Variant Successfully",
