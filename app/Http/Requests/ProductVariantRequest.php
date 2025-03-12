@@ -9,9 +9,9 @@ class ProductVariantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => 'required|exists:products,id',
-            'variant_id' => 'required|exists:variants,id',
-            'color_id' => 'required|exists:colors,id'
+            'product_id' => 'required',
+            'color_id' => 'required',
+            'size_id' => 'required'
         ];
     }
 }

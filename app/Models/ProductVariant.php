@@ -28,4 +28,24 @@ class ProductVariant extends Model
     {
         return $this->belongsTo(\App\Models\Product::class);
     }
+
+    /**
+     *
+     * @return BelongsTo
+     * get color associate with variant
+     */
+    public function color(): BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Color::class);
+    }
+
+    /**
+     *
+     * @return BelongsTo
+     * get color associate with variant
+     */
+    public function size(): BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Size::class);
+    }
 }
