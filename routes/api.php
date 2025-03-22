@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\advertisement\AdvertisementController;
 use App\Http\Controllers\category\CategoryController;
 use App\Http\Controllers\color\ColorController;
+use App\Http\Controllers\country\CountryController;
 use App\Http\Controllers\product\ProductController;
 use App\Http\Controllers\Size\sizeController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,10 @@ Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 Route::post('/login', [AuthController::class , 'login'])->name('login');
 /* ------- Public Route */
 
+// countries
+Route::get('/countries', [CountryController::class, 'getCountries']);
+Route::get('/cities/{country}', [CountryController::class, 'getCities']);
+// countries
 
 /* ------- Private Route */
 Route::post('/logout', [AuthController::class , 'logout']);
