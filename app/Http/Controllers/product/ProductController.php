@@ -10,10 +10,9 @@ use App\Traits\GeneralResponse;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
-/**
- * @group Product
- */
+
 class ProductController extends Controller
 {
     use GeneralResponse;
@@ -21,49 +20,35 @@ class ProductController extends Controller
     /**
      * list limit the products by on client request
      * @return JsonResponse
+     * @group Product Page
      */
     public function index(Request $request)
     {
-        // Retrieve filter, order, limit, page, and search parameters from request
-        $filter = strtolower($request->get('filter', 'default')); // Default filter
-        $order  = $request->get('order', 'desc'); // Default order
-        $limit  = (int) $request->get('limit', 4); // Default pagination limit
-        $page   = (int) $request->get('page', 1); // Default page number (1)
         $search = $request->get('search', '');
+        $limit  = (int) $request->get('limit', 10); 
+        $page   = $request->get('page');
 
-        // Ensure orderBy is only 'asc' or 'desc'
-        $orderBy = in_array($order, ['asc', 'desc']) ? $order : 'desc';
-
-        // Build query
         $query = Product::query();
 
-        // Apply search filter if provided
+        // Apply search if provided
         if (!empty($search)) {
-            $query->where("name", "like", "%{$search}%");
+            $query->where('name', 'like', "%{$search}%");
         }
 
-        // Apply the filter type
-        if ($filter === "latest") {
-            $query->latest();
-        } elseif ($filter === "rating") {
-            $query->orderBy('rate', $orderBy);
-        } elseif ($filter === "promotion") {
-            $query->where("sale_price", ">", 0)
-                ->orderBy("id", $orderBy);
+        
+        if ($page) {
+            $products = $query->paginate($limit, ['*'], 'page', $page);
         } else {
-            // Default case: sort by ID if no valid filter provided
-            $query->orderBy('id', $orderBy);
+            
+            $products = $query->get();
         }
 
-        // Paginate results
-        $products = $query->paginate($limit, ['*'], 'page', $page);
-
-        // Return the response
         return $this->successReponseWithData(
-            "Get all products successfully",
+            'Get products successfully',
             $products
         );
     }
+
 
     public function getByCategory(Request $request)
     {
@@ -147,12 +132,13 @@ class ProductController extends Controller
      * @param ProductRequest $request
      * @return JsonResponse
      */
-    public function store(ProductRequest $request){
-        try{
+    public function store(ProductRequest $request)
+    {
+        try {
             $data = $request->validated();
 
-            if($request->hasFile('image')){
-                $fileName = time().'.'.$request->file('image')->getClientOriginalExtension();
+            if ($request->hasFile('image')) {
+                $fileName = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(public_path('images'), $fileName);
             }
 
@@ -163,13 +149,12 @@ class ProductController extends Controller
             return $this->successResponse(
                 "Product created successfully",
             );
-        }catch (QueryException $exception){
+        } catch (QueryException $exception) {
             return $this->errorResponse(
                 $exception->getMessage(),
                 $exception->getCode()
             );
-        }
-        catch (ValidationException $exception){
+        } catch (ValidationException $exception) {
             return $this->errorResponse(
                 'Validation Error',
                 $exception->getCode()
@@ -204,22 +189,22 @@ class ProductController extends Controller
             $product = \App\Models\Product::findOrFail($id);
             $data = $request->validated();
 
-            if($request->hasFile('image')){
-                if($product->image){
-                    unlink(public_path('images').'/'.$product->image);
+            if ($request->hasFile('image')) {
+                if ($product->image) {
+                    unlink(public_path('images') . '/' . $product->image);
                 }
-                $fileName = time().'.'.$request->file('image')->getClientOriginalExtension();
+                $fileName = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(public_path('images'), $fileName);
             }
             $data['image'] = $fileName;
 
-//        dd($data);
+            //        dd($data);
             $product->update($data);
 
             return $this->successResponse(
                 "Product updated successfully",
             );
-        }catch (\Illuminate\Validation\ValidationException $exception){
+        } catch (\Illuminate\Validation\ValidationException $exception) {
             return $this->errorResponse(
                 $exception->getMessage(),
                 $exception->getCode()
@@ -236,8 +221,8 @@ class ProductController extends Controller
     {
         $product = \App\Models\Product::findOrFail($id);
 
-        if($product->image){
-            unlink(public_path('images').'/'.$product->image);
+        if ($product->image) {
+            unlink(public_path('images') . '/' . $product->image);
         }
 
         $product->delete();

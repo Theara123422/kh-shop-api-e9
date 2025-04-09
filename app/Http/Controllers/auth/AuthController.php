@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
-/**
- * @group Authentication
- */
+
 class AuthController extends Controller
 {
     use AuthResponse;
@@ -36,6 +34,7 @@ class AuthController extends Controller
      * Register the user
      * @param \Illuminate\Http\Request $request
      * @return mixed|\Illuminate\Http\JsonResponse
+     * @group register
      */
     public function register(Request $request)
     {
@@ -120,6 +119,7 @@ class AuthController extends Controller
      * Login implementation
      * @param \Illuminate\Http\Request $request
      * @return mixed|\Illuminate\Http\JsonResponse
+     * @group Login
      */
     public function login(Request $request)
     {
@@ -153,6 +153,7 @@ class AuthController extends Controller
     /**
      * Logout implementation
      * @return mixed|\Illuminate\Http\JsonResponse
+     * @group Logout
      */
     public function logout()
     {
@@ -164,6 +165,7 @@ class AuthController extends Controller
      *
      * Get current user
      * @return mixed|\Illuminate\Http\JsonResponse
+     * @group Profile
      */
     public function me()
     {

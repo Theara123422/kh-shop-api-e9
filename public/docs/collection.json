@@ -10,376 +10,23 @@
     ],
     "info": {
         "name": "KH Shop API",
-        "_postman_id": "f5feadcf-b987-4083-bdf2-d5f5e2c6e6cc",
+        "_postman_id": "56673773-8897-48c4-bbde-37962232c80d",
         "description": "API for Web Application Assignment Year 4",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "Advertisement",
+            "name": "Country",
             "description": "",
             "item": [
                 {
-                    "name": "Display the listing of advertisement by take limit = 4",
+                    "name": "Summary of getCountries",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/advertisements",
+                            "path": "api\/countries",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/advertisements"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "120"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "118"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"message\":\"Get all advertisement successfully\",\"data\":[]}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "Create a new advertisement",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/advertisements",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/advertisements"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"title\":\"tfavqktci\",\"description\":\"Rem et assumenda sequi beatae minima voluptate.\",\"order\":2,\"image\":\"perferendis\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Get an advertisement",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/advertisements\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/advertisements\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "13",
-                                    "description": "The ID of the advertisement."
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "120"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "117"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 404,
-                            "body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Advertisement] 13\"\n}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "Edit an advertisement",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/advertisements\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/advertisements\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "20",
-                                    "description": "The ID of the advertisement."
-                                }
-                            ]
-                        },
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"title\":\"xvsxkbeantfzbaawljk\",\"description\":\"Neque cum nihil quia quos.\",\"order\":15,\"image\":\"vel\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "DELETE api\/advertisements\/{id}",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/advertisements\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/advertisements\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "12",
-                                    "description": "The ID of the advertisement."
-                                }
-                            ]
-                        },
-                        "method": "DELETE",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                }
-            ]
-        },
-        {
-            "name": "Authentication",
-            "description": "",
-            "item": [
-                {
-                    "name": "Register the user",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/register",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/register"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"firstName\":\"rosozzfqlinqn\",\"lastName\":\"zcoeopqdmcwyxvnptecysv\",\"gender\":\"male\",\"email\":\"izaiah.halvorson@example.com\",\"phoneNumber\":\"praesentium\",\"country\":\"feowhydtcijvrtbllztctrm\",\"city\":\"ueqmsm\",\"password\":\"H7;KHCU-N<yed3}\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Verify OTP and log the user",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/verify-otp",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/verify-otp"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"otp\":\"magnam\",\"otpToken\":\"voluptatibus\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Login implementation",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/login",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/login"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"email\":\"kunze.keeley@example.org\",\"password\":\"LgtD-KZ9]6C}[jO\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Logout implementation",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/logout",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/logout"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Get current user",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/me",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/me"
+                            "raw": "{{baseUrl}}\/api\/countries"
                         },
                         "method": "GET",
                         "header": [
@@ -423,10 +70,47 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"message\":null}",
+                            "body": "[\"Cambodia\",\"USA\",\"Canada\",\"UK\",\"Germany\",\"France\",\"Italy\",\"Spain\",\"India\",\"China\",\"Japan\",\"Australia\",\"Brazil\",\"Mexico\",\"Thailand\",\"Vietnam\",\"Philippines\",\"Indonesia\",\"Malaysia\",\"South Korea\",\"Russia\",\"Turkey\"]",
                             "name": ""
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Verify OTP and log the user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/verify-otp",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/verify-otp"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"otp\":\"unde\",\"otpToken\":\"ad\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
                 },
                 {
                     "name": "POST api\/upload-profile",
@@ -464,23 +148,17 @@
                         }
                     },
                     "response": []
-                }
-            ]
-        },
-        {
-            "name": "Category",
-            "description": "",
-            "item": [
+                },
                 {
-                    "name": "List all category",
+                    "name": "Create a new advertisement",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/category",
+                            "path": "api\/advertisements",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/category"
+                            "raw": "{{baseUrl}}\/api\/advertisements"
                         },
-                        "method": "GET",
+                        "method": "POST",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -497,81 +175,22 @@
                             "type": "noauth"
                         }
                     },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "120"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "116"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"message\":\"Get Categories Success\",\"data\":[{\"id\":1,\"name\":\"Shirts\",\"created_at\":\"2025-03-01T14:19:12.000000Z\",\"updated_at\":\"2025-03-01T14:19:12.000000Z\"}]}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "Create new category",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/category",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/category"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"name\":\"Pants\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
                     "response": []
                 },
                 {
-                    "name": "Get Specific category",
+                    "name": "Get an advertisement",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/category\/:id",
+                            "path": "api\/advertisements\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/category\/:id",
+                            "raw": "{{baseUrl}}\/api\/advertisements\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the category."
+                                    "value": "6",
+                                    "description": "The ID of the advertisement."
                                 }
                             ]
                         },
@@ -617,25 +236,25 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"message\":\"Get Category success\",\"data\":{\"id\":1,\"name\":\"Shirts\",\"created_at\":\"2025-03-01T14:19:12.000000Z\",\"updated_at\":\"2025-03-01T14:19:12.000000Z\"}}",
+                            "body": "{\"status\":200,\"message\":\"Advertise found successfully\",\"data\":{\"id\":6,\"title\":\"The biggest promotion arrival\",\"description\":\"This is the biggest promotion arrival\",\"itemImageSrc\":\"1744149159-Ads-Banner.png\",\"alt\":\"The biggest promotion arrival\",\"thumbnailImageSrc\":\"1744149159-Item-Src.png\",\"created_at\":\"2025-04-08T21:52:39.000000Z\",\"updated_at\":\"2025-04-08T21:52:39.000000Z\"}}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "PUT api\/category\/{id}",
+                    "name": "Edit an advertisement",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/category\/:id",
+                            "path": "api\/advertisements\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/category\/:id",
+                            "raw": "{{baseUrl}}\/api\/advertisements\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the category."
+                                    "value": "6",
+                                    "description": "The ID of the advertisement."
                                 }
                             ]
                         },
@@ -652,7 +271,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"Shorts\"}"
+                            "raw": "{\"title\":\"xga\",\"description\":\"Sapiente fuga voluptatem id.\",\"itemImageSrc\":\"et\",\"thumbnailImageSrc\":\"architecto\",\"alt\":\"quas\"}"
                         },
                         "description": "",
                         "auth": {
@@ -662,19 +281,19 @@
                     "response": []
                 },
                 {
-                    "name": "DELETE api\/category\/{id}",
+                    "name": "DELETE api\/advertisements\/{id}",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/category\/:id",
+                            "path": "api\/advertisements\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/category\/:id",
+                            "raw": "{{baseUrl}}\/api\/advertisements\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the category."
+                                    "value": "6",
+                                    "description": "The ID of the advertisement."
                                 }
                             ]
                         },
@@ -696,21 +315,15 @@
                         }
                     },
                     "response": []
-                }
-            ]
-        },
-        {
-            "name": "Color",
-            "description": "",
-            "item": [
+                },
                 {
                     "name": "List all category",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/color",
+                            "path": "api\/category",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/color"
+                            "raw": "{{baseUrl}}\/api\/category"
                         },
                         "method": "GET",
                         "header": [
@@ -754,7 +367,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"message\":\"Get color Success\",\"data\":[]}",
+                            "body": "{\"status\":200,\"message\":\"Get Categories Success\",\"data\":[{\"id\":1,\"name\":\"Shirts\",\"created_at\":\"2025-03-01T14:19:12.000000Z\",\"updated_at\":\"2025-03-01T14:19:12.000000Z\"}]}",
                             "name": ""
                         }
                     ]
@@ -764,9 +377,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/color",
+                            "path": "api\/category",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/color"
+                            "raw": "{{baseUrl}}\/api\/category"
                         },
                         "method": "POST",
                         "header": [
@@ -781,7 +394,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"Yellow\",\"color\":\"Pink\"}"
+                            "raw": "{\"name\":\"Sports & Outdoor\"}"
                         },
                         "description": "",
                         "auth": {
@@ -795,15 +408,15 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/color\/:id",
+                            "path": "api\/category\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/color\/:id",
+                            "raw": "{{baseUrl}}\/api\/category\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
-                                    "description": "The ID of the color."
+                                    "value": "1",
+                                    "description": "The ID of the category."
                                 }
                             ]
                         },
@@ -848,8 +461,234 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 404,
-                            "body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Color] 11\"\n}",
+                            "code": 200,
+                            "body": "{\"status\":200,\"message\":\"Get Category success\",\"data\":{\"id\":1,\"name\":\"Shirts\",\"created_at\":\"2025-03-01T14:19:12.000000Z\",\"updated_at\":\"2025-03-01T14:19:12.000000Z\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "PUT api\/category\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/category\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/category\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the category."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Automotive & Tools\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/category\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/category\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/category\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the category."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List all category",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/color",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/color"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "112"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"message\":\"Get color Success\",\"data\":[{\"id\":1,\"name\":\"Red\",\"code\":\"#FF0000\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":2,\"name\":\"Blue\",\"code\":\"#0000FF\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":3,\"name\":\"Green\",\"code\":\"#008000\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":4,\"name\":\"Yellow\",\"code\":\"#FFFF00\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":5,\"name\":\"Black\",\"code\":\"#000000\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":6,\"name\":\"White\",\"code\":\"#FFFFFF\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":7,\"name\":\"Gray\",\"code\":\"#808080\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":8,\"name\":\"Pink\",\"code\":\"#FFC0CB\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":9,\"name\":\"Purple\",\"code\":\"#800080\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"},{\"id\":10,\"name\":\"Orange\",\"code\":\"#FFA500\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create new category",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/color",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/color"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Black\",\"color\":\"Black\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Specific category",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/color\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/color\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the color."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "111"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"message\":\"Get color success\",\"data\":{\"id\":1,\"name\":\"Red\",\"code\":\"#FF0000\",\"created_at\":\"2025-03-12T15:36:12.000000Z\",\"updated_at\":\"2025-03-12T15:36:12.000000Z\"}}",
                             "name": ""
                         }
                     ]
@@ -884,7 +723,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"Green\",\"color\":\"Gray\"}"
+                            "raw": "{\"name\":\"Pink\",\"color\":\"Yellow\"}"
                         },
                         "description": "",
                         "auth": {
@@ -905,7 +744,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "7",
+                                    "value": "1",
                                     "description": "The ID of the color."
                                 }
                             ]
@@ -928,21 +767,15 @@
                         }
                     },
                     "response": []
-                }
-            ]
-        },
-        {
-            "name": "Product",
-            "description": "",
-            "item": [
+                },
                 {
-                    "name": "list limit the products by on client request",
+                    "name": "List all category",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/products",
+                            "path": "api\/size",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/products"
+                            "raw": "{{baseUrl}}\/api\/size"
                         },
                         "method": "GET",
                         "header": [
@@ -986,19 +819,19 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"message\":\"Get all products successfully\",\"data\":{\"current_page\":1,\"data\":[],\"first_page_url\":\"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/products?page=1\",\"from\":null,\"last_page\":1,\"last_page_url\":\"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/products?page=1\",\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"active\":false},{\"url\":\"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/products?page=1\",\"label\":\"1\",\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"active\":false}],\"next_page_url\":null,\"path\":\"http:\\\/\\\/127.0.0.1:8000\\\/api\\\/products\",\"per_page\":4,\"prev_page_url\":null,\"to\":null,\"total\":0}}",
+                            "body": "{\"status\":200,\"message\":\"Get sice Success\",\"data\":[{\"id\":1,\"name\":\"Extra Small\",\"size_number\":34,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":2,\"name\":\"Small\",\"size_number\":36,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":3,\"name\":\"Medium\",\"size_number\":38,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":4,\"name\":\"Large\",\"size_number\":40,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":5,\"name\":\"Extra Large\",\"size_number\":42,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":6,\"name\":\"XXL\",\"size_number\":44,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":7,\"name\":\"XXXL\",\"size_number\":46,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":8,\"name\":\"4XL\",\"size_number\":48,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":9,\"name\":\"5XL\",\"size_number\":50,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"},{\"id\":10,\"name\":\"6XL\",\"size_number\":52,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"}]}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "create new product",
+                    "name": "Create new category",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/products",
+                            "path": "api\/size",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/products"
+                            "raw": "{{baseUrl}}\/api\/size"
                         },
                         "method": "POST",
                         "header": [
@@ -1013,7 +846,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"atppjdpu\",\"rate\":3,\"image\":\"pbbldtpszhxlzchmanomofy\",\"description\":\"Ipsum voluptas id rerum maiores voluptatem.\",\"imported_from\":\"jplp\",\"category_id\":17}"
+                            "raw": "{\"name\":\"L\",\"size_number\":\"L\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1023,19 +856,19 @@
                     "response": []
                 },
                 {
-                    "name": "show the specific product",
+                    "name": "Get Specific category",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/products\/:id",
+                            "path": "api\/size\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/products\/:id",
+                            "raw": "{{baseUrl}}\/api\/size\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "15",
-                                    "description": "The ID of the product."
+                                    "value": "1",
+                                    "description": "The ID of the size."
                                 }
                             ]
                         },
@@ -1080,8 +913,178 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 404,
-                            "body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Product] 15\"\n}",
+                            "code": 200,
+                            "body": "{\"status\":200,\"message\":\"Get size success\",\"data\":{\"id\":1,\"name\":\"Extra Small\",\"size_number\":34,\"created_at\":\"2025-03-12T15:36:59.000000Z\",\"updated_at\":\"2025-03-12T15:36:59.000000Z\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "PUT api\/size\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/size\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/size\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the size."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"XL\",\"size_number\":\"S\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/size\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/size\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/size\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the size."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create new product",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/products",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/products"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"p\",\"rate\":5,\"image\":\"gpzfscopjivkvdhimbi\",\"description\":\"Amet qui iusto rerum eos.\",\"imported_from\":\"fftczuinpffcrnbqi\",\"category_id\":19}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "show the specific product",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/products\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/products\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "37",
+                                    "description": "The ID of the product."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "107"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"message\":\"Get product successfully\",\"data\":{\"id\":37,\"name\":\"Protein Powder\",\"description\":\"Whey protein for muscle recovery.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"GNC\",\"star\":0,\"category_id\":5,\"regular_price\":\"59.99\",\"sale_price\":\"49.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"}}",
                             "name": ""
                         }
                     ]
@@ -1098,7 +1101,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "37",
                                     "description": "The ID of the product."
                                 }
                             ]
@@ -1116,7 +1119,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"aukutexyxstmijibvb\",\"rate\":8,\"image\":\"ssogjtdtlqpmmmsdxw\",\"description\":\"Necessitatibus quia ea et quae.\",\"imported_from\":\"vpqmnv\",\"category_id\":5}"
+                            "raw": "{\"name\":\"hqf\",\"rate\":3,\"image\":\"zml\",\"description\":\"Autem neque nesciunt pariatur dolores corporis quis illo.\",\"imported_from\":\"bowuewncuwddhawin\",\"category_id\":5}"
                         },
                         "description": "",
                         "auth": {
@@ -1137,7 +1140,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "37",
                                     "description": "The ID of the product."
                                 }
                             ]
@@ -1204,7 +1207,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "108"
+                                    "value": "106"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -1216,21 +1219,15 @@
                             "name": ""
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "Size",
-            "description": "",
-            "item": [
+                },
                 {
-                    "name": "List all category",
+                    "name": "GET api\/variants",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/size",
+                            "path": "api\/variants",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/size"
+                            "raw": "{{baseUrl}}\/api\/variants"
                         },
                         "method": "GET",
                         "header": [
@@ -1266,7 +1263,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "112"
+                                    "value": "105"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -1274,19 +1271,19 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"message\":\"Get sice Success\",\"data\":[]}",
+                            "body": "{\"status\":200,\"message\":\"Get All Product Variants Successfully\",\"data\":[{\"id\":1,\"product_id\":37,\"color_id\":1,\"size_id\":1,\"product_stock_id\":1,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":65,\"product_id\":32,\"color_id\":2,\"size_id\":1,\"product_stock_id\":2,\"created_at\":\"2025-03-12T09:03:21.000000Z\",\"updated_at\":\"2025-03-12T09:03:21.000000Z\"},{\"id\":3,\"product_id\":35,\"color_id\":3,\"size_id\":1,\"product_stock_id\":3,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":4,\"product_id\":35,\"color_id\":4,\"size_id\":1,\"product_stock_id\":4,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":5,\"product_id\":35,\"color_id\":1,\"size_id\":2,\"product_stock_id\":5,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":6,\"product_id\":35,\"color_id\":2,\"size_id\":2,\"product_stock_id\":6,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":7,\"product_id\":35,\"color_id\":3,\"size_id\":2,\"product_stock_id\":7,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":8,\"product_id\":35,\"color_id\":4,\"size_id\":2,\"product_stock_id\":8,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":9,\"product_id\":36,\"color_id\":1,\"size_id\":3,\"product_stock_id\":9,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":10,\"product_id\":36,\"color_id\":2,\"size_id\":3,\"product_stock_id\":10,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":11,\"product_id\":36,\"color_id\":3,\"size_id\":3,\"product_stock_id\":11,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":12,\"product_id\":36,\"color_id\":4,\"size_id\":3,\"product_stock_id\":12,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":13,\"product_id\":36,\"color_id\":1,\"size_id\":4,\"product_stock_id\":13,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":14,\"product_id\":36,\"color_id\":2,\"size_id\":4,\"product_stock_id\":15,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":15,\"product_id\":36,\"color_id\":3,\"size_id\":4,\"product_stock_id\":14,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":16,\"product_id\":32,\"color_id\":4,\"size_id\":4,\"product_stock_id\":16,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":17,\"product_id\":32,\"color_id\":1,\"size_id\":1,\"product_stock_id\":18,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":18,\"product_id\":32,\"color_id\":2,\"size_id\":1,\"product_stock_id\":19,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":19,\"product_id\":32,\"color_id\":3,\"size_id\":1,\"product_stock_id\":20,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":20,\"product_id\":32,\"color_id\":4,\"size_id\":1,\"product_stock_id\":21,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":21,\"product_id\":32,\"color_id\":1,\"size_id\":2,\"product_stock_id\":23,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":22,\"product_id\":32,\"color_id\":2,\"size_id\":2,\"product_stock_id\":22,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":23,\"product_id\":32,\"color_id\":3,\"size_id\":2,\"product_stock_id\":25,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":24,\"product_id\":32,\"color_id\":4,\"size_id\":2,\"product_stock_id\":24,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":25,\"product_id\":32,\"color_id\":1,\"size_id\":3,\"product_stock_id\":23,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":26,\"product_id\":2,\"color_id\":2,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":27,\"product_id\":2,\"color_id\":3,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":28,\"product_id\":2,\"color_id\":4,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":29,\"product_id\":2,\"color_id\":1,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":30,\"product_id\":2,\"color_id\":2,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":31,\"product_id\":2,\"color_id\":3,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":32,\"product_id\":2,\"color_id\":4,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":33,\"product_id\":3,\"color_id\":1,\"size_id\":1,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":34,\"product_id\":3,\"color_id\":2,\"size_id\":1,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":35,\"product_id\":3,\"color_id\":3,\"size_id\":1,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":36,\"product_id\":3,\"color_id\":4,\"size_id\":1,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":37,\"product_id\":3,\"color_id\":1,\"size_id\":2,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":38,\"product_id\":3,\"color_id\":2,\"size_id\":2,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":39,\"product_id\":3,\"color_id\":3,\"size_id\":2,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":40,\"product_id\":3,\"color_id\":4,\"size_id\":2,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":41,\"product_id\":3,\"color_id\":1,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":42,\"product_id\":3,\"color_id\":2,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":43,\"product_id\":3,\"color_id\":3,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":44,\"product_id\":3,\"color_id\":4,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":45,\"product_id\":3,\"color_id\":1,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":46,\"product_id\":3,\"color_id\":2,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":47,\"product_id\":3,\"color_id\":3,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":48,\"product_id\":3,\"color_id\":4,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":49,\"product_id\":50,\"color_id\":1,\"size_id\":1,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":50,\"product_id\":50,\"color_id\":2,\"size_id\":1,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":51,\"product_id\":50,\"color_id\":3,\"size_id\":1,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":52,\"product_id\":50,\"color_id\":4,\"size_id\":1,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":53,\"product_id\":50,\"color_id\":1,\"size_id\":2,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":54,\"product_id\":50,\"color_id\":2,\"size_id\":2,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":55,\"product_id\":50,\"color_id\":3,\"size_id\":2,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":56,\"product_id\":50,\"color_id\":4,\"size_id\":2,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":57,\"product_id\":50,\"color_id\":1,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":58,\"product_id\":50,\"color_id\":2,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":59,\"product_id\":50,\"color_id\":3,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":60,\"product_id\":50,\"color_id\":4,\"size_id\":3,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":61,\"product_id\":50,\"color_id\":1,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":62,\"product_id\":50,\"color_id\":2,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":63,\"product_id\":50,\"color_id\":3,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"},{\"id\":64,\"product_id\":50,\"color_id\":4,\"size_id\":4,\"product_stock_id\":0,\"created_at\":\"2025-03-11T16:17:24.000000Z\",\"updated_at\":\"2025-03-11T16:17:24.000000Z\"}]}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "Create new category",
+                    "name": "Create new Variants",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/size",
+                            "path": "api\/variants",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/size"
+                            "raw": "{{baseUrl}}\/api\/variants"
                         },
                         "method": "POST",
                         "header": [
@@ -1301,7 +1298,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"M\",\"size_number\":\"XXL\"}"
+                            "raw": "{\"product_id\":\"esse\",\"color_id\":\"molestias\",\"size_id\":\"aut\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1311,83 +1308,19 @@
                     "response": []
                 },
                 {
-                    "name": "Get Specific category",
+                    "name": "PUT api\/variants\/{id}",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/size\/:id",
+                            "path": "api\/variants\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/size\/:id",
+                            "raw": "{{baseUrl}}\/api\/variants\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
-                                    "description": "The ID of the size."
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "120"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "111"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 404,
-                            "body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Size] 8\"\n}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "PUT api\/size\/{id}",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/size\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/size\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "17",
-                                    "description": "The ID of the size."
+                                    "value": "quaerat",
+                                    "description": "The ID of the variant."
                                 }
                             ]
                         },
@@ -1404,7 +1337,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"M\",\"size_number\":\"L\"}"
+                            "raw": "{\"product_id\":\"tempora\",\"color_id\":\"repellendus\",\"size_id\":\"quis\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1414,19 +1347,19 @@
                     "response": []
                 },
                 {
-                    "name": "DELETE api\/size\/{id}",
+                    "name": "DELETE api\/variants\/{id}",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/size\/:id",
+                            "path": "api\/variants\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/size\/:id",
+                            "raw": "{{baseUrl}}\/api\/variants\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "6",
-                                    "description": "The ID of the size."
+                                    "value": "enim",
+                                    "description": "The ID of the variant."
                                 }
                             ]
                         },
@@ -1442,6 +1375,440 @@
                             }
                         ],
                         "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Home Page - Advertisement",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display the listing of advertisement by take limit = 4",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/advertisements",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/advertisements"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "116"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"message\":\"Get all advertisement successfully\",\"data\":[{\"id\":6,\"title\":\"The biggest promotion arrival\",\"description\":\"This is the biggest promotion arrival\",\"itemImageSrc\":\"1744149159-Ads-Banner.png\",\"alt\":\"The biggest promotion arrival\",\"thumbnailImageSrc\":\"1744149159-Item-Src.png\",\"created_at\":\"2025-04-08T21:52:39.000000Z\",\"updated_at\":\"2025-04-08T21:52:39.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Login",
+            "description": "",
+            "item": [
+                {
+                    "name": "Login implementation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"nathaniel13@example.com\",\"password\":\"(QovH,rs4\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Logout",
+            "description": "",
+            "item": [
+                {
+                    "name": "Logout implementation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Product Detail",
+            "description": "",
+            "item": [
+                {
+                    "name": "Summary of show",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/variants\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/variants\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "et",
+                                    "description": "The ID of the variant."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "104"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Product] et\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Product Page",
+            "description": "",
+            "item": [
+                {
+                    "name": "list limit the products by on client request",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/products",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/products"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "108"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"message\":\"Get products successfully\",\"data\":[{\"id\":37,\"name\":\"Protein Powder\",\"description\":\"Whey protein for muscle recovery.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"GNC\",\"star\":0,\"category_id\":5,\"regular_price\":\"59.99\",\"sale_price\":\"49.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":36,\"name\":\"Makeup Brush Set\",\"description\":\"Professional 10-piece makeup brush set.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Ulta Beauty\",\"star\":0,\"category_id\":4,\"regular_price\":\"39.99\",\"sale_price\":\"29.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":35,\"name\":\"Facial Moisturizer\",\"description\":\"Hydrating face cream for all skin types.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Sephora\",\"star\":0,\"category_id\":4,\"regular_price\":\"49.99\",\"sale_price\":\"39.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":34,\"name\":\"Air Fryer\",\"description\":\"Oil-free cooking for a healthy lifestyle.\",\"rate\":\"4.9\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Target\",\"star\":0,\"category_id\":3,\"regular_price\":\"149.99\",\"sale_price\":\"129.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":33,\"name\":\"Kitchen Blender\",\"description\":\"High-power blender for smoothies and shakes.\",\"rate\":\"4.3\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Walmart\",\"star\":0,\"category_id\":3,\"regular_price\":\"79.99\",\"sale_price\":\"59.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":32,\"name\":\"Women's Sneakers\",\"description\":\"Comfortable and stylish running shoes.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Nike\",\"star\":0,\"category_id\":1,\"regular_price\":\"129.99\",\"sale_price\":\"99.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":30,\"name\":\"Wireless Earbuds Pro\",\"description\":\"Noise-cancelling Bluetooth earbuds.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"BestBuy\",\"star\":0,\"category_id\":1,\"regular_price\":\"199.99\",\"sale_price\":\"149.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":31,\"name\":\"Men's Leather Jacket\",\"description\":\"Premium quality leather jacket.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Zara\",\"star\":0,\"category_id\":2,\"regular_price\":\"249.99\",\"sale_price\":\"199.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":29,\"name\":\"Smartphone X\",\"description\":\"Latest high-end smartphone with AI features.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Amazon\",\"star\":0,\"category_id\":1,\"regular_price\":\"999.99\",\"sale_price\":\"899.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":38,\"name\":\"Treadmill\",\"description\":\"Foldable electric treadmill for home workouts.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Amazon\",\"star\":0,\"category_id\":5,\"regular_price\":\"699.99\",\"sale_price\":\"599.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":39,\"name\":\"Lego Building Set\",\"description\":\"Creative play for kids aged 6+\",\"rate\":\"4.9\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Toys R Us\",\"star\":0,\"category_id\":6,\"regular_price\":\"69.99\",\"sale_price\":\"54.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":40,\"name\":\"Board Game - Catan\",\"description\":\"Fun strategy board game for family & friends.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Walmart\",\"star\":0,\"category_id\":6,\"regular_price\":\"49.99\",\"sale_price\":\"39.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":41,\"name\":\"Camping Tent\",\"description\":\"Waterproof tent for outdoor adventures.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"REI\",\"star\":0,\"category_id\":7,\"regular_price\":\"199.99\",\"sale_price\":\"179.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":42,\"name\":\"Running Shoes\",\"description\":\"Lightweight shoes for marathon training.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Nike\",\"star\":0,\"category_id\":7,\"regular_price\":\"149.99\",\"sale_price\":\"129.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":43,\"name\":\"Car Dash Cam\",\"description\":\"1080p dash camera with night vision.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"AutoZone\",\"star\":0,\"category_id\":8,\"regular_price\":\"129.99\",\"sale_price\":\"99.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":44,\"name\":\"Cordless Drill Set\",\"description\":\"Powerful drill with battery and charger.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Home Depot\",\"star\":0,\"category_id\":8,\"regular_price\":\"99.99\",\"sale_price\":\"79.99\",\"created_at\":\"2025-03-11T15:48:24.000000Z\",\"updated_at\":\"2025-03-11T15:48:24.000000Z\"},{\"id\":45,\"name\":\"Smartwatch Z\",\"description\":\"Stylish smartwatch with fitness tracking features.\",\"rate\":\"4.3\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"BestBuy\",\"star\":0,\"category_id\":1,\"regular_price\":\"249.99\",\"sale_price\":\"199.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":46,\"name\":\"Bluetooth Speaker\",\"description\":\"Portable wireless speaker with deep bass.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Amazon\",\"star\":0,\"category_id\":1,\"regular_price\":\"99.99\",\"sale_price\":\"79.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":47,\"name\":\"Gaming Laptop\",\"description\":\"High-performance laptop for gamers and creators.\",\"rate\":\"4.9\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Walmart\",\"star\":0,\"category_id\":1,\"regular_price\":\"1499.99\",\"sale_price\":\"1299.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":48,\"name\":\"Tablet Pro\",\"description\":\"Lightweight tablet with powerful features for productivity.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Target\",\"star\":0,\"category_id\":1,\"regular_price\":\"499.99\",\"sale_price\":\"449.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":49,\"name\":\"Camera DSLR\",\"description\":\"Professional camera with 4K video recording.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"BestBuy\",\"star\":0,\"category_id\":1,\"regular_price\":\"899.99\",\"sale_price\":\"799.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":50,\"name\":\"Fashion Sunglasses\",\"description\":\"UV protection stylish sunglasses for men.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Ray-Ban\",\"star\":0,\"category_id\":2,\"regular_price\":\"119.99\",\"sale_price\":\"89.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":51,\"name\":\"Women's Handbag\",\"description\":\"Luxury handbag made of genuine leather.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Coach\",\"star\":0,\"category_id\":2,\"regular_price\":\"349.99\",\"sale_price\":\"299.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":52,\"name\":\"Men's Sneakers\",\"description\":\"Comfortable sneakers for everyday wear.\",\"rate\":\"4.4\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Adidas\",\"star\":0,\"category_id\":2,\"regular_price\":\"79.99\",\"sale_price\":\"69.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":53,\"name\":\"Winter Coat\",\"description\":\"Stylish winter coat for cold weather.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"H&M\",\"star\":0,\"category_id\":2,\"regular_price\":\"129.99\",\"sale_price\":\"99.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":54,\"name\":\"Cookware Set\",\"description\":\"Non-stick cookware set for easy cooking.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Walmart\",\"star\":0,\"category_id\":3,\"regular_price\":\"99.99\",\"sale_price\":\"79.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":55,\"name\":\"Coffee Maker\",\"description\":\"Automatic coffee maker with programmable features.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Target\",\"star\":0,\"category_id\":3,\"regular_price\":\"89.99\",\"sale_price\":\"69.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":56,\"name\":\"Electric Grill\",\"description\":\"Indoor electric grill for cooking in any weather.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Amazon\",\"star\":0,\"category_id\":3,\"regular_price\":\"129.99\",\"sale_price\":\"109.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":57,\"name\":\"Frying Pan\",\"description\":\"Durable non-stick frying pan for all cooking needs.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Bed Bath & Beyond\",\"star\":0,\"category_id\":3,\"regular_price\":\"39.99\",\"sale_price\":\"29.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":58,\"name\":\"Lipstick Set\",\"description\":\"Long-lasting lipstick set for everyday wear.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Sephora\",\"star\":0,\"category_id\":4,\"regular_price\":\"49.99\",\"sale_price\":\"39.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":59,\"name\":\"Shampoo & Conditioner\",\"description\":\"Shampoo and conditioner set for healthy hair.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"L'Oreal\",\"star\":0,\"category_id\":4,\"regular_price\":\"24.99\",\"sale_price\":\"19.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":60,\"name\":\"Face Serum\",\"description\":\"Hydrating serum for smoother skin.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Clinique\",\"star\":0,\"category_id\":4,\"regular_price\":\"59.99\",\"sale_price\":\"49.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":61,\"name\":\"Hair Dryer\",\"description\":\"Professional hair dryer for fast drying.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Dyson\",\"star\":0,\"category_id\":4,\"regular_price\":\"399.99\",\"sale_price\":\"349.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":62,\"name\":\"Yoga Mat\",\"description\":\"Non-slip yoga mat for a comfortable workout.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Amazon\",\"star\":0,\"category_id\":5,\"regular_price\":\"39.99\",\"sale_price\":\"29.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":63,\"name\":\"Dumbbells Set\",\"description\":\"Adjustable dumbbells for strength training.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Walmart\",\"star\":0,\"category_id\":5,\"regular_price\":\"89.99\",\"sale_price\":\"69.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":64,\"name\":\"Cycling Helmet\",\"description\":\"Lightweight and durable helmet for cycling safety.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"REI\",\"star\":0,\"category_id\":5,\"regular_price\":\"49.99\",\"sale_price\":\"39.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":65,\"name\":\"Exercise Ball\",\"description\":\"Inflatable exercise ball for workouts and stretches.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Target\",\"star\":0,\"category_id\":5,\"regular_price\":\"19.99\",\"sale_price\":\"15.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":66,\"name\":\"Kids Puzzle\",\"description\":\"Fun and educational puzzles for young children.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Target\",\"star\":0,\"category_id\":6,\"regular_price\":\"15.99\",\"sale_price\":\"12.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":67,\"name\":\"Action Figure Set\",\"description\":\"Superhero action figures for imaginative play.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Walmart\",\"star\":0,\"category_id\":6,\"regular_price\":\"29.99\",\"sale_price\":\"19.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":68,\"name\":\"Building Blocks Set\",\"description\":\"Colorful building blocks for kids to learn and play.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Lego\",\"star\":0,\"category_id\":6,\"regular_price\":\"49.99\",\"sale_price\":\"39.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":69,\"name\":\"Remote Control Car\",\"description\":\"Fast and durable remote control car for kids.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Amazon\",\"star\":0,\"category_id\":6,\"regular_price\":\"69.99\",\"sale_price\":\"59.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":70,\"name\":\"Tent for 2\",\"description\":\"Compact tent for two people for outdoor camping.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"REI\",\"star\":0,\"category_id\":7,\"regular_price\":\"129.99\",\"sale_price\":\"109.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":71,\"name\":\"Camping Sleeping Bag\",\"description\":\"Comfortable sleeping bag for all weather conditions.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Amazon\",\"star\":0,\"category_id\":7,\"regular_price\":\"69.99\",\"sale_price\":\"59.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":72,\"name\":\"Hiking Boots\",\"description\":\"Durable boots for hiking on rough terrain.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Columbia\",\"star\":0,\"category_id\":7,\"regular_price\":\"99.99\",\"sale_price\":\"79.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":73,\"name\":\"Camping Stove\",\"description\":\"Portable stove for cooking while camping.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Walmart\",\"star\":0,\"category_id\":7,\"regular_price\":\"79.99\",\"sale_price\":\"59.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":74,\"name\":\"Car Seat Covers\",\"description\":\"Set of durable seat covers for car protection.\",\"rate\":\"4.6\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"AutoZone\",\"star\":0,\"category_id\":8,\"regular_price\":\"39.99\",\"sale_price\":\"29.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":75,\"name\":\"Car Floor Mats\",\"description\":\"Heavy-duty floor mats for vehicle interiors.\",\"rate\":\"4.7\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Home Depot\",\"star\":0,\"category_id\":8,\"regular_price\":\"49.99\",\"sale_price\":\"39.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":76,\"name\":\"Portable Jump Starter\",\"description\":\"Compact jump starter for emergencies.\",\"rate\":\"4.5\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Amazon\",\"star\":0,\"category_id\":8,\"regular_price\":\"79.99\",\"sale_price\":\"69.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"},{\"id\":77,\"name\":\"Tool Set\",\"description\":\"Comprehensive tool set for DIY home projects.\",\"rate\":\"4.8\",\"image\":\"https:\\\/\\\/www.placehold.co\\\/270x400\",\"imported_from\":\"Lowe's\",\"star\":0,\"category_id\":8,\"regular_price\":\"119.99\",\"sale_price\":\"99.99\",\"created_at\":\"2025-03-11T15:49:25.000000Z\",\"updated_at\":\"2025-03-11T15:49:25.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Profile",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get current user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/me"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "117"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"message\":null}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "city",
+            "description": "",
+            "item": [
+                {
+                    "name": "Summary of getCities",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/cities\/:country",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/cities\/:country",
+                            "variable": [
+                                {
+                                    "id": "country",
+                                    "key": "country",
+                                    "value": "maiores",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "120"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "118"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "[]",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "register",
+            "description": "",
+            "item": [
+                {
+                    "name": "Register the user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"firstName\":\"gwrtmxfpvcggx\",\"lastName\":\"jwp\",\"gender\":\"male\",\"email\":\"aparker@example.com\",\"phoneNumber\":\"aliquam\",\"country\":\"lmpuhvmcqwfqukvwgcumnhlt\",\"city\":\"bxgdcmajtfkooypfresch\",\"password\":\"*X|RWF\"}"
+                        },
                         "description": "",
                         "auth": {
                             "type": "noauth"

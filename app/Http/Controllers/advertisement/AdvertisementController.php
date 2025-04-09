@@ -7,12 +7,10 @@ use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
 use App\Traits\GeneralResponse;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-/**
- * @group Advertisement
- */
+
 class AdvertisementController extends Controller
 {
 
@@ -20,11 +18,13 @@ class AdvertisementController extends Controller
     /**
      * Display the listing of advertisement by take limit = 4
      * @return void
+     * @group Home Page - Advertisement
      */
+
     public function index()
     {
 
-        $advertisements = Advertisement::orderBy('order', 'desc')
+        $advertisements = Advertisement::orderBy('id', 'desc')
             ->limit(4)
             ->get();
 
@@ -39,42 +39,36 @@ class AdvertisementController extends Controller
      * @param \App\Http\Requests\AdvertisementRequest $request
      * @return mixed|\Illuminate\Http\JsonResponse
      */
-    public function store(AdvertisementRequest $request)
+    public function store(Request $request)
     {
         try {
-            $data = $request->validated();
+            $data = $request->all();
 
-            if ($request->hasFile('image')) {
-                $advertise = 'advertise';
+            // Handle itemImageSrc upload
+            if ($request->hasFile('itemImageSrc')) {
+                $file = $request->file('itemImageSrc');
+                $fileName = time() .'-'. $file->getClientOriginalName(); // Get the original name of the file
+                $file->storeAs('advertise', $fileName, 'public'); // Save the file in 'advertise' folder
+                $data['itemImageSrc'] = $fileName;
+            }
 
-                if (!File::exists(storage_path("app/public/" . $advertise))) {
-                    File::makeDirectory(storage_path("app/public/" . $advertise), 0755, true);
-                }
-
-                $data['image'] = $request->file('image')->store($advertise, 'public');
+            // Handle thumbnailImageSrc upload
+            if ($request->hasFile('thumbnailImageSrc')) {
+                $file = $request->file('thumbnailImageSrc');
+                $fileName = time() .'-'. $file->getClientOriginalName(); // Get the original name of the file
+                $file->storeAs('advertise', $fileName, 'public'); // Save the file in 'advertise' folder
+                $data['thumbnailImageSrc'] = $fileName;
             }
 
             Advertisement::create($data);
 
-            return $this->successResponse(
-                'Advertisement Created successfully'
-            );
-        } catch (QueryException $exeption) {
-            return $this->errorResponse(
-                'Database error',
-                500
-            );
+            return $this->successResponse('Advertisement created successfully');
+        } catch (QueryException $exception) {
+            return $this->errorResponse('Database error', 500);
         } catch (\Exception $exception) {
-            return $this->errorResponse(
-                'Internal server error',
-                500
-            );
-        } catch (\Illuminate\Validation\ValidationException $validationException) {
-            // Handle validation exception
-            return $this->errorResponse($validationException->errors(), 422);
+            return $this->errorResponse('Internal server error', 500);
         }
     }
-
 
     /**
      * Get an advertisement

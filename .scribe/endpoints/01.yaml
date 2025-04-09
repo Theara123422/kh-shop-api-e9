@@ -1,16 +1,329 @@
-name: Advertisement
+name: Endpoints
 description: ''
 endpoints:
   -
     httpMethods:
-      - GET
-    uri: api/advertisements
+      - POST
+    uri: api/verify-otp
     metadata:
-      groupName: Advertisement
+      groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Display the listing of advertisement by take limit = 4'
+      title: 'Verify OTP and log the user'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      otp:
+        name: otp
+        description: ''
+        required: true
+        example: unde
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      otpToken:
+        name: otpToken
+        description: ''
+        required: true
+        example: ad
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      otp: unde
+      otpToken: ad
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/upload-profile
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      profile:
+        name: profile
+        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+        required: true
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters: []
+    fileParameters:
+      profile: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/advertisements
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a new advertisement'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/advertisements/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get an advertisement'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the advertisement.'
+        required: true
+        example: 6
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 6
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":200,"message":"Advertise found successfully","data":{"id":6,"title":"The biggest promotion arrival","description":"This is the biggest promotion arrival","itemImageSrc":"1744149159-Ads-Banner.png","alt":"The biggest promotion arrival","thumbnailImageSrc":"1744149159-Item-Src.png","created_at":"2025-04-08T21:52:39.000000Z","updated_at":"2025-04-08T21:52:39.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '115'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/advertisements/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Edit an advertisement'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the advertisement.'
+        required: true
+        example: 6
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 6
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: xga
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'Sapiente fuga voluptatem id.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      itemImageSrc:
+        name: itemImageSrc
+        description: ''
+        required: true
+        example: et
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      thumbnailImageSrc:
+        name: thumbnailImageSrc
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      alt:
+        name: alt
+        description: ''
+        required: true
+        example: quas
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      title: xga
+      description: 'Sapiente fuga voluptatem id.'
+      itemImageSrc: et
+      thumbnailImageSrc: architecto
+      alt: quas
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/advertisements/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the advertisement.'
+        required: true
+        example: 6
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 6
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/category
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List all category'
       description: ''
       authenticated: false
       custom: []
@@ -27,12 +340,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Get all advertisement successfully","data":[]}'
+        content: '{"status":200,"message":"Get Categories Success","data":[{"id":1,"name":"Shirts","created_at":"2025-03-01T14:19:12.000000Z","updated_at":"2025-03-01T14:19:12.000000Z"}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '120'
-          x-ratelimit-remaining: '118'
+          x-ratelimit-remaining: '114'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -45,13 +358,13 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/advertisements
+    uri: api/category
     metadata:
-      groupName: Advertisement
+      groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Create a new advertisement'
+      title: 'Create new category'
       description: ''
       authenticated: false
       custom: []
@@ -63,51 +376,26 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      title:
-        name: title
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: tfavqktci
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      description:
-        name: description
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: 'Rem et assumenda sequi beatae minima voluptate.'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      order:
-        name: order
+      name:
+        name: name
         description: ''
         required: true
-        example: 2
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      image:
-        name: image
-        description: ''
-        required: true
-        example: perferendis
+        example: 'Sports & Outdoor'
         type: string
-        enumValues: []
+        enumValues:
+          - 'Electronics & Gadgets'
+          - 'Fashion & Apparel'
+          - 'Home & Kitchen'
+          - 'Beauty & Personal Care'
+          - 'Health & Wellness'
+          - 'Toys & Games'
+          - 'Sports & Outdoor'
+          - 'Automotive & Tools'
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      title: tfavqktci
-      description: 'Rem et assumenda sequi beatae minima voluptate.'
-      order: 2
-      image: perferendis
+      name: 'Sports & Outdoor'
     fileParameters: []
     responses: []
     responseFields: []
@@ -119,13 +407,13 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/advertisements/{id}'
+    uri: 'api/category/{id}'
     metadata:
-      groupName: Advertisement
+      groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get an advertisement'
+      title: 'Get Specific category'
       description: ''
       authenticated: false
       custom: []
@@ -135,16 +423,16 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the advertisement.'
+        description: 'The ID of the category.'
         required: true
-        example: 13
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 13
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -152,16 +440,13 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Advertisement] 13"
-          }
+        status: 200
+        content: '{"status":200,"message":"Get Category success","data":{"id":1,"name":"Shirts","created_at":"2025-03-01T14:19:12.000000Z","updated_at":"2025-03-01T14:19:12.000000Z"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '120'
-          x-ratelimit-remaining: '117'
+          x-ratelimit-remaining: '113'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -175,94 +460,9 @@ endpoints:
     httpMethods:
       - PUT
       - PATCH
-    uri: 'api/advertisements/{id}'
+    uri: 'api/category/{id}'
     metadata:
-      groupName: Advertisement
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Edit an advertisement'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the advertisement.'
-        required: true
-        example: 20
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 20
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      title:
-        name: title
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: xvsxkbeantfzbaawljk
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      description:
-        name: description
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: 'Neque cum nihil quia quos.'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      order:
-        name: order
-        description: ''
-        required: true
-        example: 15
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      image:
-        name: image
-        description: ''
-        required: true
-        example: vel
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      title: xvsxkbeantfzbaawljk
-      description: 'Neque cum nihil quia quos.'
-      order: 15
-      image: vel
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/advertisements/{id}'
-    metadata:
-      groupName: Advertisement
+      groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -276,16 +476,1190 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the advertisement.'
+        description: 'The ID of the category.'
         required: true
-        example: 12
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: 12
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: 'Automotive & Tools'
+        type: string
+        enumValues:
+          - 'Electronics & Gadgets'
+          - 'Fashion & Apparel'
+          - 'Home & Kitchen'
+          - 'Beauty & Personal Care'
+          - 'Health & Wellness'
+          - 'Toys & Games'
+          - 'Sports & Outdoor'
+          - 'Automotive & Tools'
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: 'Automotive & Tools'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/category/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/color
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List all category'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":200,"message":"Get color Success","data":[{"id":1,"name":"Red","code":"#FF0000","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":2,"name":"Blue","code":"#0000FF","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":3,"name":"Green","code":"#008000","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":4,"name":"Yellow","code":"#FFFF00","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":5,"name":"Black","code":"#000000","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":6,"name":"White","code":"#FFFFFF","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":7,"name":"Gray","code":"#808080","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":8,"name":"Pink","code":"#FFC0CB","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":9,"name":"Purple","code":"#800080","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"},{"id":10,"name":"Orange","code":"#FFA500","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '112'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/color
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create new category'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: Black
+        type: string
+        enumValues:
+          - Black
+          - White
+          - Red
+          - Blue
+          - Green
+          - Yellow
+          - Gray
+          - Pink
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      color:
+        name: color
+        description: ''
+        required: true
+        example: Black
+        type: string
+        enumValues:
+          - Black
+          - White
+          - Red
+          - Blue
+          - Green
+          - Yellow
+          - Gray
+          - Pink
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: Black
+      color: Black
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/color/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Specific category'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the color.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":200,"message":"Get color success","data":{"id":1,"name":"Red","code":"#FF0000","created_at":"2025-03-12T15:36:12.000000Z","updated_at":"2025-03-12T15:36:12.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '111'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/color/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the color.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: Pink
+        type: string
+        enumValues:
+          - Black
+          - White
+          - Red
+          - Blue
+          - Green
+          - Yellow
+          - Gray
+          - Pink
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      color:
+        name: color
+        description: ''
+        required: true
+        example: Yellow
+        type: string
+        enumValues:
+          - Black
+          - White
+          - Red
+          - Blue
+          - Green
+          - Yellow
+          - Gray
+          - Pink
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: Pink
+      color: Yellow
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/color/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the color.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/size
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List all category'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":200,"message":"Get sice Success","data":[{"id":1,"name":"Extra Small","size_number":34,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":2,"name":"Small","size_number":36,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":3,"name":"Medium","size_number":38,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":4,"name":"Large","size_number":40,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":5,"name":"Extra Large","size_number":42,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":6,"name":"XXL","size_number":44,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":7,"name":"XXXL","size_number":46,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":8,"name":"4XL","size_number":48,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":9,"name":"5XL","size_number":50,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"},{"id":10,"name":"6XL","size_number":52,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '110'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/size
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create new category'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: L
+        type: string
+        enumValues:
+          - XS
+          - S
+          - M
+          - L
+          - XL
+          - XXL
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      size_number:
+        name: size_number
+        description: ''
+        required: true
+        example: L
+        type: string
+        enumValues:
+          - XS
+          - S
+          - M
+          - L
+          - XL
+          - XXL
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: L
+      size_number: L
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/size/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Specific category'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the size.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":200,"message":"Get size success","data":{"id":1,"name":"Extra Small","size_number":34,"created_at":"2025-03-12T15:36:59.000000Z","updated_at":"2025-03-12T15:36:59.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '109'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/size/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the size.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: XL
+        type: string
+        enumValues:
+          - XS
+          - S
+          - M
+          - L
+          - XL
+          - XXL
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      size_number:
+        name: size_number
+        description: ''
+        required: true
+        example: S
+        type: string
+        enumValues:
+          - XS
+          - S
+          - M
+          - L
+          - XL
+          - XXL
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: XL
+      size_number: S
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/size/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the size.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/products
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'create new product'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 100 characters.'
+        required: true
+        example: p
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      rate:
+        name: rate
+        description: 'Must be at least 0. Must not be greater than 10.'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'Must not be greater than 2048 characters.'
+        required: false
+        example: gpzfscopjivkvdhimbi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      description:
+        name: description
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'Amet qui iusto rerum eos.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      imported_from:
+        name: imported_from
+        description: 'Must not be greater than 100 characters.'
+        required: true
+        example: fftczuinpffcrnbqi
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: 19
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: p
+      rate: 5
+      image: gpzfscopjivkvdhimbi
+      description: 'Amet qui iusto rerum eos.'
+      imported_from: fftczuinpffcrnbqi
+      category_id: 19
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/products/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'show the specific product'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 37
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 37
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":200,"message":"Get product successfully","data":{"id":37,"name":"Protein Powder","description":"Whey protein for muscle recovery.","rate":"4.8","image":"https:\/\/www.placehold.co\/270x400","imported_from":"GNC","star":0,"category_id":5,"regular_price":"59.99","sale_price":"49.99","created_at":"2025-03-11T15:48:24.000000Z","updated_at":"2025-03-11T15:48:24.000000Z"}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '107'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/products/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'edit the specific product'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 37
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 37
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 100 characters.'
+        required: true
+        example: hqf
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      rate:
+        name: rate
+        description: 'Must be at least 0. Must not be greater than 10.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'Must not be greater than 2048 characters.'
+        required: false
+        example: zml
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      description:
+        name: description
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'Autem neque nesciunt pariatur dolores corporis quis illo.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      imported_from:
+        name: imported_from
+        description: 'Must not be greater than 100 characters.'
+        required: true
+        example: bowuewncuwddhawin
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: hqf
+      rate: 3
+      image: zml
+      description: 'Autem neque nesciunt pariatur dolores corporis quis illo.'
+      imported_from: bowuewncuwddhawin
+      category_id: 5
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/products/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'delete the specific product'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the product.'
+        required: true
+        example: 37
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 37
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/product/category
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"error":"Category not found."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '106'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/variants
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":200,"message":"Get All Product Variants Successfully","data":[{"id":1,"product_id":37,"color_id":1,"size_id":1,"product_stock_id":1,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":65,"product_id":32,"color_id":2,"size_id":1,"product_stock_id":2,"created_at":"2025-03-12T09:03:21.000000Z","updated_at":"2025-03-12T09:03:21.000000Z"},{"id":3,"product_id":35,"color_id":3,"size_id":1,"product_stock_id":3,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":4,"product_id":35,"color_id":4,"size_id":1,"product_stock_id":4,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":5,"product_id":35,"color_id":1,"size_id":2,"product_stock_id":5,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":6,"product_id":35,"color_id":2,"size_id":2,"product_stock_id":6,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":7,"product_id":35,"color_id":3,"size_id":2,"product_stock_id":7,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":8,"product_id":35,"color_id":4,"size_id":2,"product_stock_id":8,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":9,"product_id":36,"color_id":1,"size_id":3,"product_stock_id":9,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":10,"product_id":36,"color_id":2,"size_id":3,"product_stock_id":10,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":11,"product_id":36,"color_id":3,"size_id":3,"product_stock_id":11,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":12,"product_id":36,"color_id":4,"size_id":3,"product_stock_id":12,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":13,"product_id":36,"color_id":1,"size_id":4,"product_stock_id":13,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":14,"product_id":36,"color_id":2,"size_id":4,"product_stock_id":15,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":15,"product_id":36,"color_id":3,"size_id":4,"product_stock_id":14,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":16,"product_id":32,"color_id":4,"size_id":4,"product_stock_id":16,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":17,"product_id":32,"color_id":1,"size_id":1,"product_stock_id":18,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":18,"product_id":32,"color_id":2,"size_id":1,"product_stock_id":19,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":19,"product_id":32,"color_id":3,"size_id":1,"product_stock_id":20,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":20,"product_id":32,"color_id":4,"size_id":1,"product_stock_id":21,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":21,"product_id":32,"color_id":1,"size_id":2,"product_stock_id":23,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":22,"product_id":32,"color_id":2,"size_id":2,"product_stock_id":22,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":23,"product_id":32,"color_id":3,"size_id":2,"product_stock_id":25,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":24,"product_id":32,"color_id":4,"size_id":2,"product_stock_id":24,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":25,"product_id":32,"color_id":1,"size_id":3,"product_stock_id":23,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":26,"product_id":2,"color_id":2,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":27,"product_id":2,"color_id":3,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":28,"product_id":2,"color_id":4,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":29,"product_id":2,"color_id":1,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":30,"product_id":2,"color_id":2,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":31,"product_id":2,"color_id":3,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":32,"product_id":2,"color_id":4,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":33,"product_id":3,"color_id":1,"size_id":1,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":34,"product_id":3,"color_id":2,"size_id":1,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":35,"product_id":3,"color_id":3,"size_id":1,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":36,"product_id":3,"color_id":4,"size_id":1,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":37,"product_id":3,"color_id":1,"size_id":2,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":38,"product_id":3,"color_id":2,"size_id":2,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":39,"product_id":3,"color_id":3,"size_id":2,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":40,"product_id":3,"color_id":4,"size_id":2,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":41,"product_id":3,"color_id":1,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":42,"product_id":3,"color_id":2,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":43,"product_id":3,"color_id":3,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":44,"product_id":3,"color_id":4,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":45,"product_id":3,"color_id":1,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":46,"product_id":3,"color_id":2,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":47,"product_id":3,"color_id":3,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":48,"product_id":3,"color_id":4,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":49,"product_id":50,"color_id":1,"size_id":1,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":50,"product_id":50,"color_id":2,"size_id":1,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":51,"product_id":50,"color_id":3,"size_id":1,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":52,"product_id":50,"color_id":4,"size_id":1,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":53,"product_id":50,"color_id":1,"size_id":2,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":54,"product_id":50,"color_id":2,"size_id":2,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":55,"product_id":50,"color_id":3,"size_id":2,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":56,"product_id":50,"color_id":4,"size_id":2,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":57,"product_id":50,"color_id":1,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":58,"product_id":50,"color_id":2,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":59,"product_id":50,"color_id":3,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":60,"product_id":50,"color_id":4,"size_id":3,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":61,"product_id":50,"color_id":1,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":62,"product_id":50,"color_id":2,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":63,"product_id":50,"color_id":3,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"},{"id":64,"product_id":50,"color_id":4,"size_id":4,"product_stock_id":0,"created_at":"2025-03-11T16:17:24.000000Z","updated_at":"2025-03-11T16:17:24.000000Z"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '120'
+          x-ratelimit-remaining: '105'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/variants
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create new Variants'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: esse
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      color_id:
+        name: color_id
+        description: ''
+        required: true
+        example: molestias
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      size_id:
+        name: size_id
+        description: ''
+        required: true
+        example: aut
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      product_id: esse
+      color_id: molestias
+      size_id: aut
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/variants/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the variant.'
+        required: true
+        example: quaerat
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: quaerat
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      product_id:
+        name: product_id
+        description: ''
+        required: true
+        example: tempora
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      color_id:
+        name: color_id
+        description: ''
+        required: true
+        example: repellendus
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      size_id:
+        name: size_id
+        description: ''
+        required: true
+        example: quis
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      product_id: tempora
+      color_id: repellendus
+      size_id: quis
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/variants/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the variant.'
+        required: true
+        example: enim
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: enim
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

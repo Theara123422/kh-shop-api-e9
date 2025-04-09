@@ -3,9 +3,10 @@ namespace App\Traits;
 trait GeneralResponse{
     public function successReponseWithData($message, $data){
         return response()->json([
+            'status' => 200,
             'message' => $message,
             'data'  => $data
-        ],200);
+        ]);
     }
 
     public function successResponse($message){

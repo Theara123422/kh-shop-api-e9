@@ -9,9 +9,7 @@ use Dotenv\Exception\ValidationException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-/**
- * @group Size
- */
+
 class sizeController extends Controller
 {
     use GeneralResponse;

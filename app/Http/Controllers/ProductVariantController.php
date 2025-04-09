@@ -13,7 +13,8 @@ use Illuminate\Validation\ValidationException;
 class ProductVariantController extends Controller
 {
     use GeneralResponse;
-    public function index(){
+    public function index()
+    {
         $productVariants = ProductVariant::all();
 
         return $this->successReponseWithData(
@@ -22,16 +23,58 @@ class ProductVariantController extends Controller
         );
     }
 
+    /**
+     * Summary of show
+     * @param mixed $id
+     * @return JsonResponse|mixed
+     * @group Product Detail
+     */
     public function show($id)
     {
-        // Find the product with its variants, including color and size
-        $product = Product::with(['productVariants.color', 'productVariants.size','productVariants.productStock'])->findOrFail($id);
+        $product = Product::with(['productVariants.color', 'productVariants.size', 'productVariants.productStock', 'category'])
+            ->findOrFail($id);
 
-        return $this->successReponseWithData(
-            "Get Product Variant Successfully",
-            $product->productVariants
-        );
+        $colors = $product->productVariants->pluck('color')->unique('id')->values()->map(function ($color) {
+            return [
+                'code' => $color->code ?? '',
+                'name' => $color->name ?? '',
+            ];
+        });
+
+        $sizes = $product->productVariants->pluck('size')->unique('id')->values()->map(function ($size) {
+            return [
+                'code' => $size->code ?? '',
+                'name' => $size->name ?? '',
+            ];
+        });
+
+        $categoryName = $product->category->name ?? null;
+
+        
+        if (!$categoryName && $product->category_id) {
+            $categoryName = \App\Models\Category::find($product->category_id)?->name ?? '';
+        }
+
+        $data = [
+            'id'             => $product->id,
+            'image_url'      => $product->image ?? '',
+            'regular_price'  => $product->regular_price ?? '',
+            'sale_price'     => $product->sale_price ?? '',
+            'category'       => $categoryName,
+            'title'          => $product->name ?? '',
+            'color'          => $colors,
+            'size'           => $sizes,
+        ];
+
+        return response()->json([
+            'status'  => 200,
+            'message' => 'Successfully',
+            'data'    => $data,
+            'total'   => $product->productVariants->count(),
+        ]);
     }
+
+
 
     /**
      * Create new Variants
@@ -40,13 +83,13 @@ class ProductVariantController extends Controller
      */
     public function store(ProductVariantRequest $request)
     {
-        try{
+        try {
             $data = $request->validated();
             ProductVariant::create($data);
             return $this->successResponse(
                 "Add Product Variant Successfully",
             );
-        }catch (QueryException|ValidationException $exception){
+        } catch (QueryException | ValidationException $exception) {
             return $this->errorResponse(
                 $exception->getMessage(),
                 $exception->getCode()
@@ -54,15 +97,16 @@ class ProductVariantController extends Controller
         }
     }
 
-    public function update(ProductVariantRequest $request, $id){
-        try{
+    public function update(ProductVariantRequest $request, $id)
+    {
+        try {
             $product_variant = ProductVariant::findOrFail($id);
             $data = $request->validated();
             $product_variant->update($data);
             return $this->successResponse(
                 "Update Product Variant Successfully",
             );
-        }catch (QueryException|ValidationException $exception){
+        } catch (QueryException | ValidationException $exception) {
             return $this->errorResponse(
                 $exception->getMessage(),
                 $exception->getCode()
@@ -70,7 +114,8 @@ class ProductVariantController extends Controller
         }
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $product_variant = ProductVariant::findOrFail($id);
 
         $product_variant->delete();

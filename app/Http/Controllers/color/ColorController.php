@@ -8,9 +8,7 @@ use App\Traits\GeneralResponse;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Database\QueryException;
 
-/**
- * @group Color
- */
+
 class ColorController extends Controller
 {
     use GeneralResponse;

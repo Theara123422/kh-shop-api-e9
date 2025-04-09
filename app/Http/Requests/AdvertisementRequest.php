@@ -16,8 +16,9 @@ class AdvertisementRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'order' => 'required|integer',
-            'image' => 'required'
+            "itemImageSrc" => "required|string",
+            "thumbnailImageSrc" => "required|string",
+            "alt" => "required|string"
         ];
     }
 }

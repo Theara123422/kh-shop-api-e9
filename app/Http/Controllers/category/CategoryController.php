@@ -8,9 +8,7 @@ use App\Traits\GeneralResponse;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 
-/**
- * @group Category
- */
+
 class CategoryController extends Controller
 {
     use GeneralResponse;

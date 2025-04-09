@@ -7,10 +7,10 @@ servers:
   -
     url: 'http://127.0.0.1:8000'
 paths:
-  /api/advertisements:
+  /api/countries:
     get:
-      summary: 'Display the listing of advertisement by take limit = 4'
-      operationId: displayTheListingOfAdvertisementByTakeLimit4
+      summary: 'Summary of getCountries'
+      operationId: summaryOfGetCountries
       description: ''
       parameters: []
       responses:
@@ -19,210 +19,34 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: string
                 example:
-                  message: 'Get all advertisement successfully'
-                  data: []
-                properties:
-                  message:
-                    type: string
-                    example: 'Get all advertisement successfully'
-                  data:
-                    type: array
-                    example: []
+                  - Cambodia
+                  - USA
+                  - Canada
+                  - UK
+                  - Germany
+                  - France
+                  - Italy
+                  - Spain
+                  - India
+                  - China
+                  - Japan
+                  - Australia
+                  - Brazil
+                  - Mexico
+                  - Thailand
+                  - Vietnam
+                  - Philippines
+                  - Indonesia
+                  - Malaysia
+                  - 'South Korea'
+                  - Russia
+                  - Turkey
       tags:
-        - Advertisement
-      security: []
-    post:
-      summary: 'Create a new advertisement'
-      operationId: createANewAdvertisement
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Advertisement
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: tfavqktci
-                  nullable: false
-                description:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: 'Rem et assumenda sequi beatae minima voluptate.'
-                  nullable: false
-                order:
-                  type: integer
-                  description: ''
-                  example: 2
-                  nullable: false
-                image:
-                  type: string
-                  description: ''
-                  example: perferendis
-                  nullable: false
-              required:
-                - title
-                - description
-                - order
-                - image
-      security: []
-  '/api/advertisements/{id}':
-    get:
-      summary: 'Get an advertisement'
-      operationId: getAnAdvertisement
-      description: ''
-      parameters: []
-      responses:
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'No query results for model [App\Models\Advertisement] 13'
-                properties:
-                  message:
-                    type: string
-                    example: 'No query results for model [App\Models\Advertisement] 13'
-      tags:
-        - Advertisement
-      security: []
-    put:
-      summary: 'Edit an advertisement'
-      operationId: editAnAdvertisement
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Advertisement
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: xvsxkbeantfzbaawljk
-                  nullable: false
-                description:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: 'Neque cum nihil quia quos.'
-                  nullable: false
-                order:
-                  type: integer
-                  description: ''
-                  example: 15
-                  nullable: false
-                image:
-                  type: string
-                  description: ''
-                  example: vel
-                  nullable: false
-              required:
-                - title
-                - description
-                - order
-                - image
-      security: []
-    delete:
-      summary: ''
-      operationId: deleteApiAdvertisementsId
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Advertisement
-      security: []
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the advertisement.'
-        example: 13
-        required: true
-        schema:
-          type: integer
-  /api/register:
-    post:
-      summary: 'Register the user'
-      operationId: registerTheUser
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Authentication
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                firstName:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: rosozzfqlinqn
-                  nullable: false
-                lastName:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: zcoeopqdmcwyxvnptecysv
-                  nullable: false
-                gender:
-                  type: string
-                  description: ''
-                  example: male
-                  nullable: false
-                  enum:
-                    - male
-                    - female
-                email:
-                  type: string
-                  description: 'Must be a valid email address. Must not be greater than 50 characters.'
-                  example: izaiah.halvorson@example.com
-                  nullable: false
-                phoneNumber:
-                  type: string
-                  description: ''
-                  example: praesentium
-                  nullable: false
-                country:
-                  type: string
-                  description: 'Must not be greater than 100 characters.'
-                  example: feowhydtcijvrtbllztctrm
-                  nullable: false
-                city:
-                  type: string
-                  description: 'Must not be greater than 100 characters.'
-                  example: ueqmsm
-                  nullable: false
-                password:
-                  type: string
-                  description: 'Must match the regex /^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/. Must be at least 6 characters.'
-                  example: 'H7;KHCU-N<yed3}'
-                  nullable: false
-              required:
-                - firstName
-                - lastName
-                - gender
-                - email
-                - phoneNumber
-                - country
-                - city
-                - password
+        - Country
       security: []
   /api/verify-otp:
     post:
@@ -232,7 +56,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Authentication
+        - Endpoints
       requestBody:
         required: true
         content:
@@ -243,78 +67,16 @@ paths:
                 otp:
                   type: string
                   description: ''
-                  example: magnam
+                  example: unde
                   nullable: false
                 otpToken:
                   type: string
                   description: ''
-                  example: voluptatibus
+                  example: ad
                   nullable: false
               required:
                 - otp
                 - otpToken
-      security: []
-  /api/login:
-    post:
-      summary: 'Login implementation'
-      operationId: loginImplementation
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Authentication
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  description: 'Must be a valid email address.'
-                  example: kunze.keeley@example.org
-                  nullable: false
-                password:
-                  type: string
-                  description: ''
-                  example: 'LgtD-KZ9]6C}[jO'
-                  nullable: false
-              required:
-                - email
-                - password
-      security: []
-  /api/logout:
-    post:
-      summary: 'Logout implementation'
-      operationId: logoutImplementation
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Authentication
-      security: []
-  /api/me:
-    get:
-      summary: 'Get current user'
-      operationId: getCurrentUser
-      description: ''
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: null
-                properties:
-                  message:
-                    type: string
-                    example: null
-      tags:
-        - Authentication
       security: []
   /api/upload-profile:
     post:
@@ -324,7 +86,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Authentication
+        - Endpoints
       requestBody:
         required: true
         content:
@@ -340,6 +102,217 @@ paths:
               required:
                 - profile
       security: []
+  /api/advertisements:
+    post:
+      summary: 'Create a new advertisement'
+      operationId: createANewAdvertisement
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    get:
+      summary: 'Display the listing of advertisement by take limit = 4'
+      operationId: displayTheListingOfAdvertisementByTakeLimit4
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  message: 'Get all advertisement successfully'
+                  data:
+                    -
+                      id: 6
+                      title: 'The biggest promotion arrival'
+                      description: 'This is the biggest promotion arrival'
+                      itemImageSrc: 1744149159-Ads-Banner.png
+                      alt: 'The biggest promotion arrival'
+                      thumbnailImageSrc: 1744149159-Item-Src.png
+                      created_at: '2025-04-08T21:52:39.000000Z'
+                      updated_at: '2025-04-08T21:52:39.000000Z'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Get all advertisement successfully'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 6
+                        title: 'The biggest promotion arrival'
+                        description: 'This is the biggest promotion arrival'
+                        itemImageSrc: 1744149159-Ads-Banner.png
+                        alt: 'The biggest promotion arrival'
+                        thumbnailImageSrc: 1744149159-Item-Src.png
+                        created_at: '2025-04-08T21:52:39.000000Z'
+                        updated_at: '2025-04-08T21:52:39.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 6
+                        title:
+                          type: string
+                          example: 'The biggest promotion arrival'
+                        description:
+                          type: string
+                          example: 'This is the biggest promotion arrival'
+                        itemImageSrc:
+                          type: string
+                          example: 1744149159-Ads-Banner.png
+                        alt:
+                          type: string
+                          example: 'The biggest promotion arrival'
+                        thumbnailImageSrc:
+                          type: string
+                          example: 1744149159-Item-Src.png
+                        created_at:
+                          type: string
+                          example: '2025-04-08T21:52:39.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2025-04-08T21:52:39.000000Z'
+      tags:
+        - 'Home Page - Advertisement'
+      security: []
+  '/api/advertisements/{id}':
+    get:
+      summary: 'Get an advertisement'
+      operationId: getAnAdvertisement
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  message: 'Advertise found successfully'
+                  data:
+                    id: 6
+                    title: 'The biggest promotion arrival'
+                    description: 'This is the biggest promotion arrival'
+                    itemImageSrc: 1744149159-Ads-Banner.png
+                    alt: 'The biggest promotion arrival'
+                    thumbnailImageSrc: 1744149159-Item-Src.png
+                    created_at: '2025-04-08T21:52:39.000000Z'
+                    updated_at: '2025-04-08T21:52:39.000000Z'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Advertise found successfully'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 6
+                      title:
+                        type: string
+                        example: 'The biggest promotion arrival'
+                      description:
+                        type: string
+                        example: 'This is the biggest promotion arrival'
+                      itemImageSrc:
+                        type: string
+                        example: 1744149159-Ads-Banner.png
+                      alt:
+                        type: string
+                        example: 'The biggest promotion arrival'
+                      thumbnailImageSrc:
+                        type: string
+                        example: 1744149159-Item-Src.png
+                      created_at:
+                        type: string
+                        example: '2025-04-08T21:52:39.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2025-04-08T21:52:39.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Edit an advertisement'
+      operationId: editAnAdvertisement
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: xga
+                  nullable: false
+                description:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'Sapiente fuga voluptatem id.'
+                  nullable: false
+                itemImageSrc:
+                  type: string
+                  description: ''
+                  example: et
+                  nullable: false
+                thumbnailImageSrc:
+                  type: string
+                  description: ''
+                  example: architecto
+                  nullable: false
+                alt:
+                  type: string
+                  description: ''
+                  example: quas
+                  nullable: false
+              required:
+                - title
+                - description
+                - itemImageSrc
+                - thumbnailImageSrc
+                - alt
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiAdvertisementsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the advertisement.'
+        example: 6
+        required: true
+        schema:
+          type: integer
   /api/category:
     get:
       summary: 'List all category'
@@ -354,6 +327,7 @@ paths:
               schema:
                 type: object
                 example:
+                  status: 200
                   message: 'Get Categories Success'
                   data:
                     -
@@ -362,6 +336,9 @@ paths:
                       created_at: '2025-03-01T14:19:12.000000Z'
                       updated_at: '2025-03-01T14:19:12.000000Z'
                 properties:
+                  status:
+                    type: integer
+                    example: 200
                   message:
                     type: string
                     example: 'Get Categories Success'
@@ -389,7 +366,7 @@ paths:
                           type: string
                           example: '2025-03-01T14:19:12.000000Z'
       tags:
-        - Category
+        - Endpoints
       security: []
     post:
       summary: 'Create new category'
@@ -398,7 +375,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Category
+        - Endpoints
       requestBody:
         required: true
         content:
@@ -409,17 +386,17 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: Pants
+                  example: 'Sports & Outdoor'
                   nullable: false
                   enum:
-                    - Shoes
-                    - Shirts
-                    - Jackets
-                    - Pants
-                    - Shorts
-                    - 'Hoodies & Sweatshirts'
-                    - 'Hats & Headwear'
-                    - Activewear
+                    - 'Electronics & Gadgets'
+                    - 'Fashion & Apparel'
+                    - 'Home & Kitchen'
+                    - 'Beauty & Personal Care'
+                    - 'Health & Wellness'
+                    - 'Toys & Games'
+                    - 'Sports & Outdoor'
+                    - 'Automotive & Tools'
               required:
                 - name
       security: []
@@ -437,6 +414,7 @@ paths:
               schema:
                 type: object
                 example:
+                  status: 200
                   message: 'Get Category success'
                   data:
                     id: 1
@@ -444,6 +422,9 @@ paths:
                     created_at: '2025-03-01T14:19:12.000000Z'
                     updated_at: '2025-03-01T14:19:12.000000Z'
                 properties:
+                  status:
+                    type: integer
+                    example: 200
                   message:
                     type: string
                     example: 'Get Category success'
@@ -463,7 +444,7 @@ paths:
                         type: string
                         example: '2025-03-01T14:19:12.000000Z'
       tags:
-        - Category
+        - Endpoints
       security: []
     put:
       summary: ''
@@ -472,7 +453,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Category
+        - Endpoints
       requestBody:
         required: true
         content:
@@ -483,17 +464,17 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: Shorts
+                  example: 'Automotive & Tools'
                   nullable: false
                   enum:
-                    - Shoes
-                    - Shirts
-                    - Jackets
-                    - Pants
-                    - Shorts
-                    - 'Hoodies & Sweatshirts'
-                    - 'Hats & Headwear'
-                    - Activewear
+                    - 'Electronics & Gadgets'
+                    - 'Fashion & Apparel'
+                    - 'Home & Kitchen'
+                    - 'Beauty & Personal Care'
+                    - 'Health & Wellness'
+                    - 'Toys & Games'
+                    - 'Sports & Outdoor'
+                    - 'Automotive & Tools'
               required:
                 - name
       security: []
@@ -504,7 +485,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Category
+        - Endpoints
       security: []
     parameters:
       -
@@ -529,17 +510,159 @@ paths:
               schema:
                 type: object
                 example:
+                  status: 200
                   message: 'Get color Success'
-                  data: []
+                  data:
+                    -
+                      id: 1
+                      name: Red
+                      code: '#FF0000'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 2
+                      name: Blue
+                      code: '#0000FF'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 3
+                      name: Green
+                      code: '#008000'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 4
+                      name: Yellow
+                      code: '#FFFF00'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 5
+                      name: Black
+                      code: '#000000'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 6
+                      name: White
+                      code: '#FFFFFF'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 7
+                      name: Gray
+                      code: '#808080'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 8
+                      name: Pink
+                      code: '#FFC0CB'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 9
+                      name: Purple
+                      code: '#800080'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
+                    -
+                      id: 10
+                      name: Orange
+                      code: '#FFA500'
+                      created_at: '2025-03-12T15:36:12.000000Z'
+                      updated_at: '2025-03-12T15:36:12.000000Z'
                 properties:
+                  status:
+                    type: integer
+                    example: 200
                   message:
                     type: string
                     example: 'Get color Success'
                   data:
                     type: array
-                    example: []
+                    example:
+                      -
+                        id: 1
+                        name: Red
+                        code: '#FF0000'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 2
+                        name: Blue
+                        code: '#0000FF'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 3
+                        name: Green
+                        code: '#008000'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 4
+                        name: Yellow
+                        code: '#FFFF00'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 5
+                        name: Black
+                        code: '#000000'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 6
+                        name: White
+                        code: '#FFFFFF'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 7
+                        name: Gray
+                        code: '#808080'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 8
+                        name: Pink
+                        code: '#FFC0CB'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 9
+                        name: Purple
+                        code: '#800080'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                      -
+                        id: 10
+                        name: Orange
+                        code: '#FFA500'
+                        created_at: '2025-03-12T15:36:12.000000Z'
+                        updated_at: '2025-03-12T15:36:12.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Red
+                        code:
+                          type: string
+                          example: '#FF0000'
+                        created_at:
+                          type: string
+                          example: '2025-03-12T15:36:12.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2025-03-12T15:36:12.000000Z'
       tags:
-        - Color
+        - Endpoints
       security: []
     post:
       summary: 'Create new category'
@@ -548,7 +671,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Color
+        - Endpoints
       requestBody:
         required: true
         content:
@@ -559,7 +682,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: Yellow
+                  example: Black
                   nullable: false
                   enum:
                     - Black
@@ -573,7 +696,7 @@ paths:
                 color:
                   type: string
                   description: ''
-                  example: Pink
+                  example: Black
                   nullable: false
                   enum:
                     - Black
@@ -595,20 +718,48 @@ paths:
       description: ''
       parameters: []
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Color] 11'
+                  status: 200
+                  message: 'Get color success'
+                  data:
+                    id: 1
+                    name: Red
+                    code: '#FF0000'
+                    created_at: '2025-03-12T15:36:12.000000Z'
+                    updated_at: '2025-03-12T15:36:12.000000Z'
                 properties:
+                  status:
+                    type: integer
+                    example: 200
                   message:
                     type: string
-                    example: 'No query results for model [App\Models\Color] 11'
+                    example: 'Get color success'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: Red
+                      code:
+                        type: string
+                        example: '#FF0000'
+                      created_at:
+                        type: string
+                        example: '2025-03-12T15:36:12.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2025-03-12T15:36:12.000000Z'
       tags:
-        - Color
+        - Endpoints
       security: []
     put:
       summary: ''
@@ -617,7 +768,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Color
+        - Endpoints
       requestBody:
         required: true
         content:
@@ -628,7 +779,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: Green
+                  example: Pink
                   nullable: false
                   enum:
                     - Black
@@ -642,7 +793,7 @@ paths:
                 color:
                   type: string
                   description: ''
-                  example: Gray
+                  example: Yellow
                   nullable: false
                   enum:
                     - Black
@@ -664,297 +815,17 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Color
+        - Endpoints
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the color.'
-        example: 11
+        example: 1
         required: true
         schema:
           type: integer
-  /api/products:
-    get:
-      summary: 'list limit the products by on client request'
-      operationId: listLimitTheProductsByOnClientRequest
-      description: ''
-      parameters: []
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'Get all products successfully'
-                  data:
-                    current_page: 1
-                    data: []
-                    first_page_url: 'http://127.0.0.1:8000/api/products?page=1'
-                    from: null
-                    last_page: 1
-                    last_page_url: 'http://127.0.0.1:8000/api/products?page=1'
-                    links:
-                      -
-                        url: null
-                        label: '&laquo; Previous'
-                        active: false
-                      -
-                        url: 'http://127.0.0.1:8000/api/products?page=1'
-                        label: '1'
-                        active: true
-                      -
-                        url: null
-                        label: 'Next &raquo;'
-                        active: false
-                    next_page_url: null
-                    path: 'http://127.0.0.1:8000/api/products'
-                    per_page: 4
-                    prev_page_url: null
-                    to: null
-                    total: 0
-                properties:
-                  message:
-                    type: string
-                    example: 'Get all products successfully'
-                  data:
-                    type: object
-                    properties:
-                      current_page:
-                        type: integer
-                        example: 1
-                      data:
-                        type: array
-                        example: []
-                      first_page_url:
-                        type: string
-                        example: 'http://127.0.0.1:8000/api/products?page=1'
-                      from:
-                        type: string
-                        example: null
-                      last_page:
-                        type: integer
-                        example: 1
-                      last_page_url:
-                        type: string
-                        example: 'http://127.0.0.1:8000/api/products?page=1'
-                      links:
-                        type: array
-                        example:
-                          -
-                            url: null
-                            label: '&laquo; Previous'
-                            active: false
-                          -
-                            url: 'http://127.0.0.1:8000/api/products?page=1'
-                            label: '1'
-                            active: true
-                          -
-                            url: null
-                            label: 'Next &raquo;'
-                            active: false
-                        items:
-                          type: object
-                          properties:
-                            url:
-                              type: string
-                              example: null
-                            label:
-                              type: string
-                              example: '&laquo; Previous'
-                            active:
-                              type: boolean
-                              example: false
-                      next_page_url:
-                        type: string
-                        example: null
-                      path:
-                        type: string
-                        example: 'http://127.0.0.1:8000/api/products'
-                      per_page:
-                        type: integer
-                        example: 4
-                      prev_page_url:
-                        type: string
-                        example: null
-                      to:
-                        type: string
-                        example: null
-                      total:
-                        type: integer
-                        example: 0
-      tags:
-        - Product
-      security: []
-    post:
-      summary: 'create new product'
-      operationId: createNewProduct
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Product
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: 'Must not be greater than 100 characters.'
-                  example: atppjdpu
-                  nullable: false
-                rate:
-                  type: integer
-                  description: 'Must be at least 0. Must not be greater than 10.'
-                  example: 3
-                  nullable: false
-                image:
-                  type: string
-                  description: 'Must not be greater than 2048 characters.'
-                  example: pbbldtpszhxlzchmanomofy
-                  nullable: true
-                description:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: 'Ipsum voluptas id rerum maiores voluptatem.'
-                  nullable: false
-                imported_from:
-                  type: string
-                  description: 'Must not be greater than 100 characters.'
-                  example: jplp
-                  nullable: false
-                category_id:
-                  type: integer
-                  description: ''
-                  example: 17
-                  nullable: false
-              required:
-                - name
-                - rate
-                - description
-                - imported_from
-                - category_id
-      security: []
-  '/api/products/{id}':
-    get:
-      summary: 'show the specific product'
-      operationId: showTheSpecificProduct
-      description: ''
-      parameters: []
-      responses:
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'No query results for model [App\Models\Product] 15'
-                properties:
-                  message:
-                    type: string
-                    example: 'No query results for model [App\Models\Product] 15'
-      tags:
-        - Product
-      security: []
-    put:
-      summary: 'edit the specific product'
-      operationId: editTheSpecificProduct
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Product
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: 'Must not be greater than 100 characters.'
-                  example: aukutexyxstmijibvb
-                  nullable: false
-                rate:
-                  type: integer
-                  description: 'Must be at least 0. Must not be greater than 10.'
-                  example: 8
-                  nullable: false
-                image:
-                  type: string
-                  description: 'Must not be greater than 2048 characters.'
-                  example: ssogjtdtlqpmmmsdxw
-                  nullable: true
-                description:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: 'Necessitatibus quia ea et quae.'
-                  nullable: false
-                imported_from:
-                  type: string
-                  description: 'Must not be greater than 100 characters.'
-                  example: vpqmnv
-                  nullable: false
-                category_id:
-                  type: integer
-                  description: ''
-                  example: 5
-                  nullable: false
-              required:
-                - name
-                - rate
-                - description
-                - imported_from
-                - category_id
-      security: []
-    delete:
-      summary: 'delete the specific product'
-      operationId: deleteTheSpecificProduct
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Product
-      security: []
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the product.'
-        example: 15
-        required: true
-        schema:
-          type: integer
-  /api/product/category:
-    get:
-      summary: ''
-      operationId: getApiProductCategory
-      description: ''
-      parameters: []
-      responses:
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  error: 'Category not found.'
-                properties:
-                  error:
-                    type: string
-                    example: 'Category not found.'
-      tags:
-        - Product
-      security: []
   /api/size:
     get:
       summary: 'List all category'
@@ -969,17 +840,159 @@ paths:
               schema:
                 type: object
                 example:
+                  status: 200
                   message: 'Get sice Success'
-                  data: []
+                  data:
+                    -
+                      id: 1
+                      name: 'Extra Small'
+                      size_number: 34
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 2
+                      name: Small
+                      size_number: 36
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 3
+                      name: Medium
+                      size_number: 38
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 4
+                      name: Large
+                      size_number: 40
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 5
+                      name: 'Extra Large'
+                      size_number: 42
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 6
+                      name: XXL
+                      size_number: 44
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 7
+                      name: XXXL
+                      size_number: 46
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 8
+                      name: 4XL
+                      size_number: 48
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 9
+                      name: 5XL
+                      size_number: 50
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
+                    -
+                      id: 10
+                      name: 6XL
+                      size_number: 52
+                      created_at: '2025-03-12T15:36:59.000000Z'
+                      updated_at: '2025-03-12T15:36:59.000000Z'
                 properties:
+                  status:
+                    type: integer
+                    example: 200
                   message:
                     type: string
                     example: 'Get sice Success'
                   data:
                     type: array
-                    example: []
+                    example:
+                      -
+                        id: 1
+                        name: 'Extra Small'
+                        size_number: 34
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 2
+                        name: Small
+                        size_number: 36
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 3
+                        name: Medium
+                        size_number: 38
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 4
+                        name: Large
+                        size_number: 40
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 5
+                        name: 'Extra Large'
+                        size_number: 42
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 6
+                        name: XXL
+                        size_number: 44
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 7
+                        name: XXXL
+                        size_number: 46
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 8
+                        name: 4XL
+                        size_number: 48
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 9
+                        name: 5XL
+                        size_number: 50
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                      -
+                        id: 10
+                        name: 6XL
+                        size_number: 52
+                        created_at: '2025-03-12T15:36:59.000000Z'
+                        updated_at: '2025-03-12T15:36:59.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Extra Small'
+                        size_number:
+                          type: integer
+                          example: 34
+                        created_at:
+                          type: string
+                          example: '2025-03-12T15:36:59.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2025-03-12T15:36:59.000000Z'
       tags:
-        - Size
+        - Endpoints
       security: []
     post:
       summary: 'Create new category'
@@ -988,7 +1001,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Size
+        - Endpoints
       requestBody:
         required: true
         content:
@@ -999,72 +1012,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: M
-                  nullable: false
-                  enum:
-                    - XS
-                    - S
-                    - M
-                    - L
-                    - XL
-                    - XXL
-                size_number:
-                  type: string
-                  description: ''
-                  example: XXL
-                  nullable: false
-                  enum:
-                    - XS
-                    - S
-                    - M
-                    - L
-                    - XL
-                    - XXL
-              required:
-                - name
-                - size_number
-      security: []
-  '/api/size/{id}':
-    get:
-      summary: 'Get Specific category'
-      operationId: getSpecificCategory
-      description: ''
-      parameters: []
-      responses:
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'No query results for model [App\Models\Size] 8'
-                properties:
-                  message:
-                    type: string
-                    example: 'No query results for model [App\Models\Size] 8'
-      tags:
-        - Size
-      security: []
-    put:
-      summary: ''
-      operationId: putApiSizeId
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Size
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: ''
-                  example: M
+                  example: L
                   nullable: false
                   enum:
                     - XS
@@ -1089,6 +1037,99 @@ paths:
                 - name
                 - size_number
       security: []
+  '/api/size/{id}':
+    get:
+      summary: 'Get Specific category'
+      operationId: getSpecificCategory
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  message: 'Get size success'
+                  data:
+                    id: 1
+                    name: 'Extra Small'
+                    size_number: 34
+                    created_at: '2025-03-12T15:36:59.000000Z'
+                    updated_at: '2025-03-12T15:36:59.000000Z'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Get size success'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Extra Small'
+                      size_number:
+                        type: integer
+                        example: 34
+                      created_at:
+                        type: string
+                        example: '2025-03-12T15:36:59.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2025-03-12T15:36:59.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiSizeId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: XL
+                  nullable: false
+                  enum:
+                    - XS
+                    - S
+                    - M
+                    - L
+                    - XL
+                    - XXL
+                size_number:
+                  type: string
+                  description: ''
+                  example: S
+                  nullable: false
+                  enum:
+                    - XS
+                    - S
+                    - M
+                    - L
+                    - XL
+                    - XXL
+              required:
+                - name
+                - size_number
+      security: []
     delete:
       summary: ''
       operationId: deleteApiSizeId
@@ -1096,33 +1137,2957 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Size
+        - Endpoints
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the size.'
-        example: 8
+        example: 1
         required: true
         schema:
           type: integer
+  /api/products:
+    post:
+      summary: 'create new product'
+      operationId: createNewProduct
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 100 characters.'
+                  example: p
+                  nullable: false
+                rate:
+                  type: integer
+                  description: 'Must be at least 0. Must not be greater than 10.'
+                  example: 5
+                  nullable: false
+                image:
+                  type: string
+                  description: 'Must not be greater than 2048 characters.'
+                  example: gpzfscopjivkvdhimbi
+                  nullable: true
+                description:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'Amet qui iusto rerum eos.'
+                  nullable: false
+                imported_from:
+                  type: string
+                  description: 'Must not be greater than 100 characters.'
+                  example: fftczuinpffcrnbqi
+                  nullable: false
+                category_id:
+                  type: integer
+                  description: ''
+                  example: 19
+                  nullable: false
+              required:
+                - name
+                - rate
+                - description
+                - imported_from
+                - category_id
+      security: []
+    get:
+      summary: 'list limit the products by on client request'
+      operationId: listLimitTheProductsByOnClientRequest
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  message: 'Get products successfully'
+                  data:
+                    -
+                      id: 37
+                      name: 'Protein Powder'
+                      description: 'Whey protein for muscle recovery.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: GNC
+                      star: 0
+                      category_id: 5
+                      regular_price: '59.99'
+                      sale_price: '49.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 36
+                      name: 'Makeup Brush Set'
+                      description: 'Professional 10-piece makeup brush set.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: 'Ulta Beauty'
+                      star: 0
+                      category_id: 4
+                      regular_price: '39.99'
+                      sale_price: '29.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 35
+                      name: 'Facial Moisturizer'
+                      description: 'Hydrating face cream for all skin types.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Sephora
+                      star: 0
+                      category_id: 4
+                      regular_price: '49.99'
+                      sale_price: '39.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 34
+                      name: 'Air Fryer'
+                      description: 'Oil-free cooking for a healthy lifestyle.'
+                      rate: '4.9'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Target
+                      star: 0
+                      category_id: 3
+                      regular_price: '149.99'
+                      sale_price: '129.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 33
+                      name: 'Kitchen Blender'
+                      description: 'High-power blender for smoothies and shakes.'
+                      rate: '4.3'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Walmart
+                      star: 0
+                      category_id: 3
+                      regular_price: '79.99'
+                      sale_price: '59.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 32
+                      name: "Women's Sneakers"
+                      description: 'Comfortable and stylish running shoes.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Nike
+                      star: 0
+                      category_id: 1
+                      regular_price: '129.99'
+                      sale_price: '99.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 30
+                      name: 'Wireless Earbuds Pro'
+                      description: 'Noise-cancelling Bluetooth earbuds.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: BestBuy
+                      star: 0
+                      category_id: 1
+                      regular_price: '199.99'
+                      sale_price: '149.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 31
+                      name: "Men's Leather Jacket"
+                      description: 'Premium quality leather jacket.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Zara
+                      star: 0
+                      category_id: 2
+                      regular_price: '249.99'
+                      sale_price: '199.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 29
+                      name: 'Smartphone X'
+                      description: 'Latest high-end smartphone with AI features.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Amazon
+                      star: 0
+                      category_id: 1
+                      regular_price: '999.99'
+                      sale_price: '899.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 38
+                      name: Treadmill
+                      description: 'Foldable electric treadmill for home workouts.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Amazon
+                      star: 0
+                      category_id: 5
+                      regular_price: '699.99'
+                      sale_price: '599.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 39
+                      name: 'Lego Building Set'
+                      description: 'Creative play for kids aged 6+'
+                      rate: '4.9'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: 'Toys R Us'
+                      star: 0
+                      category_id: 6
+                      regular_price: '69.99'
+                      sale_price: '54.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 40
+                      name: 'Board Game - Catan'
+                      description: 'Fun strategy board game for family & friends.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Walmart
+                      star: 0
+                      category_id: 6
+                      regular_price: '49.99'
+                      sale_price: '39.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 41
+                      name: 'Camping Tent'
+                      description: 'Waterproof tent for outdoor adventures.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: REI
+                      star: 0
+                      category_id: 7
+                      regular_price: '199.99'
+                      sale_price: '179.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 42
+                      name: 'Running Shoes'
+                      description: 'Lightweight shoes for marathon training.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Nike
+                      star: 0
+                      category_id: 7
+                      regular_price: '149.99'
+                      sale_price: '129.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 43
+                      name: 'Car Dash Cam'
+                      description: '1080p dash camera with night vision.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: AutoZone
+                      star: 0
+                      category_id: 8
+                      regular_price: '129.99'
+                      sale_price: '99.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 44
+                      name: 'Cordless Drill Set'
+                      description: 'Powerful drill with battery and charger.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: 'Home Depot'
+                      star: 0
+                      category_id: 8
+                      regular_price: '99.99'
+                      sale_price: '79.99'
+                      created_at: '2025-03-11T15:48:24.000000Z'
+                      updated_at: '2025-03-11T15:48:24.000000Z'
+                    -
+                      id: 45
+                      name: 'Smartwatch Z'
+                      description: 'Stylish smartwatch with fitness tracking features.'
+                      rate: '4.3'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: BestBuy
+                      star: 0
+                      category_id: 1
+                      regular_price: '249.99'
+                      sale_price: '199.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 46
+                      name: 'Bluetooth Speaker'
+                      description: 'Portable wireless speaker with deep bass.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Amazon
+                      star: 0
+                      category_id: 1
+                      regular_price: '99.99'
+                      sale_price: '79.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 47
+                      name: 'Gaming Laptop'
+                      description: 'High-performance laptop for gamers and creators.'
+                      rate: '4.9'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Walmart
+                      star: 0
+                      category_id: 1
+                      regular_price: '1499.99'
+                      sale_price: '1299.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 48
+                      name: 'Tablet Pro'
+                      description: 'Lightweight tablet with powerful features for productivity.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Target
+                      star: 0
+                      category_id: 1
+                      regular_price: '499.99'
+                      sale_price: '449.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 49
+                      name: 'Camera DSLR'
+                      description: 'Professional camera with 4K video recording.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: BestBuy
+                      star: 0
+                      category_id: 1
+                      regular_price: '899.99'
+                      sale_price: '799.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 50
+                      name: 'Fashion Sunglasses'
+                      description: 'UV protection stylish sunglasses for men.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Ray-Ban
+                      star: 0
+                      category_id: 2
+                      regular_price: '119.99'
+                      sale_price: '89.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 51
+                      name: "Women's Handbag"
+                      description: 'Luxury handbag made of genuine leather.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Coach
+                      star: 0
+                      category_id: 2
+                      regular_price: '349.99'
+                      sale_price: '299.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 52
+                      name: "Men's Sneakers"
+                      description: 'Comfortable sneakers for everyday wear.'
+                      rate: '4.4'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Adidas
+                      star: 0
+                      category_id: 2
+                      regular_price: '79.99'
+                      sale_price: '69.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 53
+                      name: 'Winter Coat'
+                      description: 'Stylish winter coat for cold weather.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: 'H&M'
+                      star: 0
+                      category_id: 2
+                      regular_price: '129.99'
+                      sale_price: '99.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 54
+                      name: 'Cookware Set'
+                      description: 'Non-stick cookware set for easy cooking.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Walmart
+                      star: 0
+                      category_id: 3
+                      regular_price: '99.99'
+                      sale_price: '79.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 55
+                      name: 'Coffee Maker'
+                      description: 'Automatic coffee maker with programmable features.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Target
+                      star: 0
+                      category_id: 3
+                      regular_price: '89.99'
+                      sale_price: '69.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 56
+                      name: 'Electric Grill'
+                      description: 'Indoor electric grill for cooking in any weather.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Amazon
+                      star: 0
+                      category_id: 3
+                      regular_price: '129.99'
+                      sale_price: '109.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 57
+                      name: 'Frying Pan'
+                      description: 'Durable non-stick frying pan for all cooking needs.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: 'Bed Bath & Beyond'
+                      star: 0
+                      category_id: 3
+                      regular_price: '39.99'
+                      sale_price: '29.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 58
+                      name: 'Lipstick Set'
+                      description: 'Long-lasting lipstick set for everyday wear.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Sephora
+                      star: 0
+                      category_id: 4
+                      regular_price: '49.99'
+                      sale_price: '39.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 59
+                      name: 'Shampoo & Conditioner'
+                      description: 'Shampoo and conditioner set for healthy hair.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: "L'Oreal"
+                      star: 0
+                      category_id: 4
+                      regular_price: '24.99'
+                      sale_price: '19.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 60
+                      name: 'Face Serum'
+                      description: 'Hydrating serum for smoother skin.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Clinique
+                      star: 0
+                      category_id: 4
+                      regular_price: '59.99'
+                      sale_price: '49.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 61
+                      name: 'Hair Dryer'
+                      description: 'Professional hair dryer for fast drying.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Dyson
+                      star: 0
+                      category_id: 4
+                      regular_price: '399.99'
+                      sale_price: '349.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 62
+                      name: 'Yoga Mat'
+                      description: 'Non-slip yoga mat for a comfortable workout.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Amazon
+                      star: 0
+                      category_id: 5
+                      regular_price: '39.99'
+                      sale_price: '29.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 63
+                      name: 'Dumbbells Set'
+                      description: 'Adjustable dumbbells for strength training.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Walmart
+                      star: 0
+                      category_id: 5
+                      regular_price: '89.99'
+                      sale_price: '69.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 64
+                      name: 'Cycling Helmet'
+                      description: 'Lightweight and durable helmet for cycling safety.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: REI
+                      star: 0
+                      category_id: 5
+                      regular_price: '49.99'
+                      sale_price: '39.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 65
+                      name: 'Exercise Ball'
+                      description: 'Inflatable exercise ball for workouts and stretches.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Target
+                      star: 0
+                      category_id: 5
+                      regular_price: '19.99'
+                      sale_price: '15.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 66
+                      name: 'Kids Puzzle'
+                      description: 'Fun and educational puzzles for young children.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Target
+                      star: 0
+                      category_id: 6
+                      regular_price: '15.99'
+                      sale_price: '12.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 67
+                      name: 'Action Figure Set'
+                      description: 'Superhero action figures for imaginative play.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Walmart
+                      star: 0
+                      category_id: 6
+                      regular_price: '29.99'
+                      sale_price: '19.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 68
+                      name: 'Building Blocks Set'
+                      description: 'Colorful building blocks for kids to learn and play.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Lego
+                      star: 0
+                      category_id: 6
+                      regular_price: '49.99'
+                      sale_price: '39.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 69
+                      name: 'Remote Control Car'
+                      description: 'Fast and durable remote control car for kids.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Amazon
+                      star: 0
+                      category_id: 6
+                      regular_price: '69.99'
+                      sale_price: '59.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 70
+                      name: 'Tent for 2'
+                      description: 'Compact tent for two people for outdoor camping.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: REI
+                      star: 0
+                      category_id: 7
+                      regular_price: '129.99'
+                      sale_price: '109.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 71
+                      name: 'Camping Sleeping Bag'
+                      description: 'Comfortable sleeping bag for all weather conditions.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Amazon
+                      star: 0
+                      category_id: 7
+                      regular_price: '69.99'
+                      sale_price: '59.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 72
+                      name: 'Hiking Boots'
+                      description: 'Durable boots for hiking on rough terrain.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Columbia
+                      star: 0
+                      category_id: 7
+                      regular_price: '99.99'
+                      sale_price: '79.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 73
+                      name: 'Camping Stove'
+                      description: 'Portable stove for cooking while camping.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Walmart
+                      star: 0
+                      category_id: 7
+                      regular_price: '79.99'
+                      sale_price: '59.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 74
+                      name: 'Car Seat Covers'
+                      description: 'Set of durable seat covers for car protection.'
+                      rate: '4.6'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: AutoZone
+                      star: 0
+                      category_id: 8
+                      regular_price: '39.99'
+                      sale_price: '29.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 75
+                      name: 'Car Floor Mats'
+                      description: 'Heavy-duty floor mats for vehicle interiors.'
+                      rate: '4.7'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: 'Home Depot'
+                      star: 0
+                      category_id: 8
+                      regular_price: '49.99'
+                      sale_price: '39.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 76
+                      name: 'Portable Jump Starter'
+                      description: 'Compact jump starter for emergencies.'
+                      rate: '4.5'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: Amazon
+                      star: 0
+                      category_id: 8
+                      regular_price: '79.99'
+                      sale_price: '69.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                    -
+                      id: 77
+                      name: 'Tool Set'
+                      description: 'Comprehensive tool set for DIY home projects.'
+                      rate: '4.8'
+                      image: 'https://www.placehold.co/270x400'
+                      imported_from: "Lowe's"
+                      star: 0
+                      category_id: 8
+                      regular_price: '119.99'
+                      sale_price: '99.99'
+                      created_at: '2025-03-11T15:49:25.000000Z'
+                      updated_at: '2025-03-11T15:49:25.000000Z'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Get products successfully'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 37
+                        name: 'Protein Powder'
+                        description: 'Whey protein for muscle recovery.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: GNC
+                        star: 0
+                        category_id: 5
+                        regular_price: '59.99'
+                        sale_price: '49.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 36
+                        name: 'Makeup Brush Set'
+                        description: 'Professional 10-piece makeup brush set.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: 'Ulta Beauty'
+                        star: 0
+                        category_id: 4
+                        regular_price: '39.99'
+                        sale_price: '29.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 35
+                        name: 'Facial Moisturizer'
+                        description: 'Hydrating face cream for all skin types.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Sephora
+                        star: 0
+                        category_id: 4
+                        regular_price: '49.99'
+                        sale_price: '39.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 34
+                        name: 'Air Fryer'
+                        description: 'Oil-free cooking for a healthy lifestyle.'
+                        rate: '4.9'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Target
+                        star: 0
+                        category_id: 3
+                        regular_price: '149.99'
+                        sale_price: '129.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 33
+                        name: 'Kitchen Blender'
+                        description: 'High-power blender for smoothies and shakes.'
+                        rate: '4.3'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Walmart
+                        star: 0
+                        category_id: 3
+                        regular_price: '79.99'
+                        sale_price: '59.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 32
+                        name: "Women's Sneakers"
+                        description: 'Comfortable and stylish running shoes.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Nike
+                        star: 0
+                        category_id: 1
+                        regular_price: '129.99'
+                        sale_price: '99.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 30
+                        name: 'Wireless Earbuds Pro'
+                        description: 'Noise-cancelling Bluetooth earbuds.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: BestBuy
+                        star: 0
+                        category_id: 1
+                        regular_price: '199.99'
+                        sale_price: '149.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 31
+                        name: "Men's Leather Jacket"
+                        description: 'Premium quality leather jacket.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Zara
+                        star: 0
+                        category_id: 2
+                        regular_price: '249.99'
+                        sale_price: '199.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 29
+                        name: 'Smartphone X'
+                        description: 'Latest high-end smartphone with AI features.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Amazon
+                        star: 0
+                        category_id: 1
+                        regular_price: '999.99'
+                        sale_price: '899.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 38
+                        name: Treadmill
+                        description: 'Foldable electric treadmill for home workouts.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Amazon
+                        star: 0
+                        category_id: 5
+                        regular_price: '699.99'
+                        sale_price: '599.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 39
+                        name: 'Lego Building Set'
+                        description: 'Creative play for kids aged 6+'
+                        rate: '4.9'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: 'Toys R Us'
+                        star: 0
+                        category_id: 6
+                        regular_price: '69.99'
+                        sale_price: '54.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 40
+                        name: 'Board Game - Catan'
+                        description: 'Fun strategy board game for family & friends.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Walmart
+                        star: 0
+                        category_id: 6
+                        regular_price: '49.99'
+                        sale_price: '39.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 41
+                        name: 'Camping Tent'
+                        description: 'Waterproof tent for outdoor adventures.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: REI
+                        star: 0
+                        category_id: 7
+                        regular_price: '199.99'
+                        sale_price: '179.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 42
+                        name: 'Running Shoes'
+                        description: 'Lightweight shoes for marathon training.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Nike
+                        star: 0
+                        category_id: 7
+                        regular_price: '149.99'
+                        sale_price: '129.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 43
+                        name: 'Car Dash Cam'
+                        description: '1080p dash camera with night vision.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: AutoZone
+                        star: 0
+                        category_id: 8
+                        regular_price: '129.99'
+                        sale_price: '99.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 44
+                        name: 'Cordless Drill Set'
+                        description: 'Powerful drill with battery and charger.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: 'Home Depot'
+                        star: 0
+                        category_id: 8
+                        regular_price: '99.99'
+                        sale_price: '79.99'
+                        created_at: '2025-03-11T15:48:24.000000Z'
+                        updated_at: '2025-03-11T15:48:24.000000Z'
+                      -
+                        id: 45
+                        name: 'Smartwatch Z'
+                        description: 'Stylish smartwatch with fitness tracking features.'
+                        rate: '4.3'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: BestBuy
+                        star: 0
+                        category_id: 1
+                        regular_price: '249.99'
+                        sale_price: '199.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 46
+                        name: 'Bluetooth Speaker'
+                        description: 'Portable wireless speaker with deep bass.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Amazon
+                        star: 0
+                        category_id: 1
+                        regular_price: '99.99'
+                        sale_price: '79.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 47
+                        name: 'Gaming Laptop'
+                        description: 'High-performance laptop for gamers and creators.'
+                        rate: '4.9'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Walmart
+                        star: 0
+                        category_id: 1
+                        regular_price: '1499.99'
+                        sale_price: '1299.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 48
+                        name: 'Tablet Pro'
+                        description: 'Lightweight tablet with powerful features for productivity.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Target
+                        star: 0
+                        category_id: 1
+                        regular_price: '499.99'
+                        sale_price: '449.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 49
+                        name: 'Camera DSLR'
+                        description: 'Professional camera with 4K video recording.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: BestBuy
+                        star: 0
+                        category_id: 1
+                        regular_price: '899.99'
+                        sale_price: '799.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 50
+                        name: 'Fashion Sunglasses'
+                        description: 'UV protection stylish sunglasses for men.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Ray-Ban
+                        star: 0
+                        category_id: 2
+                        regular_price: '119.99'
+                        sale_price: '89.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 51
+                        name: "Women's Handbag"
+                        description: 'Luxury handbag made of genuine leather.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Coach
+                        star: 0
+                        category_id: 2
+                        regular_price: '349.99'
+                        sale_price: '299.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 52
+                        name: "Men's Sneakers"
+                        description: 'Comfortable sneakers for everyday wear.'
+                        rate: '4.4'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Adidas
+                        star: 0
+                        category_id: 2
+                        regular_price: '79.99'
+                        sale_price: '69.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 53
+                        name: 'Winter Coat'
+                        description: 'Stylish winter coat for cold weather.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: 'H&M'
+                        star: 0
+                        category_id: 2
+                        regular_price: '129.99'
+                        sale_price: '99.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 54
+                        name: 'Cookware Set'
+                        description: 'Non-stick cookware set for easy cooking.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Walmart
+                        star: 0
+                        category_id: 3
+                        regular_price: '99.99'
+                        sale_price: '79.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 55
+                        name: 'Coffee Maker'
+                        description: 'Automatic coffee maker with programmable features.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Target
+                        star: 0
+                        category_id: 3
+                        regular_price: '89.99'
+                        sale_price: '69.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 56
+                        name: 'Electric Grill'
+                        description: 'Indoor electric grill for cooking in any weather.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Amazon
+                        star: 0
+                        category_id: 3
+                        regular_price: '129.99'
+                        sale_price: '109.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 57
+                        name: 'Frying Pan'
+                        description: 'Durable non-stick frying pan for all cooking needs.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: 'Bed Bath & Beyond'
+                        star: 0
+                        category_id: 3
+                        regular_price: '39.99'
+                        sale_price: '29.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 58
+                        name: 'Lipstick Set'
+                        description: 'Long-lasting lipstick set for everyday wear.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Sephora
+                        star: 0
+                        category_id: 4
+                        regular_price: '49.99'
+                        sale_price: '39.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 59
+                        name: 'Shampoo & Conditioner'
+                        description: 'Shampoo and conditioner set for healthy hair.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: "L'Oreal"
+                        star: 0
+                        category_id: 4
+                        regular_price: '24.99'
+                        sale_price: '19.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 60
+                        name: 'Face Serum'
+                        description: 'Hydrating serum for smoother skin.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Clinique
+                        star: 0
+                        category_id: 4
+                        regular_price: '59.99'
+                        sale_price: '49.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 61
+                        name: 'Hair Dryer'
+                        description: 'Professional hair dryer for fast drying.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Dyson
+                        star: 0
+                        category_id: 4
+                        regular_price: '399.99'
+                        sale_price: '349.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 62
+                        name: 'Yoga Mat'
+                        description: 'Non-slip yoga mat for a comfortable workout.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Amazon
+                        star: 0
+                        category_id: 5
+                        regular_price: '39.99'
+                        sale_price: '29.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 63
+                        name: 'Dumbbells Set'
+                        description: 'Adjustable dumbbells for strength training.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Walmart
+                        star: 0
+                        category_id: 5
+                        regular_price: '89.99'
+                        sale_price: '69.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 64
+                        name: 'Cycling Helmet'
+                        description: 'Lightweight and durable helmet for cycling safety.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: REI
+                        star: 0
+                        category_id: 5
+                        regular_price: '49.99'
+                        sale_price: '39.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 65
+                        name: 'Exercise Ball'
+                        description: 'Inflatable exercise ball for workouts and stretches.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Target
+                        star: 0
+                        category_id: 5
+                        regular_price: '19.99'
+                        sale_price: '15.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 66
+                        name: 'Kids Puzzle'
+                        description: 'Fun and educational puzzles for young children.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Target
+                        star: 0
+                        category_id: 6
+                        regular_price: '15.99'
+                        sale_price: '12.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 67
+                        name: 'Action Figure Set'
+                        description: 'Superhero action figures for imaginative play.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Walmart
+                        star: 0
+                        category_id: 6
+                        regular_price: '29.99'
+                        sale_price: '19.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 68
+                        name: 'Building Blocks Set'
+                        description: 'Colorful building blocks for kids to learn and play.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Lego
+                        star: 0
+                        category_id: 6
+                        regular_price: '49.99'
+                        sale_price: '39.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 69
+                        name: 'Remote Control Car'
+                        description: 'Fast and durable remote control car for kids.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Amazon
+                        star: 0
+                        category_id: 6
+                        regular_price: '69.99'
+                        sale_price: '59.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 70
+                        name: 'Tent for 2'
+                        description: 'Compact tent for two people for outdoor camping.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: REI
+                        star: 0
+                        category_id: 7
+                        regular_price: '129.99'
+                        sale_price: '109.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 71
+                        name: 'Camping Sleeping Bag'
+                        description: 'Comfortable sleeping bag for all weather conditions.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Amazon
+                        star: 0
+                        category_id: 7
+                        regular_price: '69.99'
+                        sale_price: '59.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 72
+                        name: 'Hiking Boots'
+                        description: 'Durable boots for hiking on rough terrain.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Columbia
+                        star: 0
+                        category_id: 7
+                        regular_price: '99.99'
+                        sale_price: '79.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 73
+                        name: 'Camping Stove'
+                        description: 'Portable stove for cooking while camping.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Walmart
+                        star: 0
+                        category_id: 7
+                        regular_price: '79.99'
+                        sale_price: '59.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 74
+                        name: 'Car Seat Covers'
+                        description: 'Set of durable seat covers for car protection.'
+                        rate: '4.6'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: AutoZone
+                        star: 0
+                        category_id: 8
+                        regular_price: '39.99'
+                        sale_price: '29.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 75
+                        name: 'Car Floor Mats'
+                        description: 'Heavy-duty floor mats for vehicle interiors.'
+                        rate: '4.7'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: 'Home Depot'
+                        star: 0
+                        category_id: 8
+                        regular_price: '49.99'
+                        sale_price: '39.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 76
+                        name: 'Portable Jump Starter'
+                        description: 'Compact jump starter for emergencies.'
+                        rate: '4.5'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: Amazon
+                        star: 0
+                        category_id: 8
+                        regular_price: '79.99'
+                        sale_price: '69.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                      -
+                        id: 77
+                        name: 'Tool Set'
+                        description: 'Comprehensive tool set for DIY home projects.'
+                        rate: '4.8'
+                        image: 'https://www.placehold.co/270x400'
+                        imported_from: "Lowe's"
+                        star: 0
+                        category_id: 8
+                        regular_price: '119.99'
+                        sale_price: '99.99'
+                        created_at: '2025-03-11T15:49:25.000000Z'
+                        updated_at: '2025-03-11T15:49:25.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 37
+                        name:
+                          type: string
+                          example: 'Protein Powder'
+                        description:
+                          type: string
+                          example: 'Whey protein for muscle recovery.'
+                        rate:
+                          type: string
+                          example: '4.8'
+                        image:
+                          type: string
+                          example: 'https://www.placehold.co/270x400'
+                        imported_from:
+                          type: string
+                          example: GNC
+                        star:
+                          type: integer
+                          example: 0
+                        category_id:
+                          type: integer
+                          example: 5
+                        regular_price:
+                          type: string
+                          example: '59.99'
+                        sale_price:
+                          type: string
+                          example: '49.99'
+                        created_at:
+                          type: string
+                          example: '2025-03-11T15:48:24.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2025-03-11T15:48:24.000000Z'
+      tags:
+        - 'Product Page'
+      security: []
+  '/api/products/{id}':
+    get:
+      summary: 'show the specific product'
+      operationId: showTheSpecificProduct
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  message: 'Get product successfully'
+                  data:
+                    id: 37
+                    name: 'Protein Powder'
+                    description: 'Whey protein for muscle recovery.'
+                    rate: '4.8'
+                    image: 'https://www.placehold.co/270x400'
+                    imported_from: GNC
+                    star: 0
+                    category_id: 5
+                    regular_price: '59.99'
+                    sale_price: '49.99'
+                    created_at: '2025-03-11T15:48:24.000000Z'
+                    updated_at: '2025-03-11T15:48:24.000000Z'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Get product successfully'
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 37
+                      name:
+                        type: string
+                        example: 'Protein Powder'
+                      description:
+                        type: string
+                        example: 'Whey protein for muscle recovery.'
+                      rate:
+                        type: string
+                        example: '4.8'
+                      image:
+                        type: string
+                        example: 'https://www.placehold.co/270x400'
+                      imported_from:
+                        type: string
+                        example: GNC
+                      star:
+                        type: integer
+                        example: 0
+                      category_id:
+                        type: integer
+                        example: 5
+                      regular_price:
+                        type: string
+                        example: '59.99'
+                      sale_price:
+                        type: string
+                        example: '49.99'
+                      created_at:
+                        type: string
+                        example: '2025-03-11T15:48:24.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2025-03-11T15:48:24.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'edit the specific product'
+      operationId: editTheSpecificProduct
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 100 characters.'
+                  example: hqf
+                  nullable: false
+                rate:
+                  type: integer
+                  description: 'Must be at least 0. Must not be greater than 10.'
+                  example: 3
+                  nullable: false
+                image:
+                  type: string
+                  description: 'Must not be greater than 2048 characters.'
+                  example: zml
+                  nullable: true
+                description:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: 'Autem neque nesciunt pariatur dolores corporis quis illo.'
+                  nullable: false
+                imported_from:
+                  type: string
+                  description: 'Must not be greater than 100 characters.'
+                  example: bowuewncuwddhawin
+                  nullable: false
+                category_id:
+                  type: integer
+                  description: ''
+                  example: 5
+                  nullable: false
+              required:
+                - name
+                - rate
+                - description
+                - imported_from
+                - category_id
+      security: []
+    delete:
+      summary: 'delete the specific product'
+      operationId: deleteTheSpecificProduct
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the product.'
+        example: 37
+        required: true
+        schema:
+          type: integer
+  /api/product/category:
+    get:
+      summary: ''
+      operationId: getApiProductCategory
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Category not found.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Category not found.'
+      tags:
+        - Endpoints
+      security: []
+  /api/variants:
+    get:
+      summary: ''
+      operationId: getApiVariants
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  message: 'Get All Product Variants Successfully'
+                  data:
+                    -
+                      id: 1
+                      product_id: 37
+                      color_id: 1
+                      size_id: 1
+                      product_stock_id: 1
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 65
+                      product_id: 32
+                      color_id: 2
+                      size_id: 1
+                      product_stock_id: 2
+                      created_at: '2025-03-12T09:03:21.000000Z'
+                      updated_at: '2025-03-12T09:03:21.000000Z'
+                    -
+                      id: 3
+                      product_id: 35
+                      color_id: 3
+                      size_id: 1
+                      product_stock_id: 3
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 4
+                      product_id: 35
+                      color_id: 4
+                      size_id: 1
+                      product_stock_id: 4
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 5
+                      product_id: 35
+                      color_id: 1
+                      size_id: 2
+                      product_stock_id: 5
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 6
+                      product_id: 35
+                      color_id: 2
+                      size_id: 2
+                      product_stock_id: 6
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 7
+                      product_id: 35
+                      color_id: 3
+                      size_id: 2
+                      product_stock_id: 7
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 8
+                      product_id: 35
+                      color_id: 4
+                      size_id: 2
+                      product_stock_id: 8
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 9
+                      product_id: 36
+                      color_id: 1
+                      size_id: 3
+                      product_stock_id: 9
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 10
+                      product_id: 36
+                      color_id: 2
+                      size_id: 3
+                      product_stock_id: 10
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 11
+                      product_id: 36
+                      color_id: 3
+                      size_id: 3
+                      product_stock_id: 11
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 12
+                      product_id: 36
+                      color_id: 4
+                      size_id: 3
+                      product_stock_id: 12
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 13
+                      product_id: 36
+                      color_id: 1
+                      size_id: 4
+                      product_stock_id: 13
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 14
+                      product_id: 36
+                      color_id: 2
+                      size_id: 4
+                      product_stock_id: 15
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 15
+                      product_id: 36
+                      color_id: 3
+                      size_id: 4
+                      product_stock_id: 14
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 16
+                      product_id: 32
+                      color_id: 4
+                      size_id: 4
+                      product_stock_id: 16
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 17
+                      product_id: 32
+                      color_id: 1
+                      size_id: 1
+                      product_stock_id: 18
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 18
+                      product_id: 32
+                      color_id: 2
+                      size_id: 1
+                      product_stock_id: 19
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 19
+                      product_id: 32
+                      color_id: 3
+                      size_id: 1
+                      product_stock_id: 20
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 20
+                      product_id: 32
+                      color_id: 4
+                      size_id: 1
+                      product_stock_id: 21
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 21
+                      product_id: 32
+                      color_id: 1
+                      size_id: 2
+                      product_stock_id: 23
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 22
+                      product_id: 32
+                      color_id: 2
+                      size_id: 2
+                      product_stock_id: 22
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 23
+                      product_id: 32
+                      color_id: 3
+                      size_id: 2
+                      product_stock_id: 25
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 24
+                      product_id: 32
+                      color_id: 4
+                      size_id: 2
+                      product_stock_id: 24
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 25
+                      product_id: 32
+                      color_id: 1
+                      size_id: 3
+                      product_stock_id: 23
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 26
+                      product_id: 2
+                      color_id: 2
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 27
+                      product_id: 2
+                      color_id: 3
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 28
+                      product_id: 2
+                      color_id: 4
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 29
+                      product_id: 2
+                      color_id: 1
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 30
+                      product_id: 2
+                      color_id: 2
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 31
+                      product_id: 2
+                      color_id: 3
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 32
+                      product_id: 2
+                      color_id: 4
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 33
+                      product_id: 3
+                      color_id: 1
+                      size_id: 1
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 34
+                      product_id: 3
+                      color_id: 2
+                      size_id: 1
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 35
+                      product_id: 3
+                      color_id: 3
+                      size_id: 1
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 36
+                      product_id: 3
+                      color_id: 4
+                      size_id: 1
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 37
+                      product_id: 3
+                      color_id: 1
+                      size_id: 2
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 38
+                      product_id: 3
+                      color_id: 2
+                      size_id: 2
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 39
+                      product_id: 3
+                      color_id: 3
+                      size_id: 2
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 40
+                      product_id: 3
+                      color_id: 4
+                      size_id: 2
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 41
+                      product_id: 3
+                      color_id: 1
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 42
+                      product_id: 3
+                      color_id: 2
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 43
+                      product_id: 3
+                      color_id: 3
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 44
+                      product_id: 3
+                      color_id: 4
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 45
+                      product_id: 3
+                      color_id: 1
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 46
+                      product_id: 3
+                      color_id: 2
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 47
+                      product_id: 3
+                      color_id: 3
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 48
+                      product_id: 3
+                      color_id: 4
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 49
+                      product_id: 50
+                      color_id: 1
+                      size_id: 1
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 50
+                      product_id: 50
+                      color_id: 2
+                      size_id: 1
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 51
+                      product_id: 50
+                      color_id: 3
+                      size_id: 1
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 52
+                      product_id: 50
+                      color_id: 4
+                      size_id: 1
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 53
+                      product_id: 50
+                      color_id: 1
+                      size_id: 2
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 54
+                      product_id: 50
+                      color_id: 2
+                      size_id: 2
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 55
+                      product_id: 50
+                      color_id: 3
+                      size_id: 2
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 56
+                      product_id: 50
+                      color_id: 4
+                      size_id: 2
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 57
+                      product_id: 50
+                      color_id: 1
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 58
+                      product_id: 50
+                      color_id: 2
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 59
+                      product_id: 50
+                      color_id: 3
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 60
+                      product_id: 50
+                      color_id: 4
+                      size_id: 3
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 61
+                      product_id: 50
+                      color_id: 1
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 62
+                      product_id: 50
+                      color_id: 2
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 63
+                      product_id: 50
+                      color_id: 3
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                    -
+                      id: 64
+                      product_id: 50
+                      color_id: 4
+                      size_id: 4
+                      product_stock_id: 0
+                      created_at: '2025-03-11T16:17:24.000000Z'
+                      updated_at: '2025-03-11T16:17:24.000000Z'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Get All Product Variants Successfully'
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        product_id: 37
+                        color_id: 1
+                        size_id: 1
+                        product_stock_id: 1
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 65
+                        product_id: 32
+                        color_id: 2
+                        size_id: 1
+                        product_stock_id: 2
+                        created_at: '2025-03-12T09:03:21.000000Z'
+                        updated_at: '2025-03-12T09:03:21.000000Z'
+                      -
+                        id: 3
+                        product_id: 35
+                        color_id: 3
+                        size_id: 1
+                        product_stock_id: 3
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 4
+                        product_id: 35
+                        color_id: 4
+                        size_id: 1
+                        product_stock_id: 4
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 5
+                        product_id: 35
+                        color_id: 1
+                        size_id: 2
+                        product_stock_id: 5
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 6
+                        product_id: 35
+                        color_id: 2
+                        size_id: 2
+                        product_stock_id: 6
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 7
+                        product_id: 35
+                        color_id: 3
+                        size_id: 2
+                        product_stock_id: 7
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 8
+                        product_id: 35
+                        color_id: 4
+                        size_id: 2
+                        product_stock_id: 8
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 9
+                        product_id: 36
+                        color_id: 1
+                        size_id: 3
+                        product_stock_id: 9
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 10
+                        product_id: 36
+                        color_id: 2
+                        size_id: 3
+                        product_stock_id: 10
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 11
+                        product_id: 36
+                        color_id: 3
+                        size_id: 3
+                        product_stock_id: 11
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 12
+                        product_id: 36
+                        color_id: 4
+                        size_id: 3
+                        product_stock_id: 12
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 13
+                        product_id: 36
+                        color_id: 1
+                        size_id: 4
+                        product_stock_id: 13
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 14
+                        product_id: 36
+                        color_id: 2
+                        size_id: 4
+                        product_stock_id: 15
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 15
+                        product_id: 36
+                        color_id: 3
+                        size_id: 4
+                        product_stock_id: 14
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 16
+                        product_id: 32
+                        color_id: 4
+                        size_id: 4
+                        product_stock_id: 16
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 17
+                        product_id: 32
+                        color_id: 1
+                        size_id: 1
+                        product_stock_id: 18
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 18
+                        product_id: 32
+                        color_id: 2
+                        size_id: 1
+                        product_stock_id: 19
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 19
+                        product_id: 32
+                        color_id: 3
+                        size_id: 1
+                        product_stock_id: 20
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 20
+                        product_id: 32
+                        color_id: 4
+                        size_id: 1
+                        product_stock_id: 21
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 21
+                        product_id: 32
+                        color_id: 1
+                        size_id: 2
+                        product_stock_id: 23
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 22
+                        product_id: 32
+                        color_id: 2
+                        size_id: 2
+                        product_stock_id: 22
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 23
+                        product_id: 32
+                        color_id: 3
+                        size_id: 2
+                        product_stock_id: 25
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 24
+                        product_id: 32
+                        color_id: 4
+                        size_id: 2
+                        product_stock_id: 24
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 25
+                        product_id: 32
+                        color_id: 1
+                        size_id: 3
+                        product_stock_id: 23
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 26
+                        product_id: 2
+                        color_id: 2
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 27
+                        product_id: 2
+                        color_id: 3
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 28
+                        product_id: 2
+                        color_id: 4
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 29
+                        product_id: 2
+                        color_id: 1
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 30
+                        product_id: 2
+                        color_id: 2
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 31
+                        product_id: 2
+                        color_id: 3
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 32
+                        product_id: 2
+                        color_id: 4
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 33
+                        product_id: 3
+                        color_id: 1
+                        size_id: 1
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 34
+                        product_id: 3
+                        color_id: 2
+                        size_id: 1
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 35
+                        product_id: 3
+                        color_id: 3
+                        size_id: 1
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 36
+                        product_id: 3
+                        color_id: 4
+                        size_id: 1
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 37
+                        product_id: 3
+                        color_id: 1
+                        size_id: 2
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 38
+                        product_id: 3
+                        color_id: 2
+                        size_id: 2
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 39
+                        product_id: 3
+                        color_id: 3
+                        size_id: 2
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 40
+                        product_id: 3
+                        color_id: 4
+                        size_id: 2
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 41
+                        product_id: 3
+                        color_id: 1
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 42
+                        product_id: 3
+                        color_id: 2
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 43
+                        product_id: 3
+                        color_id: 3
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 44
+                        product_id: 3
+                        color_id: 4
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 45
+                        product_id: 3
+                        color_id: 1
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 46
+                        product_id: 3
+                        color_id: 2
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 47
+                        product_id: 3
+                        color_id: 3
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 48
+                        product_id: 3
+                        color_id: 4
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 49
+                        product_id: 50
+                        color_id: 1
+                        size_id: 1
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 50
+                        product_id: 50
+                        color_id: 2
+                        size_id: 1
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 51
+                        product_id: 50
+                        color_id: 3
+                        size_id: 1
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 52
+                        product_id: 50
+                        color_id: 4
+                        size_id: 1
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 53
+                        product_id: 50
+                        color_id: 1
+                        size_id: 2
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 54
+                        product_id: 50
+                        color_id: 2
+                        size_id: 2
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 55
+                        product_id: 50
+                        color_id: 3
+                        size_id: 2
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 56
+                        product_id: 50
+                        color_id: 4
+                        size_id: 2
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 57
+                        product_id: 50
+                        color_id: 1
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 58
+                        product_id: 50
+                        color_id: 2
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 59
+                        product_id: 50
+                        color_id: 3
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 60
+                        product_id: 50
+                        color_id: 4
+                        size_id: 3
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 61
+                        product_id: 50
+                        color_id: 1
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 62
+                        product_id: 50
+                        color_id: 2
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 63
+                        product_id: 50
+                        color_id: 3
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                      -
+                        id: 64
+                        product_id: 50
+                        color_id: 4
+                        size_id: 4
+                        product_stock_id: 0
+                        created_at: '2025-03-11T16:17:24.000000Z'
+                        updated_at: '2025-03-11T16:17:24.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        product_id:
+                          type: integer
+                          example: 37
+                        color_id:
+                          type: integer
+                          example: 1
+                        size_id:
+                          type: integer
+                          example: 1
+                        product_stock_id:
+                          type: integer
+                          example: 1
+                        created_at:
+                          type: string
+                          example: '2025-03-11T16:17:24.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2025-03-11T16:17:24.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Create new Variants'
+      operationId: createNewVariants
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: string
+                  description: ''
+                  example: esse
+                  nullable: false
+                color_id:
+                  type: string
+                  description: ''
+                  example: molestias
+                  nullable: false
+                size_id:
+                  type: string
+                  description: ''
+                  example: aut
+                  nullable: false
+              required:
+                - product_id
+                - color_id
+                - size_id
+      security: []
+  '/api/variants/{id}':
+    put:
+      summary: ''
+      operationId: putApiVariantsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: string
+                  description: ''
+                  example: tempora
+                  nullable: false
+                color_id:
+                  type: string
+                  description: ''
+                  example: repellendus
+                  nullable: false
+                size_id:
+                  type: string
+                  description: ''
+                  example: quis
+                  nullable: false
+              required:
+                - product_id
+                - color_id
+                - size_id
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiVariantsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    get:
+      summary: 'Summary of show'
+      operationId: summaryOfShow
+      description: ''
+      parameters: []
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'No query results for model [App\Models\Product] et'
+                properties:
+                  message:
+                    type: string
+                    example: 'No query results for model [App\Models\Product] et'
+      tags:
+        - 'Product Detail'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the variant.'
+        example: quaerat
+        required: true
+        schema:
+          type: string
+  /api/login:
+    post:
+      summary: 'Login implementation'
+      operationId: loginImplementation
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: nathaniel13@example.com
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: '(QovH,rs4'
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'Logout implementation'
+      operationId: logoutImplementation
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Logout
+      security: []
+  /api/me:
+    get:
+      summary: 'Get current user'
+      operationId: getCurrentUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: null
+                properties:
+                  message:
+                    type: string
+                    example: null
+      tags:
+        - Profile
+      security: []
+  '/api/cities/{country}':
+    get:
+      summary: 'Summary of getCities'
+      operationId: summaryOfGetCities
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example: []
+      tags:
+        - city
+      security: []
+    parameters:
+      -
+        in: path
+        name: country
+        description: ''
+        example: maiores
+        required: true
+        schema:
+          type: string
+  /api/register:
+    post:
+      summary: 'Register the user'
+      operationId: registerTheUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: gwrtmxfpvcggx
+                  nullable: false
+                lastName:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: jwp
+                  nullable: false
+                gender:
+                  type: string
+                  description: ''
+                  example: male
+                  nullable: false
+                  enum:
+                    - male
+                    - female
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 50 characters.'
+                  example: aparker@example.com
+                  nullable: false
+                phoneNumber:
+                  type: string
+                  description: ''
+                  example: aliquam
+                  nullable: false
+                country:
+                  type: string
+                  description: 'Must not be greater than 100 characters.'
+                  example: lmpuhvmcqwfqukvwgcumnhlt
+                  nullable: false
+                city:
+                  type: string
+                  description: 'Must not be greater than 100 characters.'
+                  example: bxgdcmajtfkooypfresch
+                  nullable: false
+                password:
+                  type: string
+                  description: 'Must match the regex /^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/. Must be at least 6 characters.'
+                  example: '*X|RWF'
+                  nullable: false
+              required:
+                - firstName
+                - lastName
+                - gender
+                - email
+                - phoneNumber
+                - country
+                - city
+                - password
+      security: []
 tags:
   -
-    name: Advertisement
+    name: Country
     description: ''
   -
-    name: Authentication
+    name: Endpoints
     description: ''
   -
-    name: Category
+    name: 'Home Page - Advertisement'
     description: ''
   -
-    name: Color
+    name: Login
     description: ''
   -
-    name: Product
+    name: Logout
     description: ''
   -
-    name: Size
+    name: 'Product Detail'
+    description: ''
+  -
+    name: 'Product Page'
+    description: ''
+  -
+    name: Profile
+    description: ''
+  -
+    name: city
+    description: ''
+  -
+    name: register
     description: ''

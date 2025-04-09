@@ -12,7 +12,8 @@ class Advertisement extends Model
     protected $fillable = [
         'title',
         'description',
-        'order',
-        'image'
+        'alt',
+        'itemImageSrc',
+        'thumbnailImageSrc'
     ];
 }

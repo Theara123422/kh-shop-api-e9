@@ -1,4 +1,4 @@
-name: Authentication
+name: register
 description: ''
 endpoints:
   -
@@ -6,7 +6,7 @@ endpoints:
       - POST
     uri: api/register
     metadata:
-      groupName: Authentication
+      groupName: register
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -26,7 +26,7 @@ endpoints:
         name: firstName
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: rosozzfqlinqn
+        example: gwrtmxfpvcggx
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -36,7 +36,7 @@ endpoints:
         name: lastName
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: zcoeopqdmcwyxvnptecysv
+        example: jwp
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -58,7 +58,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address. Must not be greater than 50 characters.'
         required: true
-        example: izaiah.halvorson@example.com
+        example: aparker@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -68,7 +68,7 @@ endpoints:
         name: phoneNumber
         description: ''
         required: true
-        example: praesentium
+        example: aliquam
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -78,7 +78,7 @@ endpoints:
         name: country
         description: 'Must not be greater than 100 characters.'
         required: true
-        example: feowhydtcijvrtbllztctrm
+        example: lmpuhvmcqwfqukvwgcumnhlt
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -88,7 +88,7 @@ endpoints:
         name: city
         description: 'Must not be greater than 100 characters.'
         required: true
-        example: ueqmsm
+        example: bxgdcmajtfkooypfresch
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -98,238 +98,22 @@ endpoints:
         name: password
         description: 'Must match the regex /^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/. Must be at least 6 characters.'
         required: true
-        example: 'H7;KHCU-N<yed3}'
+        example: '*X|RWF'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      firstName: rosozzfqlinqn
-      lastName: zcoeopqdmcwyxvnptecysv
+      firstName: gwrtmxfpvcggx
+      lastName: jwp
       gender: male
-      email: izaiah.halvorson@example.com
-      phoneNumber: praesentium
-      country: feowhydtcijvrtbllztctrm
-      city: ueqmsm
-      password: 'H7;KHCU-N<yed3}'
+      email: aparker@example.com
+      phoneNumber: aliquam
+      country: lmpuhvmcqwfqukvwgcumnhlt
+      city: bxgdcmajtfkooypfresch
+      password: '*X|RWF'
     fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/verify-otp
-    metadata:
-      groupName: Authentication
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Verify OTP and log the user'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      otp:
-        name: otp
-        description: ''
-        required: true
-        example: magnam
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      otpToken:
-        name: otpToken
-        description: ''
-        required: true
-        example: voluptatibus
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      otp: magnam
-      otpToken: voluptatibus
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/login
-    metadata:
-      groupName: Authentication
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Login implementation'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'Must be a valid email address.'
-        required: true
-        example: kunze.keeley@example.org
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      password:
-        name: password
-        description: ''
-        required: true
-        example: 'LgtD-KZ9]6C}[jO'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      email: kunze.keeley@example.org
-      password: 'LgtD-KZ9]6C}[jO'
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/logout
-    metadata:
-      groupName: Authentication
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Logout implementation'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/me
-    metadata:
-      groupName: Authentication
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Get current user'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"message":null}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '120'
-          x-ratelimit-remaining: '119'
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/upload-profile
-    metadata:
-      groupName: Authentication
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: multipart/form-data
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      profile:
-        name: profile
-        description: 'Must be an image. Must not be greater than 2048 kilobytes.'
-        required: true
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters: []
-    fileParameters:
-      profile: null
     responses: []
     responseFields: []
     auth: []
