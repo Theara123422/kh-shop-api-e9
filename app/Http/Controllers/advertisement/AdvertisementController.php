@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\advertisement;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
 use App\Traits\GeneralResponse;
 use Illuminate\Database\QueryException;
@@ -47,17 +46,17 @@ class AdvertisementController extends Controller
             // Handle itemImageSrc upload
             if ($request->hasFile('itemImageSrc')) {
                 $file = $request->file('itemImageSrc');
-                $fileName = time() .'-'. $file->getClientOriginalName(); // Get the original name of the file
+                $fileName = time() . '-' . $file->getClientOriginalName(); // Get the original name of the file
                 $file->storeAs('advertise', $fileName, 'public'); // Save the file in 'advertise' folder
-                $data['itemImageSrc'] = $fileName;
+                $data['itemImageSrc'] = 'http://localhost:8000/storage/advertise/'.$fileName;
             }
 
             // Handle thumbnailImageSrc upload
             if ($request->hasFile('thumbnailImageSrc')) {
                 $file = $request->file('thumbnailImageSrc');
-                $fileName = time() .'-'. $file->getClientOriginalName(); // Get the original name of the file
+                $fileName = time() . '-' . $file->getClientOriginalName(); // Get the original name of the file
                 $file->storeAs('advertise', $fileName, 'public'); // Save the file in 'advertise' folder
-                $data['thumbnailImageSrc'] = $fileName;
+                $data['thumbnailImageSrc'] = 'http://localhost:8000/storage/advertise/'.$fileName;
             }
 
             Advertisement::create($data);
@@ -91,38 +90,41 @@ class AdvertisementController extends Controller
      * @param mixed $id
      * @return mixed
      */
-    public function update(AdvertisementRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $advertisement = Advertisement::findOrFail($id);
 
-        $data = $request->validated();
+        $data = $request->all();
 
-        if ($request->hasFile('image')) {
-
-            if ($advertisement->image) {
-                Storage::delete("public/{$advertisement->image}");
+        // Handle itemImageSrc upload
+        if ($request->hasFile('itemImageSrc')) {
+            if ($advertisement->itemImageSrc) {
+                Storage::disk('public')->delete("advertise/{$advertisement->itemImageSrc}");
             }
 
-            $advertiseFolder = public_path('advertise');
-
-            if (!file_exists($advertiseFolder)) {
-                mkdir($advertiseFolder, 0777, true);
-            }
-
-            $imagePath = $request->file('image')->move($advertiseFolder, $request->file('image')->getClientOriginalName());
-
-            $data['image'] = 'advertise/' . basename($imagePath);
-
-            $advertisement->update($data);
-
-            return $this->successResponse('Advertisement Updated Successfully');
+            $file = $request->file('itemImageSrc');
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $file->storeAs('advertise', $fileName, 'public');
+            $data['itemImageSrc'] = $fileName;
         }
 
-        // Optional: If no image is uploaded, just update the other fields
+        // Handle thumbnailImageSrc upload
+        if ($request->hasFile('thumbnailImageSrc')) {
+            if ($advertisement->thumbnailImageSrc) {
+                Storage::disk('public')->delete("advertise/{$advertisement->thumbnailImageSrc}");
+            }
+
+            $file = $request->file('thumbnailImageSrc');
+            $fileName = time() . '-' . $file->getClientOriginalName();
+            $file->storeAs('advertise', $fileName, 'public');
+            $data['thumbnailImageSrc'] = $fileName;
+        }
+
         $advertisement->update($data);
 
         return $this->successResponse('Advertisement Updated Successfully');
     }
+
 
 
     public function destroy($id)

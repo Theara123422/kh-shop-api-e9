@@ -17,12 +17,12 @@ class ColorRequest extends FormRequest
     {
         return [
             'name' => [
-                'required',
-                new Enum(\App\Enums\Color::class)
+                'required'
+                // new Enum(\App\Enums\Color::class)
             ],
-            'color' => [
-                'required',
-                new Enum(\App\Enums\Color::class)
+            'code' => [
+                'required'
+                // new Enum(\App\Enums\Color::class)
             ]
         ];
     }

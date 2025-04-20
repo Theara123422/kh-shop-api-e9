@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\OtpService;
 use App\Traits\AuthResponse;
+use App\Traits\GeneralResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -49,8 +50,7 @@ class AuthController extends Controller
             'password' => [
                 'required',
                 'min:6',
-                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
-                'confirmed'
+                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'
             ]
         ]);
 
@@ -79,9 +79,19 @@ class AuthController extends Controller
             'profile' => $imageName,
         ]);
 
-        $otpToken = $this->otpService->generateOtp($user);
+        // $otpToken = $this->otpService->generateOtp($user);
 
-        return $this->otpSuccessResponse($otpToken, "Otp sent to your email successfully, please verify.");
+        return $this->successReponseWithData( "Register Successfully..",[
+            'first_name' => $request->firstName,
+            'last_name' => $request->lastName,
+            'gender' => $request->gender,
+            'email' => $request->email,
+            'phone_number' => $request->phoneNumber,
+            'country' => $request->country,
+            'city' => $request->city,
+            'password' => Hash::make($request->password),
+            'profile' => $imageName,
+        ]);
     }
 
     /**
@@ -169,11 +179,12 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return $this->successResponse(Auth::user());
+        return $this->successReponseWithData("Get Profile Success",Auth::user());
     }
 
     public function uploadProfileImage(Request $request)
     {
+        // dump($request->profile);
         $user = auth()->user();
 
         if (!$user) {
@@ -181,7 +192,7 @@ class AuthController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'profile' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:2048']
+            'profile' => ['required']
         ]);
 
         if ($validator->fails()) {
@@ -189,12 +200,16 @@ class AuthController extends Controller
         }
 
         if ($request->hasFile('profile')) {
-            $imageName = date('YmdHis') . '-' . $request->file('profile')->getClientOriginalName();
-            $path = $request->file('profile')->storeAs('profile', $imageName, 'public');
-
-            $user->update(['profile' => $path]); // Single update call
+            $image = $request->file('profile');
+            $imageName = now()->format('YmdHis') . '-' . $image->getClientOriginalName();
+            $path = $image->storeAs('profile', $imageName, 'public');
+        
+            $user->update(['profile' => $path]);
         }
+        
 
-        return response()->json(['message' => 'Profile updated successfully'], 200);
+        return $this->successReponseWithData('Upload Image success', [
+            'image_url' => 'http://localhost:8000/'.asset('storage/' . $path)
+        ]);        
     }
 }

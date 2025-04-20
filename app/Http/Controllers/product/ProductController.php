@@ -25,7 +25,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search', '');
-        $limit  = (int) $request->get('limit', 10); 
+        $limit  = (int) $request->get('limit', 10);
         $page   = $request->get('page');
 
         $query = Product::query();
@@ -35,11 +35,11 @@ class ProductController extends Controller
             $query->where('name', 'like', "%{$search}%");
         }
 
-        
+
         if ($page) {
             $products = $query->paginate($limit, ['*'], 'page', $page);
         } else {
-            
+
             $products = $query->get();
         }
 
@@ -50,80 +50,74 @@ class ProductController extends Controller
     }
 
 
-    public function getByCategory(Request $request)
+    public function getProductsByType(Request $request): JsonResponse
     {
-        // Get the category from the request and validate it
-        $categoryId = $request->get('category');
-        $category = \App\Models\Category::find($categoryId); // Check if the category exists
+        // Get the type(s) from the request (allow multiple types)
+        $requestedTypes = $request->get('type', null);
 
-        // If category not found, return error response
-        if (!$category) {
-            return response()->json([
-                'error' => 'Category not found.',
-            ], 404);
+        // Start building the query
+        $query = Product::query();
+
+        if ($requestedTypes) {
+            // Allow multiple types by splitting the 'type' parameter if it's a comma-separated string
+            $requestedTypes = explode(',', $requestedTypes);
+
+            // Apply filter based on the requested types
+            $query->where(function ($query) use ($requestedTypes) {
+                foreach ($requestedTypes as $type) {
+                    switch ($type) {
+                        case '1': 
+                            $query->orWhere('created_at', '>=', now()->subDays(30));
+                            break;
+
+                        case '2':
+                            $query->orWhere('star', '>=', 4);
+                            break;
+
+                        case '3': // Promotion Products (sale_price = 0)
+                            $query->orWhere('sale_price', '>', 0);
+                            break;
+                    }
+                }
+            });
         }
 
-        // Define allowed filter types and ensure the filter is valid
-        $allowedFilters = ['promotion', 'low_price', 'high_price', 'default'];
-        $filter = $request->get('filter', 'default');
-        if (!in_array($filter, $allowedFilters)) {
-            $filter = 'default';  // Set default filter if the requested filter is invalid
-        }
+        // Get the products after applying the filter
+        $products = $query->get()->map(function ($product) use ($requestedTypes) {
+            // Dynamically assign the 'type' based on the product properties
+            $types = [];
 
-        // Ensure the order is valid ('asc' or 'desc')
-        $order = $request->get('order', 'desc');
-        if (!in_array($order, ['asc', 'desc'])) {
-            $order = 'desc'; // Default order if invalid
-        }
+            // Check if the product matches each condition
+            if ($product->created_at >= now()->subDays(30)) {
+                $types[] = '1'; // New Products
+            }
+            if ($product->star >= 4) {
+                $types[] = '2'; // Popular Products
+            }
+            if ($product->sale_price > 0) {
+                $types[] = '3'; // Promotion Products
+            }
 
-        // Query based on filter and category
-        $query = Product::where('category_id', $categoryId); // Filter by category
+            // Return product with dynamically assigned types
+            return [
+                'id'             => $product->id,
+                'image_url'      => $product->image,
+                'regular_price'  => $product->regular_price,
+                'sale_price'     => $product->sale_price,
+                'title'          => $product->name,
+                'star'           => $product->rating,
+                'type'           => implode(',', $types), // Assign multiple types as a string
+            ];
+        });
 
-        // Apply the filter condition
-        switch ($filter) {
-            case 'promotion':
-                $query->where('sale_price', '>', 0);
-                break;
-
-            case 'low_price':
-                $query->where('sale_price', '>', 0)->where('sale_price', '<', 20);
-                break;
-
-            case 'high_price':
-                $query->where('sale_price', '>=', 20);
-                break;
-
-            case 'default':
-            default:
-                // If default, we show the latest products
-                $query->latest();
-                break;
-        }
-
-        // Order the results by rating or other fields if needed
-        $products = $query->orderBy('rating', $order)->get();
-
-        // If no products found, return a custom message
-        if ($products->isEmpty()) {
-            return response()->json([
-                'message' => 'No products found for the selected filter.',
-                'related_products' => [],
-            ], 200);
-        }
-
-        // Get related products (e.g., other products from the same category)
-        $relatedProducts = Product::where('category_id', $categoryId)
-            ->where('id', '!=', $products->first()->id) // Exclude the main products from related ones
-            ->limit(4) // Get a maximum of 5 related products
-            ->get();
-
-        // Return the response with products and related products
         return response()->json([
-            'message' => 'Products fetched successfully.',
-            'products' => $products,
-            'related_products' => $relatedProducts,
+            'status'  => 200,
+            'message' => 'Successfully fetched products by dynamic type.',
+            'data'    => $products,
+            'total'   => $products->count(),
         ]);
     }
+
 
 
 
@@ -132,19 +126,19 @@ class ProductController extends Controller
      * @param ProductRequest $request
      * @return JsonResponse
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
         try {
-            $data = $request->validated();
-
+            $data = $request->all();
+            // dump($data);
             if ($request->hasFile('image')) {
                 $fileName = time() . '.' . $request->file('image')->getClientOriginalExtension();
                 $request->file('image')->move(public_path('images'), $fileName);
             }
 
-            $data['image'] = $fileName;
+            $data['image'] = 'http://localhost:8000/images/' . $fileName;
 
-            \App\Models\Product::create($data);
+            Product::create($data);
 
             return $this->successResponse(
                 "Product created successfully",
@@ -152,12 +146,12 @@ class ProductController extends Controller
         } catch (QueryException $exception) {
             return $this->errorResponse(
                 $exception->getMessage(),
-                $exception->getCode()
+                402
             );
         } catch (ValidationException $exception) {
             return $this->errorResponse(
                 'Validation Error',
-                $exception->getCode()
+                402
             );
         }
     }
@@ -169,13 +163,102 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = \App\Models\Product::findOrFail($id);
+        $product = Product::with(['productVariants.color', 'productVariants.size', 'productVariants.productStock', 'category'])
+            ->findOrFail($id);
 
-        return $this->successReponseWithData(
-            "Get product successfully",
-            $product
-        );
+        $colors = $product->productVariants->pluck('color')->unique('id')->values()->map(function ($color) {
+            return [
+                'code' => $color->code ?? '',
+                'name' => $color->name ?? '',
+            ];
+        });
+
+        $sizes = $product->productVariants->pluck('size')->unique('id')->values()->map(function ($size) {
+            return [
+                'code' => $size->size_number ?? '',
+                'name' => $size->name ?? '',
+            ];
+        });
+
+        $categoryName = $product->category->name ?? null;
+
+
+        if (!$categoryName && $product->category_id) {
+            $categoryName = \App\Models\Category::find($product->category_id)?->name ?? '';
+        }
+
+        $data = [
+            'id'             => $product->id,
+            'image_url'      => $product->image ?? '',
+            'regular_price'  => $product->regular_price ?? '',
+            'sale_price'     => $product->sale_price ?? '',
+            'category'       => $categoryName,
+            'title'          => $product->name ?? '',
+            'color'          => $colors,
+            'size'           => $sizes,
+        ];
+
+        return response()->json([
+            'status'  => 200,
+            'message' => 'Successfully',
+            'data'    => $data,
+            'total'   => $product->productVariants->count(),
+        ]);
     }
+
+
+    public function getShopProducts(Request $request)
+    {
+        // Retrieve all products
+        $products = Product::query()->get();
+
+        // Map over products to assign types dynamically
+        $filteredProducts = $products->map(function ($product) {
+            // Initialize type as an empty array
+            $productTypes = [];
+
+            // Check for promotion product (sale_price = 0)
+            if ($product->sale_price > 0) {
+                $productTypes[] = '3'; // Promotion Product
+            }
+
+            // Check for new product (created in the last 30 days)
+            if ($product->created_at >= now()->subDays(30)) {
+                $productTypes[] = '1'; // New Product
+            }
+
+            // Check for popular product (star >= 4)
+            if ($product->star >= 4) {
+                $productTypes[] = '2'; // Popular Product
+            }
+
+            // If the product has at least one valid type, return it
+            if (!empty($productTypes)) {
+                return [
+                    'id'             => $product->id,
+                    'image_url'      => $product->image,
+                    'regular_price'  => $product->regular_price,
+                    'sale_price'     => $product->sale_price,
+                    'title'          => $product->name,
+                    'star'           => $product->star,
+                    'type'           => implode(',', $productTypes), // Comma-separated types
+                ];
+            }
+
+            // If no type is assigned, do not return this product
+            return null;
+        })->filter(); // Remove products without a valid type
+
+        // Return the response
+        return response()->json([
+            'status'  => 200,
+            'message' => 'Successfully fetched products by dynamic type.',
+            'data'    => $filteredProducts,
+            'total'   => $filteredProducts->count(),
+        ]);
+    }
+
+
 
     /**
      * edit the specific product

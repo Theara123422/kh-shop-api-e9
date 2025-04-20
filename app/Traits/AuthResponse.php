@@ -9,6 +9,14 @@ trait AuthResponse {
         ],200);
     }
 
+    public function successReponseWithData($message, $data){
+        return response()->json([
+            'status' => 200,
+            'message' => $message,
+            'data'  => $data
+        ]);
+    }
+
     public function successResponseWithAccessTokenAndRefreshToken($accessToken,$message){
         return response()->json([
             'message' => $message,

@@ -11,7 +11,8 @@ class ProductVariantRequest extends FormRequest
         return [
             'product_id' => 'required',
             'color_id' => 'required',
-            'size_id' => 'required'
+            'size_id' => 'required',
+            'product_stock_id' => 'required'
         ];
     }
 }

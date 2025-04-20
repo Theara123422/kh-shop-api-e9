@@ -43,7 +43,7 @@ class ProductVariantController extends Controller
 
         $sizes = $product->productVariants->pluck('size')->unique('id')->values()->map(function ($size) {
             return [
-                'code' => $size->code ?? '',
+                'code' => $size->size_number ?? '',
                 'name' => $size->name ?? '',
             ];
         });

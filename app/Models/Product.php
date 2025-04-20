@@ -17,7 +17,10 @@ class Product extends Model
         'rate',
         'imported_from',
         'image',
-        'category_id'
+        'category_id',
+        'regular_price',
+        'sale_price',
+        'star'
     ];
 
     /**

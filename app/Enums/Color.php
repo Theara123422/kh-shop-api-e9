@@ -10,4 +10,5 @@ enum Color: string {
     case Yellow = 'Yellow';
     case Gray = 'Gray';
     case Pink = 'Pink';
+    case SKYBLUE = 'Skyblue';
 }

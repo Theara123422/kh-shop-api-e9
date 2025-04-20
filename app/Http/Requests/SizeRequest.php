@@ -18,11 +18,11 @@ class SizeRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                new Enum(\App\Enums\Size::class)
+                // new Enum(\App\Enums\Size::class)
             ],
             'size_number' => [
                 'required',
-                new Enum(\App\Enums\Size::class)
+                // new Enum(\App\Enums\Size::class)
             ]
         ];
     }
