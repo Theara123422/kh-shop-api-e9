@@ -67,12 +67,10 @@ Route::apiResource('products', ProductController::class);
 
 //product
 
-//get product by category
-Route::get('/product/category', [ProductController::class, 'getByCategory']);
 
-Route::get('/product/type', [ProductController::class, 'getProductsByType']);
-
-Route::get('/product/shop', [ProductController::class, 'getShopProducts']);
+Route::get('/product/latest', [ProductController::class, 'latestProducts']);
+Route::get('/product/promotions', [ProductController::class, 'promotionalProducts']);
+Route::get('/product/top-rated', [ProductController::class, 'topRatedProducts']);
 //get product by category
 
 //product variant

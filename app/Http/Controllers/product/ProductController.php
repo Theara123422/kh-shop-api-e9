@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\product;
 
-use App\Enums\Category;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
@@ -30,7 +30,7 @@ class ProductController extends Controller
 
         $query = Product::query();
 
-        // Apply search if provided
+
         if (!empty($search)) {
             $query->where('name', 'like', "%{$search}%");
         }
@@ -48,79 +48,6 @@ class ProductController extends Controller
             $products
         );
     }
-
-
-    public function getProductsByType(Request $request): JsonResponse
-    {
-        // Get the type(s) from the request (allow multiple types)
-        $requestedTypes = $request->get('type', null);
-
-        // Start building the query
-        $query = Product::query();
-
-        if ($requestedTypes) {
-            // Allow multiple types by splitting the 'type' parameter if it's a comma-separated string
-            $requestedTypes = explode(',', $requestedTypes);
-
-            // Apply filter based on the requested types
-            $query->where(function ($query) use ($requestedTypes) {
-                foreach ($requestedTypes as $type) {
-                    switch ($type) {
-                        case '1': 
-                            $query->orWhere('created_at', '>=', now()->subDays(30));
-                            break;
-
-                        case '2':
-                            $query->orWhere('star', '>=', 4);
-                            break;
-
-                        case '3': // Promotion Products (sale_price = 0)
-                            $query->orWhere('sale_price', '>', 0);
-                            break;
-                    }
-                }
-            });
-        }
-
-        // Get the products after applying the filter
-        $products = $query->get()->map(function ($product) use ($requestedTypes) {
-            // Dynamically assign the 'type' based on the product properties
-            $types = [];
-
-            // Check if the product matches each condition
-            if ($product->created_at >= now()->subDays(30)) {
-                $types[] = '1'; // New Products
-            }
-            if ($product->star >= 4) {
-                $types[] = '2'; // Popular Products
-            }
-            if ($product->sale_price > 0) {
-                $types[] = '3'; // Promotion Products
-            }
-
-            // Return product with dynamically assigned types
-            return [
-                'id'             => $product->id,
-                'image_url'      => $product->image,
-                'regular_price'  => $product->regular_price,
-                'sale_price'     => $product->sale_price,
-                'title'          => $product->name,
-                'star'           => $product->rating,
-                'type'           => implode(',', $types), // Assign multiple types as a string
-            ];
-        });
-
-        return response()->json([
-            'status'  => 200,
-            'message' => 'Successfully fetched products by dynamic type.',
-            'data'    => $products,
-            'total'   => $products->count(),
-        ]);
-    }
-
-
-
-
     /**
      * create new product
      * @param ProductRequest $request
@@ -155,6 +82,81 @@ class ProductController extends Controller
             );
         }
     }
+
+    public function latestProducts(): JsonResponse
+    {
+        $products = Product::orderBy('created_at', 'desc')
+            ->take(4)
+            ->get()
+            ->map(function ($product) {
+                return [
+                    'id'            => $product->id,
+                    'image_url'     => $product->image,
+                    'regular_price' => $product->regular_price,
+                    'sale_price'    => $product->sale_price,
+                    'title'         => $product->name,
+                    'star'          => $product->star,
+                ];
+            });
+
+        return response()->json([
+            'status'  => 200,
+            'message' => 'Latest products fetched successfully.',
+            'data'    => $products,
+            'total'   => $products->count(),
+        ]);
+    }
+
+    public function promotionalProducts(): JsonResponse
+    {
+        $products = Product::where('sale_price', '>', 0)
+            ->orderBy('created_at', 'desc')
+            ->take(4)
+            ->get()
+            ->map(function ($product) {
+                return [
+                    'id'            => $product->id,
+                    'image_url'     => $product->image,
+                    'regular_price' => $product->regular_price,
+                    'sale_price'    => $product->sale_price,
+                    'title'         => $product->name,
+                    'star'          => $product->star,
+                ];
+            });
+
+        return response()->json([
+            'status'  => 200,
+            'message' => 'Promotional products fetched successfully.',
+            'data'    => $products,
+            'total'   => $products->count(),
+        ]);
+    }
+
+    public function topRatedProducts(): JsonResponse
+    {
+        $products = Product::where('star', '>=', 4)
+            ->orderBy('star', 'desc')
+            ->take(4)
+            ->get()
+            ->map(function ($product) {
+                return [
+                    'id'            => $product->id,
+                    'image_url'     => $product->image,
+                    'regular_price' => $product->regular_price,
+                    'sale_price'    => $product->sale_price,
+                    'title'         => $product->name,
+                    'star'          => $product->star,
+                ];
+            });
+
+        return response()->json([
+            'status'  => 200,
+            'message' => 'Top rated products fetched successfully.',
+            'data'    => $products,
+            'total'   => $products->count(),
+        ]);
+    }
+
 
     /**
      * show the specific product
@@ -207,56 +209,6 @@ class ProductController extends Controller
     }
 
 
-    public function getShopProducts(Request $request)
-    {
-        // Retrieve all products
-        $products = Product::query()->get();
-
-        // Map over products to assign types dynamically
-        $filteredProducts = $products->map(function ($product) {
-            // Initialize type as an empty array
-            $productTypes = [];
-
-            // Check for promotion product (sale_price = 0)
-            if ($product->sale_price > 0) {
-                $productTypes[] = '3'; // Promotion Product
-            }
-
-            // Check for new product (created in the last 30 days)
-            if ($product->created_at >= now()->subDays(30)) {
-                $productTypes[] = '1'; // New Product
-            }
-
-            // Check for popular product (star >= 4)
-            if ($product->star >= 4) {
-                $productTypes[] = '2'; // Popular Product
-            }
-
-            // If the product has at least one valid type, return it
-            if (!empty($productTypes)) {
-                return [
-                    'id'             => $product->id,
-                    'image_url'      => $product->image,
-                    'regular_price'  => $product->regular_price,
-                    'sale_price'     => $product->sale_price,
-                    'title'          => $product->name,
-                    'star'           => $product->star,
-                    'type'           => implode(',', $productTypes), // Comma-separated types
-                ];
-            }
-
-            // If no type is assigned, do not return this product
-            return null;
-        })->filter(); // Remove products without a valid type
-
-        // Return the response
-        return response()->json([
-            'status'  => 200,
-            'message' => 'Successfully fetched products by dynamic type.',
-            'data'    => $filteredProducts,
-            'total'   => $filteredProducts->count(),
-        ]);
-    }
 
 
 
@@ -269,7 +221,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         try {
-            $product = \App\Models\Product::findOrFail($id);
+            $product = Product::findOrFail($id);
             $data = $request->validated();
 
             if ($request->hasFile('image')) {
@@ -281,13 +233,13 @@ class ProductController extends Controller
             }
             $data['image'] = $fileName;
 
-            //        dd($data);
+
             $product->update($data);
 
             return $this->successResponse(
                 "Product updated successfully",
             );
-        } catch (\Illuminate\Validation\ValidationException $exception) {
+        } catch (ValidationException $exception) {
             return $this->errorResponse(
                 $exception->getMessage(),
                 $exception->getCode()
@@ -302,7 +254,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = \App\Models\Product::findOrFail($id);
+        $product = Product::findOrFail($id);
 
         if ($product->image) {
             unlink(public_path('images') . '/' . $product->image);
