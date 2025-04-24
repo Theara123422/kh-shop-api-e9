@@ -71,6 +71,8 @@ Route::apiResource('products', ProductController::class);
 Route::get('/product/latest', [ProductController::class, 'latestProducts']);
 Route::get('/product/promotions', [ProductController::class, 'promotionalProducts']);
 Route::get('/product/top-rated', [ProductController::class, 'topRatedProducts']);
+Route::get('/product/by-price', [ProductController::class, 'getProductsByPriceType']);
+Route::get('/product/by-category', [ProductController::class, 'getProductsByCategory']);
 //get product by category
 
 //product variant

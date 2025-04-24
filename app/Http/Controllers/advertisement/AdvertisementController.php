@@ -124,9 +124,6 @@ class AdvertisementController extends Controller
 
         return $this->successResponse('Advertisement Updated Successfully');
     }
-
-
-
     public function destroy($id)
     {
         $advertisement = Advertisement::findOrFail($id);

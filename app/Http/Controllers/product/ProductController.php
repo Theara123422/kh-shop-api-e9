@@ -157,6 +157,41 @@ class ProductController extends Controller
         ]);
     }
 
+    public function getProductsByCategory(Request $request): JsonResponse
+    {
+        $categoryId = $request->query('category_id');
+
+        if (!$categoryId) {
+            return response()->json([
+                'status'  => 400,
+                'message' => 'Missing category_id parameter.',
+                'data'    => [],
+            ], 400);
+        }
+
+        $products = Product::where('category_id', $categoryId)
+            ->take(4)
+            ->get()
+            ->map(function ($product) {
+                return [
+                    'id'            => $product->id,
+                    'image_url'     => $product->image,
+                    'regular_price' => $product->regular_price,
+                    'sale_price'    => $product->sale_price,
+                    'title'         => $product->name,
+                    'star'          => $product->star,
+                ];
+            });
+
+        return response()->json([
+            'status'  => 200,
+            'message' => 'Products fetched by category successfully.',
+            'data'    => $products,
+            'total'   => $products->count(),
+        ]);
+    }
+
+
 
     /**
      * show the specific product
@@ -208,9 +243,42 @@ class ProductController extends Controller
         ]);
     }
 
+    public function getProductsByPriceType(Request $request): JsonResponse
+    {
+        $type = $request->query('type');
 
+        $query = Product::query();
 
+        if ($type === 'cheap') {
+            $query->orderBy('regular_price', 'asc');
+        } elseif ($type === 'expensive') {
+            $query->orderBy('regular_price', 'desc');
+        } else {
+            return response()->json([
+                'status'  => 400,
+                'message' => 'Invalid type. Must be either "cheap" or "expensive".',
+                'data'    => [],
+            ], 400);
+        }
 
+        $products = $query->take(4)->get()->map(function ($product) {
+            return [
+                'id'            => $product->id,
+                'image_url'     => $product->image,
+                'regular_price' => $product->regular_price,
+                'sale_price'    => $product->sale_price,
+                'title'         => $product->name,
+                'star'          => $product->star,
+            ];
+        });
+
+        return response()->json([
+            'status'  => 200,
+            'message' => ucfirst($type) . ' products fetched successfully.',
+            'data'    => $products,
+            'total'   => $products->count(),
+        ]);
+    }
 
     /**
      * edit the specific product
