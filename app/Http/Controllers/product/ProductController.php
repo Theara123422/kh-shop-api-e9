@@ -243,6 +243,64 @@ class ProductController extends Controller
         ]);
     }
 
+    public function shopProducts(Request $request): JsonResponse
+{
+    $filter = $request->query('filter');
+
+    $query = Product::query();
+
+    if ($filter) {
+        $filter = strtolower($filter);
+
+        if ($filter === 'cheap') {
+            $query->orderBy('regular_price', 'asc');
+        } elseif ($filter === 'expensive') {
+            $query->orderBy('regular_price', 'desc');
+        } elseif ($filter === 'promotion') {
+            $query->where('sale_price', '>', 0);
+        } else {
+            // Try to find a category by name
+            $category = \App\Models\Category::where('name', 'like', '%' . $filter . '%')->first();
+            if ($category) {
+                $query->where('category_id', $category->id);
+            }
+        }
+    }
+
+    $products = $query->get();
+
+    $formattedProducts = $products->map(function ($product) {
+        $type = null;
+        if ($product->sale_price > 0) {
+            $type = 3;
+        } elseif ($product->created_at >= now()->subDays(30)) {
+            $type = 1;
+        } elseif ($product->star >= 4) {
+            $type = 2;
+        }
+
+        return [
+            'id'            => $product->id,
+            'image_url'     => $product->image,
+            'regular_price' => $product->regular_price,
+            'sale_price'    => $product->sale_price,
+            'title'         => $product->name,
+            'star'          => $product->star,
+            'type'          => $type,
+        ];
+    });
+
+    return response()->json([
+        'code'    => 200,
+        'message' => '',
+        'data'    => [
+            'latest'  => $formattedProducts->take(3)->values(),
+            'related' => $formattedProducts->slice(4)->take(4)->values(),
+        ],
+    ]);
+}
+
+
     public function getProductsByPriceType(Request $request): JsonResponse
     {
         $type = $request->query('type');

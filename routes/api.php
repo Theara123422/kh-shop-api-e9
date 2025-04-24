@@ -73,6 +73,7 @@ Route::get('/product/promotions', [ProductController::class, 'promotionalProduct
 Route::get('/product/top-rated', [ProductController::class, 'topRatedProducts']);
 Route::get('/product/by-price', [ProductController::class, 'getProductsByPriceType']);
 Route::get('/product/by-category', [ProductController::class, 'getProductsByCategory']);
+Route::get('/product/shop', [ProductController::class, 'shopProducts']);
 //get product by category
 
 //product variant

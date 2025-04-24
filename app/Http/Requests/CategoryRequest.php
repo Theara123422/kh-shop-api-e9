@@ -17,8 +17,8 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => [
-                'required',
-                new Enum(\App\Enums\Category::class)
+                'required'
+                // new Enum(\App\Enums\Category::class)
             ]
         ];
     }
