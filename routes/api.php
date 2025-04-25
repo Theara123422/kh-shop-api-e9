@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\advertisement\AdvertisementController;
+use App\Http\Controllers\social\SocialPlatformController;
+use App\Http\Controllers\feedback\FeedbackController;
 use App\Http\Controllers\category\CategoryController;
 use App\Http\Controllers\color\ColorController;
 use App\Http\Controllers\country\CountryController;
@@ -42,6 +44,16 @@ Route::get('/me', [AuthController::class , 'me']);
 Route::post('/upload-profile', [AuthController::class , 'uploadProfileImage']);
 
 //image profile upload
+
+
+//social platforms
+Route::apiResource('social-platforms',SocialPlatformController::class);
+
+//social platforms
+
+//feedback
+Route::apiResource('feedback',FeedbackController::class);
+//feedback
 
 //advertisement
 Route::apiResource('advertisements',AdvertisementController::class);

@@ -127,6 +127,7 @@ class AdvertisementController extends Controller
 
 
 
+
     public function destroy($id)
     {
         $advertisement = Advertisement::findOrFail($id);

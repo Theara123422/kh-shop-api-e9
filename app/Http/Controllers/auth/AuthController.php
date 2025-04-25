@@ -203,13 +203,13 @@ class AuthController extends Controller
             $image = $request->file('profile');
             $imageName = now()->format('YmdHis') . '-' . $image->getClientOriginalName();
             $path = $image->storeAs('profile', $imageName, 'public');
-        
+
             $user->update(['profile' => $path]);
         }
-        
+
 
         return $this->successReponseWithData('Upload Image success', [
             'image_url' => 'http://localhost:8000/'.asset('storage/' . $path)
-        ]);        
+        ]);
     }
 }
