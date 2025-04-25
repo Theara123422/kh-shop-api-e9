@@ -56,4 +56,15 @@ class FeedbackController extends Controller
             );
         }
     }
+
+
+    public function show($id)
+    {
+        $feed = \App\Models\Feedback::findOrFail($id);
+
+        return $this->successReponseWithData(
+            'Get feedback success',
+            $feed
+        );
+    }
 }

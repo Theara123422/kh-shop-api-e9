@@ -67,6 +67,7 @@ class sizeController extends Controller
             $color
         );
     }
+    
     public function update(SizeRequest $request, $id)
     {
         try {

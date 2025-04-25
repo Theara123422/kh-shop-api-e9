@@ -52,6 +52,7 @@ Route::apiResource('social-platforms',SocialPlatformController::class);
 //social platforms
 
 //feedback
+Route::post('feedback/create',[FeedbackController::class, 'store']);
 Route::apiResource('feedback',FeedbackController::class);
 //feedback
 
@@ -62,6 +63,7 @@ Route::apiResource('advertisements',AdvertisementController::class);
 
 //category
 Route::apiResource('category',CategoryController::class);
+
 
 //category
 
